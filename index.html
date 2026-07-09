@@ -2129,7 +2129,7 @@
                                                     <span class="tol-row-label">Lens Deformation factor in Preferred
                                                         Edge</span>
                                                     <span class="tol-row-default">±0.20</span>
-                                                    <input type="text" name="singleTolLensDeform"
+                                                    <input type="text" name="singleTolLensDeformPreferred"
                                                         placeholder="Type in Box" class="tol-row-input" />
                                                 </div>
 
@@ -2152,7 +2152,7 @@
                                                 <div class="tol-row">
                                                     <span class="tol-row-label">Measuring inaccuracy (Free state)</span>
                                                     <span class="tol-row-default">±0.10</span>
-                                                    <input type="text" name="measTolInaccuracy"
+                                                    <input type="text" name="headlampHousingJigOperatorRepeat"
                                                         placeholder="Type in Box" class="tol-row-input" />
                                                 </div>
 
@@ -3014,6 +3014,8 @@
             const FIELD_LABELS = {
                 // Root Cause Analysis — "Optical" block (modelled on Optical simulation)
                 rcaOpticalSinglePartTolerance: 'Single Part Tolerance',
+                singleTolLensDeformPreferred: 'Welding Section – Lens Deformation Factor (Preferred Edge)',
+                headlampHousingJigOperatorRepeat: 'Headlamp Assembly – Operator Repeatability (Housing-Jig)',
                 rcaOpticalSinglePartToleranceLink: 'Single Part Tolerance - Sharepoint Link / DIS',
                 rcaOpticalLightFunction: 'Light Functions', rcaOpticalOtherFunctions: 'Other Light Functions',
                 rcaOpticalFddReview: 'FDD Review', rcaOpticalFddReason: 'FDD Reason',
@@ -3800,7 +3802,16 @@
                     activeSection.querySelectorAll('input:not([type="checkbox"]),select,textarea').forEach(el => {
                         if (!el.name || el.disabled) return;
                         if (internalTGNames.includes(el.name)) return;
-                        data[el.name] = el.value;
+                        if (el.type === 'radio' && !el.checked) return;
+                        if (el.offsetParent === null) return;
+
+                        let val = el.value;
+                        if (!val && el.classList.contains('tol-row-input')) {
+                            const row = el.closest('.tol-row');
+                            const defaultEl = row ? row.querySelector('.tol-row-default') : null;
+                            if (defaultEl) val = defaultEl.textContent.trim();
+                        }
+                        data[el.name] = val;
                     });
                 }
                 return data;
