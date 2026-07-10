@@ -312,6 +312,16 @@
             background: #65a30d;
         }
 
+        #datumFeasibilityLabel.risk-color-override[data-status]::before {
+            background: var(--risk-status-color) !important;
+        }
+
+        .bg-brandDark[data-status="partial"]::before {
+            background: #ca8a04;
+            /* amber — matches your Partial progress-pill color */
+        }
+
+
         /* Legend shown at the top of the form, mirroring the reference image */
         .status-legend {
             display: flex;
@@ -924,8 +934,10 @@
                 <h1 class="text-2xl font-bold tracking-wide" style="color:#ffffff;">
                     Tolerance Simulation Request / Input Review Form
                 </h1>
-                <p class="text-sm text-gray-300 mt-1">For queries contact : <a href="mailto:info.dimensionalmanagement@forvia.com"
-                        data-no-i18n class="text-brandAccent underline hover:text-cyan-300">info.dimensionalmanagement@forvia.com</a></p>
+                <p class="text-sm text-gray-300 mt-1">For queries contact : <a
+                        href="mailto:info.dimensionalmanagement@forvia.com" data-no-i18n
+                        class="text-brandAccent underline hover:text-cyan-300">info.dimensionalmanagement@forvia.com</a>
+                </p>
             </div>
 
             <div class="flex gap-2 flex-wrap justify-center">
@@ -1033,7 +1045,7 @@
                         <td class="border border-gray-600 px-3 py-2" data-no-i18n>09/07/2026</td>
                         <td class="border border-gray-600 px-3 py-2" data-no-i18n>TS Team</td>
                         <td class="border border-gray-600 px-3 py-2" data-no-i18n>TS Lead</td> -->
-                        <!-- <td class="border border-gray-600 px-3 py-2">Added contact info, revision history &amp;
+                    <!-- <td class="border border-gray-600 px-3 py-2">Added contact info, revision history &amp;
                             multi-language support</td>
                         <td class="border border-gray-600 px-3 py-2 font-semibold text-brandAccent">Current</td> -->
                     </tr>
@@ -1057,7 +1069,7 @@
                     <span id="pillInsufficient" class="status-pill status-pill-insufficient"></span>
                 </div>
                 <div class="status-pill-group">
-                    <span class="status-pill-label">Partially sufficient</span>
+                    <span class="status-pill-label">Partial</span>
                     <span id="pillPartial" class="status-pill status-pill-partial"></span>
                 </div>
                 <div class="status-pill-group">
@@ -1938,7 +1950,7 @@
                                                 onchange="toggleFddReason('geometry')" class="field-input">
                                                 <option value="Completed">Completed</option>
                                                 <option value="InProgress">InProgress</option>
-                                                <option value="Incomplete">Incomplete</option>
+                                                <option value="Incomplete">To be started</option>
                                             </select>
                                             <input type="text" id="fddReason-geometry" name="fddReason"
                                                 placeholder="Please specify reason" class="fdd-reason hidden" />
@@ -1947,7 +1959,8 @@
                                 </div>
 
                                 <div class="grid-row">
-                                    <label class="bg-brandDark p-2 text-sm rounded">Customer lamp fixation - Datum's
+                                    <label id="datumFeasibilityLabel" class="bg-brandDark p-2 text-sm rounded">Customer
+                                        lamp fixation - Datum's
                                         feasibility</label>
                                     <div class="grid-control">
                                         <div class="flex gap-1 p-1 rounded items-center flex-wrap">
@@ -2107,7 +2120,7 @@
 
                                 <!-- Remarks / Recommended Actions (auto-filled) -->
                                 <div class="grid-row">
-                                    <label class="bg-brandDark p-2 text-sm rounded">Remarks / Recommended
+                                    <label class="bg-brandDark p-2 text-sm rounded status-exempt">Remarks / Recommended
                                         actions</label>
                                     <div class="grid-control">
                                         <div id="recommendedActionsDisplay"
@@ -2121,12 +2134,14 @@
                                             <div id="actions-state-nonstable" style="display:none;">
                                                 <div
                                                     style="padding:2px 0;border-bottom:1px solid #2d4a6e;margin-bottom:4px;padding-bottom:4px;">
-                                                    <strong style="color:#ffffff;">Tolerance negotiation should be
+                                                    <strong style="color:#ffffff;font-style: italic;">Tolerance
+                                                        negotiation should be
                                                         discussed
                                                         with the Customer</strong>
                                                 </div>
                                                 <div style="padding:2px 0;">
-                                                    <strong style="color:#ffffff;">Tolerance results to be aligned with
+                                                    <strong style="color:#ffffff;font-style: italic;">Tolerance results
+                                                        to be aligned with
                                                         the
                                                         Production plant</strong>
                                                 </div>
@@ -2506,7 +2521,12 @@
                                             <label
                                                 class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
                                                     type="checkbox" name="lampMeasurementMethod" value="Fixture" />
-                                                Fixture</label>
+                                                Gauge</label>
+                                            <label
+                                                class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
+                                                    type="checkbox" name="lampMeasurementMethod"
+                                                    value="MMTobeVerified" />
+                                                To be verified</label>
                                         </div>
                                     </div>
                                 </div>
@@ -2528,6 +2548,10 @@
                                                 class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
                                                     type="checkbox" name="otherFixations" value="Aux Datum" /> Aux
                                                 Datum</label>
+                                            <label
+                                                class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
+                                                    type="checkbox" name="otherFixations" value="OFTobeVerified" /> Aux
+                                                To be verified</label>
                                         </div>
                                     </div>
                                 </div>
@@ -2537,14 +2561,15 @@
                                     <div class="bg-brandDark p-2 text-sm rounded CAD-Data">
                                         CAD Data
                                         <label class="item-check-row"><input type="checkbox" name="cadCheck_HSG"
-                                                value="YES" /><span>Housing &amp; Cover Lens</span><span
-                                                class="status-dot"></span></label>
+                                                value="YES" data-required-check="true" /><span>Housing &amp; Cover
+                                                Lens</span><span class="status-dot"></span></label>
                                         <label class="item-check-row"><input type="checkbox" name="cadCheck_Welding"
-                                                value="YES" /><span>Welding/Vibration/Tertiary direction</span><span
-                                                class="status-dot"></span></label>
+                                                value="YES"
+                                                data-required-check="true" /><span>Welding/Vibration/Tertiary
+                                                direction</span><span class="status-dot"></span></label>
                                         <label class="item-check-row"><input type="checkbox" name="cadCheck_Car"
-                                                value="YES" /><span>Car Surrounding geometry</span><span
-                                                class="status-dot"></span></label>
+                                                value="YES" data-required-check="true" /><span>Car Surrounding
+                                                geometry</span><span class="status-dot"></span></label>
                                         <label class="item-check-row"><input type="checkbox" name="cadCheck_Gap"
                                                 value="YES" /><span>Gap &amp; Flush Measurement Points
                                                 (Optional)</span><span class="status-dot"></span></label>
@@ -2563,12 +2588,14 @@
                                     <div class="bg-brandDark p-2 text-sm rounded">
                                         Customer Document(s)
                                         <label class="item-check-row">
-                                            <input type="checkbox" name="docCheck_GapFlush" value="YES" />
+                                            <input type="checkbox" name="docCheck_GapFlush" value="YES"
+                                                data-required-check="true" />
                                             <span>Customer Gap &amp; Flush tolerance requirements</span>
                                             <span class="status-dot"></span>
                                         </label>
                                         <label class="item-check-row">
-                                            <input type="checkbox" name="docCheck_DatumSystem" value="YES" />
+                                            <input type="checkbox" name="docCheck_DatumSystem" value="YES"
+                                                data-required-check="true" />
                                             <span>Customer Datum system</span>
                                             <span class="status-dot"></span>
                                         </label>
@@ -2605,9 +2632,9 @@
                         <div class="analysis-assumptions-wrap">
                             <span class="section-header">Analysis Specific Assumptions</span>
                             <ul>
-                                <li>Deformations of parts are not part of the simulation.</li>
+                                <!-- <li>Deformations of parts are not part of the simulation.</li>
                                 <li>Simulation software assumes unstressed assembly process.</li>
-                                <li>The measuring is in free-state.</li>
+                                <li>The measuring is in free-state.</li> -->
                                 <li>Results are based on 10,000 Monte-Carlo simulations.</li>
                             </ul>
                         </div>
@@ -4414,6 +4441,18 @@
                     if (rv) rv.value = cfg ? cfg.risk : '';
                 }
 
+                // ── Datum Feasibility status-box — mirror Risk badge color ─────
+                const dfLabel = document.getElementById('datumFeasibilityLabel');
+                if (dfLabel) {
+                    if (cfg) {
+                        dfLabel.style.setProperty('--risk-status-color', cfg.riskBg);
+                        dfLabel.classList.add('risk-color-override');
+                    } else {
+                        dfLabel.classList.remove('risk-color-override');
+                        dfLabel.style.removeProperty('--risk-status-color');
+                    }
+                }
+
                 // ── Target of the Study — toggle pre-built HTML blocks ─────────
                 const showTarget = cfg ? cfg.targetState : 'default';
                 _toggleDatumBlock('target-state-default', showTarget === 'default');
@@ -4588,6 +4627,22 @@
                     if (isFieldStatusFilled(f)) filled = true;
                 });
                 statusEl.setAttribute('data-status', filled ? 'complete' : 'incomplete');
+
+                // Rows with a defined required-checklist (CAD Data / Customer Document(s))
+                // derive status from ONLY the checkboxes tagged data-required-check:
+                //   0 checked  -> incomplete (red)
+                //   some checked -> partial (orange)
+                //   all checked  -> complete (green)
+                const requiredChecks = row.querySelectorAll('[data-required-check]');
+                if (requiredChecks.length) {
+                    let checkedCount = 0;
+                    requiredChecks.forEach(cb => { if (cb.checked) checkedCount++; });
+                    let status = 'incomplete';
+                    if (checkedCount === requiredChecks.length) status = 'complete';
+                    else if (checkedCount > 0) status = 'partial';
+                    statusEl.setAttribute('data-status', status);
+                    return;
+                }
             }
 
             function refreshAllFieldStatuses() {
@@ -4772,7 +4827,7 @@
         </script>
 
 
-    <!-- ============================================================
+        <!-- ============================================================
          NEW FEATURE BLOCK (Rev 3.0)
          1. Revision History toggle (link + MVP table)
          2. Multi-language translation engine (EN / CS / DE / ZH / SK)
@@ -4784,413 +4839,413 @@
             - MutationObserver keeps dynamically added rows
               (e.g. TG part rows) translated in the active language.
          ============================================================ -->
-    <script>
-        /* ────────────────────────────────────────────────────────────
-           1. REVISION HISTORY TOGGLE
-           ──────────────────────────────────────────────────────────── */
-        let revHistoryOpen = false;
-        function toggleRevisionHistory(e) {
-            if (e) e.preventDefault();
-            revHistoryOpen = !revHistoryOpen;
-            const panel = document.getElementById('revisionHistoryPanel');
-            const link = document.getElementById('revHistoryLink');
-            if (panel) {
-                panel.classList.toggle('hidden', !revHistoryOpen);
-                panel.style.display = revHistoryOpen ? '' : 'none';
-            }
-            if (link) link.textContent = tr(revHistoryOpen ? 'Hide History' : 'View History');
-        }
-
-        /* ────────────────────────────────────────────────────────────
-           2. TRANSLATION DICTIONARY
-           Key = English string (whitespace-collapsed).
-           Languages: cs = Czech, de = German, zh = Chinese, sk = Slovak
-           ──────────────────────────────────────────────────────────── */
-        const I18N = {
-            "Tolerance Simulation Request / Input Review Form": { cs: "Žádost o simulaci tolerancí / Formulář kontroly vstupů", de: "Toleranzsimulationsanfrage / Eingabeprüfformular", zh: "公差仿真申请 / 输入审核表", sk: "Žiadosť o simuláciu tolerancií / Formulár kontroly vstupov" },
-            "For queries contact": { cs: "V případě dotazů kontaktujte", de: "Bei Fragen wenden Sie sich an", zh: "如有疑问请联系", sk: "V prípade otázok kontaktujte" },
-            "Revision:": { cs: "Revize:", de: "Revision:", zh: "修订：", sk: "Revízia:" },
-            "View History": { cs: "Zobrazit historii", de: "Historie anzeigen", zh: "查看历史", sk: "Zobraziť históriu" },
-            "Hide History": { cs: "Skrýt historii", de: "Historie ausblenden", zh: "隐藏历史", sk: "Skryť históriu" },
-            "Revision History": { cs: "Historie revizí", de: "Revisionshistorie", zh: "修订历史", sk: "História revízií" },
-            "Rev No": { cs: "Č. revize", de: "Rev.-Nr.", zh: "修订号", sk: "Č. revízie" },
-            "Date": { cs: "Datum", de: "Datum", zh: "日期", sk: "Dátum" },
-            "Created By": { cs: "Vytvořil", de: "Erstellt von", zh: "创建人", sk: "Vytvoril" },
-            "Approved By": { cs: "Schválil", de: "Genehmigt von", zh: "批准人", sk: "Schválil" },
-            "Modified By": { cs: "Upravil", de: "Geändert von", zh: "修改人", sk: "Upravil" },
-            "Description of Change": { cs: "Popis změny", de: "Änderungsbeschreibung", zh: "变更描述", sk: "Popis zmeny" },
-            "Status": { cs: "Stav", de: "Status", zh: "状态", sk: "Stav" },
-            "Initial release of the form": { cs: "První vydání formuláře", de: "Erstveröffentlichung des Formulars", zh: "表单初始发布", sk: "Prvé vydanie formulára" },
-            "Added Excel export and bug fixes": { cs: "Přidán export do Excelu a opravy chyb", de: "Excel-Export hinzugefügt und Fehler behoben", zh: "新增Excel导出及错误修复", sk: "Pridaný export do Excelu a opravy chýb" },
-            "Added contact info, revision history & multi-language support": { cs: "Přidány kontaktní údaje, historie revizí a vícejazyčná podpora", de: "Kontaktinformationen, Revisionshistorie & Mehrsprachigkeit hinzugefügt", zh: "新增联系信息、修订历史和多语言支持", sk: "Pridané kontaktné údaje, história revízií a viacjazyčná podpora" },
-            "Released": { cs: "Vydáno", de: "Freigegeben", zh: "已发布", sk: "Vydané" },
-            "Current": { cs: "Aktuální", de: "Aktuell", zh: "当前", sk: "Aktuálne" },
-
-            /* Header buttons */
-            "Reset": { cs: "Obnovit", de: "Zurücksetzen", zh: "重置", sk: "Obnoviť" },
-            "📄 Convert to PDF": { cs: "📄 Převést do PDF", de: "📄 In PDF umwandeln", zh: "📄 转换为PDF", sk: "📄 Previesť do PDF" },
-            "📊 Convert to PPT": { cs: "📊 Převést do PPT", de: "📊 In PPT umwandeln", zh: "📊 转换为PPT", sk: "📊 Previesť do PPT" },
-            "📈 Convert to Excel": { cs: "📈 Převést do Excelu", de: "📈 In Excel umwandeln", zh: "📈 转换为Excel", sk: "📈 Previesť do Excelu" },
-            "📧 Send via Mail": { cs: "📧 Odeslat e-mailem", de: "📧 Per E-Mail senden", zh: "📧 通过邮件发送", sk: "📧 Odoslať e-mailom" },
-
-            /* Progress / status pills */
-            "Input Requirements": { cs: "Vstupní požadavky", de: "Eingabeanforderungen", zh: "输入要求", sk: "Vstupné požiadavky" },
-            "Insufficient": { cs: "Nedostatečné", de: "Unzureichend", zh: "不足", sk: "Nedostatočné" },
-            "Partially sufficient": { cs: "Částečně dostatečné", de: "Teilweise ausreichend", zh: "部分充足", sk: "Čiastočne dostatočné" },
-            "Sufficient": { cs: "Dostatečné", de: "Ausreichend", zh: "充足", sk: "Dostatočné" },
-
-            /* Section headers */
-            "Project Information": { cs: "Informace o projektu", de: "Projektinformationen", zh: "项目信息", sk: "Informácie o projekte" },
-            "Simulation Input": { cs: "Vstup simulace", de: "Simulationseingabe", zh: "仿真输入", sk: "Vstup simulácie" },
-            "Analysis Specific Assumptions": { cs: "Předpoklady specifické pro analýzu", de: "Analysespezifische Annahmen", zh: "分析特定假设", sk: "Predpoklady špecifické pre analýzu" },
-
-            /* Project fields */
-            "Project Name": { cs: "Název projektu", de: "Projektname", zh: "项目名称", sk: "Názov projektu" },
-            "Ordered By": { cs: "Objednal", de: "Bestellt von", zh: "申请人", sk: "Objednal" },
-            "Type of Product/Phase": { cs: "Typ produktu/fáze", de: "Produkttyp/Phase", zh: "产品类型/阶段", sk: "Typ produktu/fáza" },
-            "Type of Tolerance Analysis": { cs: "Typ toleranční analýzy", de: "Art der Toleranzanalyse", zh: "公差分析类型", sk: "Typ tolerančnej analýzy" },
-            "Request Date (dd/mm/yyyy)": { cs: "Datum žádosti (dd/mm/rrrr)", de: "Anfragedatum (TT/MM/JJJJ)", zh: "申请日期（日/月/年）", sk: "Dátum žiadosti (dd/mm/rrrr)" },
-            "Expected Output CW": { cs: "Očekávaný výstup (KT)", de: "Erwartete Ausgabe KW", zh: "预计输出周次 (CW)", sk: "Očakávaný výstup (KT)" },
-            "Revision Number": { cs: "Číslo revize", de: "Revisionsnummer", zh: "修订号", sk: "Číslo revízie" },
-            "Problem Statement": { cs: "Popis problému", de: "Problemstellung", zh: "问题描述", sk: "Popis problému" },
-
-            /* Select placeholders (option 0) */
-            "-- Select --": { cs: "-- Vyberte --", de: "-- Auswählen --", zh: "-- 选择 --", sk: "-- Vyberte --" },
-            "-- Select OEM --": { cs: "-- Vyberte OEM --", de: "-- OEM auswählen --", zh: "-- 选择OEM --", sk: "-- Vyberte OEM --" },
-            "-- Select Product --": { cs: "-- Vyberte produkt --", de: "-- Produkt auswählen --", zh: "-- 选择产品 --", sk: "-- Vyberte produkt --" },
-            "-- Select Type --": { cs: "-- Vyberte typ --", de: "-- Typ auswählen --", zh: "-- 选择类型 --", sk: "-- Vyberte typ --" },
-            "-- Select Calendar Week --": { cs: "-- Vyberte kalendářní týden --", de: "-- Kalenderwoche auswählen --", zh: "-- 选择日历周 --", sk: "-- Vyberte kalendárny týždeň --" },
-
-            /* Product / phase options */
-            "Headlamp - RFQ Phase": { cs: "Světlomet - fáze RFQ", de: "Scheinwerfer - RFQ-Phase", zh: "前照灯 - RFQ阶段", sk: "Svetlomet - fáza RFQ" },
-            "Rearlamp - RFQ Phase": { cs: "Zadní svítilna - fáze RFQ", de: "Heckleuchte - RFQ-Phase", zh: "后灯 - RFQ阶段", sk: "Zadné svietidlo - fáza RFQ" },
-            "Car Body Lighting - RFQ Phase": { cs: "Osvětlení karoserie - fáze RFQ", de: "Karosseriebeleuchtung - RFQ-Phase", zh: "车身照明 - RFQ阶段", sk: "Osvetlenie karosérie - fáza RFQ" },
-            "Interior Lighting - RFQ Phase": { cs: "Vnitřní osvětlení - fáze RFQ", de: "Innenbeleuchtung - RFQ-Phase", zh: "内饰照明 - RFQ阶段", sk: "Vnútorné osvetlenie - fáza RFQ" },
-            "Headlamp - Concept Phase": { cs: "Světlomet - koncepční fáze", de: "Scheinwerfer - Konzeptphase", zh: "前照灯 - 概念阶段", sk: "Svetlomet - koncepčná fáza" },
-            "Rearlamp - Concept Phase": { cs: "Zadní svítilna - koncepční fáze", de: "Heckleuchte - Konzeptphase", zh: "后灯 - 概念阶段", sk: "Zadné svietidlo - koncepčná fáza" },
-            "Car Body Lighting - Concept Phase": { cs: "Osvětlení karoserie - koncepční fáze", de: "Karosseriebeleuchtung - Konzeptphase", zh: "车身照明 - 概念阶段", sk: "Osvetlenie karosérie - koncepčná fáza" },
-            "Interior Lighting - Concept Phase": { cs: "Vnitřní osvětlení - koncepční fáze", de: "Innenbeleuchtung - Konzeptphase", zh: "内饰照明 - 概念阶段", sk: "Vnútorné osvetlenie - koncepčná fáza" },
-            "Headlamp - Detailing Phase": { cs: "Světlomet - fáze detailování", de: "Scheinwerfer - Detaillierungsphase", zh: "前照灯 - 详细设计阶段", sk: "Svetlomet - fáza detailovania" },
-            "Rearlamp - Detailing Phase": { cs: "Zadní svítilna - fáze detailování", de: "Heckleuchte - Detaillierungsphase", zh: "后灯 - 详细设计阶段", sk: "Zadné svietidlo - fáza detailovania" },
-            "Car Body Lighting - Detailing Phase": { cs: "Osvětlení karoserie - fáze detailování", de: "Karosseriebeleuchtung - Detaillierungsphase", zh: "车身照明 - 详细设计阶段", sk: "Osvetlenie karosérie - fáza detailovania" },
-            "Interior Lighting - Detailing Phase": { cs: "Vnitřní osvětlení - fáze detailování", de: "Innenbeleuchtung - Detaillierungsphase", zh: "内饰照明 - 详细设计阶段", sk: "Vnútorné osvetlenie - fáza detailovania" },
-            "Headlamp - Qualification Phase": { cs: "Světlomet - kvalifikační fáze", de: "Scheinwerfer - Qualifizierungsphase", zh: "前照灯 - 认证阶段", sk: "Svetlomet - kvalifikačná fáza" },
-            "Rearlamp - Qualification Phase": { cs: "Zadní svítilna - kvalifikační fáze", de: "Heckleuchte - Qualifizierungsphase", zh: "后灯 - 认证阶段", sk: "Zadné svietidlo - kvalifikačná fáza" },
-            "Car Body Lighting - Qualification Phase": { cs: "Osvětlení karoserie - kvalifikační fáze", de: "Karosseriebeleuchtung - Qualifizierungsphase", zh: "车身照明 - 认证阶段", sk: "Osvetlenie karosérie - kvalifikačná fáza" },
-            "Interior Lighting - Qualification Phase": { cs: "Vnitřní osvětlení - kvalifikační fáze", de: "Innenbeleuchtung - Qualifizierungsphase", zh: "内饰照明 - 认证阶段", sk: "Vnútorné osvetlenie - kvalifikačná fáza" },
-
-            /* Analysis type options */
-            "Internal - Optical/Connector Study": { cs: "Interní - optická studie / studie konektorů", de: "Intern - Optik-/Steckerstudie", zh: "内部 - 光学/连接器研究", sk: "Interná - optická štúdia / štúdia konektorov" },
-            "Internal - Sub Assembly/Product": { cs: "Interní - podsestava/produkt", de: "Intern - Baugruppe/Produkt", zh: "内部 - 子装配/产品", sk: "Interná - podzostava/produkt" },
-            "External - GAP & FLUSH": { cs: "Externí - GAP & FLUSH (spára a lícování)", de: "Extern - Spalt & Bündigkeit (GAP & FLUSH)", zh: "外部 - 间隙与平齐 (GAP & FLUSH)", sk: "Externá - GAP & FLUSH (škára a lícovanie)" },
-            "Root Cause Analysis": { cs: "Analýza kořenových příčin", de: "Ursachenanalyse", zh: "根本原因分析", sk: "Analýza koreňových príčin" },
-
-            /* Common yes/no/status */
-            "Yes": { cs: "Ano", de: "Ja", zh: "是", sk: "Áno" },
-            "No": { cs: "Ne", de: "Nein", zh: "否", sk: "Nie" },
-            "Not Applicable": { cs: "Nevztahuje se", de: "Nicht zutreffend", zh: "不适用", sk: "Nevzťahuje sa" },
-            "Completed": { cs: "Dokončeno", de: "Abgeschlossen", zh: "已完成", sk: "Dokončené" },
-            "InProgress": { cs: "Probíhá", de: "In Bearbeitung", zh: "进行中", sk: "Prebieha" },
-            "Incomplete": { cs: "Nedokončeno", de: "Unvollständig", zh: "未完成", sk: "Nedokončené" },
-            "Available": { cs: "K dispozici", de: "Verfügbar", zh: "可用", sk: "K dispozícii" },
-            "Not Available": { cs: "Není k dispozici", de: "Nicht verfügbar", zh: "不可用", sk: "Nie je k dispozícii" },
-            "Add": { cs: "Přidat", de: "Hinzufügen", zh: "添加", sk: "Pridať" },
-            "Stop": { cs: "Stop", de: "Stopp", zh: "停止", sk: "Stop" },
-            "Reverse": { cs: "Obrátit", de: "Umkehren", zh: "反向", sk: "Obrátiť" },
-
-            /* Simulation input fields */
-            "CAD data (DIS No)": { cs: "CAD data (DIS č.)", de: "CAD-Daten (DIS-Nr.)", zh: "CAD数据（DIS编号）", sk: "CAD dáta (DIS č.)" },
-            "CAD Data": { cs: "CAD data", de: "CAD-Daten", zh: "CAD数据", sk: "CAD dáta" },
-            "2D drawings": { cs: "2D výkresy", de: "2D-Zeichnungen", zh: "2D图纸", sk: "2D výkresy" },
-            "2D drawings (Optional during concept phase)": { cs: "2D výkresy (volitelné v koncepční fázi)", de: "2D-Zeichnungen (optional in der Konzeptphase)", zh: "2D图纸（概念阶段可选）", sk: "2D výkresy (voliteľné v koncepčnej fáze)" },
-            "3D Scan Data": { cs: "Data 3D skenování", de: "3D-Scandaten", zh: "3D扫描数据", sk: "Dáta 3D skenovania" },
-            "Assembly sequence": { cs: "Montážní sekvence", de: "Montagereihenfolge", zh: "装配顺序", sk: "Montážna sekvencia" },
-            "Joining process": { cs: "Proces spojování", de: "Fügeverfahren", zh: "连接工艺", sk: "Proces spájania" },
-            "Reference system (Datum/RPS)": { cs: "Referenční systém (Datum/RPS)", de: "Referenzsystem (Bezug/RPS)", zh: "参考系统（基准/RPS）", sk: "Referenčný systém (Datum/RPS)" },
-            "Light Functions": { cs: "Světelné funkce", de: "Lichtfunktionen", zh: "灯光功能", sk: "Svetelné funkcie" },
-            "Number of Component Involved": { cs: "Počet zapojených komponent", de: "Anzahl beteiligter Komponenten", zh: "涉及组件数量", sk: "Počet zapojených komponentov" },
-            "Part Name/Material/ Tolerance group for involved components (TG)": { cs: "Název dílu/materiál/toleranční skupina zapojených komponent (TG)", de: "Teilename/Material/Toleranzgruppe der beteiligten Komponenten (TG)", zh: "涉及组件的零件名称/材料/公差组 (TG)", sk: "Názov dielu/materiál/tolerančná skupina zapojených komponentov (TG)" },
-            "Single part tolerance": { cs: "Tolerance jednotlivého dílu", de: "Einzelteiltoleranz", zh: "单件公差", sk: "Tolerancia jednotlivého dielu" },
-            "Cpk for single part": { cs: "Cpk pro jednotlivý díl", de: "Cpk für Einzelteil", zh: "单件Cpk", sk: "Cpk pre jednotlivý diel" },
-            "Cpk for Single Part": { cs: "Cpk pro jednotlivý díl", de: "Cpk für Einzelteil", zh: "单件Cpk", sk: "Cpk pre jednotlivý diel" },
-            "Cpk for Assembly": { cs: "Cpk pro sestavu", de: "Cpk für Baugruppe", zh: "装配Cpk", sk: "Cpk pre zostavu" },
-            "Cpk for Gap & Flush": { cs: "Cpk pro spáru a lícování", de: "Cpk für Spalt & Bündigkeit", zh: "间隙与平齐Cpk", sk: "Cpk pre škáru a lícovanie" },
-            "Cpk = 1.00 (Default)": { cs: "Cpk = 1,00 (výchozí)", de: "Cpk = 1,00 (Standard)", zh: "Cpk = 1.00（默认）", sk: "Cpk = 1,00 (predvolené)" },
-            "Cpk = 1.33 (Default)": { cs: "Cpk = 1,33 (výchozí)", de: "Cpk = 1,33 (Standard)", zh: "Cpk = 1.33（默认）", sk: "Cpk = 1,33 (predvolené)" },
-            "Cpk = 1.33 (Standard)": { cs: "Cpk = 1,33 (standard)", de: "Cpk = 1,33 (Standard)", zh: "Cpk = 1.33（标准）", sk: "Cpk = 1,33 (štandard)" },
-            "Tolerance studies - Type": { cs: "Toleranční studie - typ", de: "Toleranzstudien - Typ", zh: "公差研究 - 类型", sk: "Tolerančné štúdie - typ" },
-            "General Tolerance": { cs: "Obecná tolerance", de: "Allgemeintoleranz", zh: "一般公差", sk: "Všeobecná tolerancia" },
-            ".STL file of Moldflow/Moldcool/3D Scan Data for critical studies": { cs: "Soubor .STL z Moldflow/Moldcool/3D skenování pro kritické studie", de: ".STL-Datei aus Moldflow/Moldcool/3D-Scan für kritische Studien", zh: "用于关键研究的Moldflow/Moldcool/3D扫描.STL文件", sk: "Súbor .STL z Moldflow/Moldcool/3D skenovania pre kritické štúdie" },
-            "Customer Datum system": { cs: "Zákaznický systém základen (Datum)", de: "Kunden-Bezugssystem", zh: "客户基准系统", sk: "Zákaznícky systém základní (Datum)" },
-            "Customer Gap & Flush tolerance requirements": { cs: "Požadavky zákazníka na tolerance spáry a lícování", de: "Kundenanforderungen an Spalt- & Bündigkeitstoleranzen", zh: "客户间隙与平齐公差要求", sk: "Požiadavky zákazníka na tolerancie škáry a lícovania" },
-            "Customer GAP / FLUSH tolerance": { cs: "Zákaznická tolerance GAP / FLUSH", de: "Kunden-Spalt-/Bündigkeitstoleranz", zh: "客户间隙/平齐公差", sk: "Zákaznícka tolerancia GAP / FLUSH" },
-            "Customer Document(s)": { cs: "Dokument(y) zákazníka", de: "Kundendokument(e)", zh: "客户文件", sk: "Dokument(y) zákazníka" },
-            "Car Surrounding geometry": { cs: "Okolní geometrie vozu", de: "Umgebungsgeometrie des Fahrzeugs", zh: "车身周边几何", sk: "Okolitá geometria vozidla" },
-            "Customer lamp fixation - Datum's feasibility": { cs: "Upevnění svítilny zákazníka - proveditelnost základen", de: "Kundenseitige Leuchtenbefestigung - Machbarkeit der Bezüge", zh: "客户灯具固定 - 基准可行性", sk: "Upevnenie svietidla zákazníka - realizovateľnosť základní" },
-            "Customer Datum Fixation Review (Functional Design & Dimensioning Method)": { cs: "Kontrola upevnění zákaznických základen (metoda funkčního návrhu a kótování)", de: "Prüfung der Kunden-Bezugsbefestigung (Methode Funktionales Design & Bemaßung)", zh: "客户基准固定审核（功能设计与标注方法）", sk: "Kontrola upevnenia zákazníckych základní (metóda funkčného návrhu a kótovania)" },
-            "Concept review for Functional Design & Dimensioning (FDD)": { cs: "Koncepční kontrola funkčního návrhu a kótování (FDD)", de: "Konzeptprüfung für Funktionales Design & Bemaßung (FDD)", zh: "功能设计与标注 (FDD) 概念审核", sk: "Koncepčná kontrola funkčného návrhu a kótovania (FDD)" },
-            "Updated/Latest Location & Fixation Concept PPT": { cs: "Aktualizovaná/nejnovější PPT koncepce umístění a upevnění", de: "Aktualisierte/neueste PPT zu Positions- & Befestigungskonzept", zh: "更新/最新的定位与固定概念PPT", sk: "Aktualizovaná/najnovšia PPT koncepcia umiestnenia a upevnenia" },
-            "Updated/Latest Location & Fixation Concept & Assembly sequence PPT": { cs: "Aktualizovaná/nejnovější PPT koncepce umístění, upevnění a montážní sekvence", de: "Aktualisierte/neueste PPT zu Positions- & Befestigungskonzept & Montagereihenfolge", zh: "更新/最新的定位、固定概念与装配顺序PPT", sk: "Aktualizovaná/najnovšia PPT koncepcia umiestnenia, upevnenia a montážnej sekvencie" },
-            "Additional Fixations": { cs: "Dodatečná upevnění", de: "Zusätzliche Befestigungen", zh: "附加固定", sk: "Dodatočné upevnenia" },
-            "Additional remarks": { cs: "Další poznámky", de: "Zusätzliche Anmerkungen", zh: "附加备注", sk: "Ďalšie poznámky" },
-            "Remarks / Recommended actions": { cs: "Poznámky / doporučená opatření", de: "Anmerkungen / empfohlene Maßnahmen", zh: "备注/建议措施", sk: "Poznámky / odporúčané opatrenia" },
-            "Remarks on the Tolerance study": { cs: "Poznámky k toleranční studii", de: "Anmerkungen zur Toleranzstudie", zh: "公差研究备注", sk: "Poznámky k tolerančnej štúdii" },
-            "Risk - Level": { cs: "Úroveň rizika", de: "Risikostufe", zh: "风险等级", sk: "Úroveň rizika" },
-            "Connector Type (Drawing)": { cs: "Typ konektoru (výkres)", de: "Steckertyp (Zeichnung)", zh: "连接器类型（图纸）", sk: "Typ konektora (výkres)" },
-            "LED Type (Drawing)": { cs: "Typ LED (výkres)", de: "LED-Typ (Zeichnung)", zh: "LED类型（图纸）", sk: "Typ LED (výkres)" },
-            "Lamp Measurement Method": { cs: "Metoda měření svítilny", de: "Messmethode der Leuchte", zh: "灯具测量方法", sk: "Metóda merania svietidla" },
-            "Optical simulation": { cs: "Optická simulace", de: "Optische Simulation", zh: "光学仿真", sk: "Optická simulácia" },
-            "Connector study": { cs: "Studie konektoru", de: "Steckerstudie", zh: "连接器研究", sk: "Štúdia konektora" },
-            "Optical": { cs: "Optická", de: "Optisch", zh: "光学", sk: "Optická" },
-            "Internal": { cs: "Interní", de: "Intern", zh: "内部", sk: "Interná" },
-            "Scope of Analysis - Optical - Variation between LED to Optical surface in X, Y & Z directions": { cs: "Rozsah analýzy - optika - variace mezi LED a optickou plochou ve směrech X, Y a Z", de: "Analyseumfang - Optik - Variation zwischen LED und optischer Fläche in X-, Y- & Z-Richtung", zh: "分析范围 - 光学 - LED与光学表面在X、Y、Z方向的偏差", sk: "Rozsah analýzy - optika - variácia medzi LED a optickou plochou v smeroch X, Y a Z" },
-            "Connector Study - Position of terminals in X, Y & Z relative to housing connector receiving geometries": { cs: "Studie konektoru - poloha terminálů v X, Y a Z vůči přijímacím geometriím konektoru pouzdra", de: "Steckerstudie - Position der Kontakte in X, Y & Z relativ zu den Aufnahmegeometrien des Gehäusesteckers", zh: "连接器研究 - 端子在X、Y、Z方向相对于壳体连接器接收几何的位置", sk: "Štúdia konektora - poloha terminálov v X, Y a Z voči prijímacím geometriám konektora puzdra" },
-            "Connector Study - Parking connector assembly verification": { cs: "Studie konektoru - ověření montáže parkovacího konektoru", de: "Steckerstudie - Überprüfung der Montage des Parksteckers", zh: "连接器研究 - 停放连接器装配验证", sk: "Štúdia konektora - overenie montáže parkovacieho konektora" },
-            "Scope of study - Virtual Assembly build for clearances between parts": { cs: "Rozsah studie - virtuální sestavení pro vůle mezi díly", de: "Studienumfang - virtueller Zusammenbau für Spiele zwischen Teilen", zh: "研究范围 - 用于零件间间隙的虚拟装配", sk: "Rozsah štúdie - virtuálna zostava pre vôle medzi dielmi" },
-            "Target of the study": { cs: "Cíl studie", de: "Ziel der Studie", zh: "研究目标", sk: "Cieľ štúdie" },
-            "Gap & Flush of Lamp": { cs: "Spára a lícování svítilny", de: "Spalt & Bündigkeit der Leuchte", zh: "灯具间隙与平齐", sk: "Škára a lícovanie svietidla" },
-            "Outer geometry analysis for GAP & FLUSH (General tolerance + Moldflow + Moldcool)": { cs: "Analýza vnější geometrie pro GAP & FLUSH (obecná tolerance + Moldflow + Moldcool)", de: "Außengeometrieanalyse für Spalt & Bündigkeit (Allgemeintoleranz + Moldflow + Moldcool)", zh: "外部几何的间隙与平齐分析（一般公差 + Moldflow + Moldcool）", sk: "Analýza vonkajšej geometrie pre GAP & FLUSH (všeobecná tolerancia + Moldflow + Moldcool)" },
-            "Datum sensitivity analysis for the existing Customer Datum": { cs: "Analýza citlivosti stávajících zákaznických základen", de: "Sensitivitätsanalyse des bestehenden Kunden-Bezugs", zh: "现有客户基准的敏感性分析", sk: "Analýza citlivosti existujúcich zákazníckych základní" },
-            "HELLA's Datum proposals & sensitivity comparisons (DOE)": { cs: "Návrhy základen HELLA a porovnání citlivosti (DOE)", de: "HELLA-Bezugsvorschläge & Sensitivitätsvergleiche (DOE)", zh: "HELLA基准建议与敏感性比较 (DOE)", sk: "Návrhy základní HELLA a porovnania citlivosti (DOE)" },
-            "Internal review of lamp fixation": { cs: "Interní kontrola upevnění svítilny", de: "Interne Prüfung der Leuchtenbefestigung", zh: "灯具固定内部审核", sk: "Interná kontrola upevnenia svietidla" },
-            "Datum system Position (Optional)": { cs: "Poloha systému základen (volitelné)", de: "Position des Bezugssystems (optional)", zh: "基准系统位置（可选）", sk: "Poloha systému základní (voliteľné)" },
-            "Gap & Flush Measurement Points (Optional)": { cs: "Body měření spáry a lícování (volitelné)", de: "Messpunkte für Spalt & Bündigkeit (optional)", zh: "间隙与平齐测量点（可选）", sk: "Body merania škáry a lícovania (voliteľné)" },
-            "Aux Datum": { cs: "Pomocné základny", de: "Hilfsbezug", zh: "辅助基准", sk: "Pomocné základne" },
-            "Mixed reference system": { cs: "Smíšený referenční systém", de: "Gemischtes Referenzsystem", zh: "混合参考系统", sk: "Zmiešaný referenčný systém" },
-            "Underconstrained / Not defined": { cs: "Nedostatečně určeno / nedefinováno", de: "Unterbestimmt / nicht definiert", zh: "约束不足/未定义", sk: "Nedostatočne určené / nedefinované" },
-            "Unstable Datum system": { cs: "Nestabilní systém základen", de: "Instabiles Bezugssystem", zh: "不稳定的基准系统", sk: "Nestabilný systém základní" },
-            "Stable": { cs: "Stabilní", de: "Stabil", zh: "稳定", sk: "Stabilné" },
-            "Achievable": { cs: "Dosažitelné", de: "Erreichbar", zh: "可实现", sk: "Dosiahnuteľné" },
-            "Partially feasible": { cs: "Částečně proveditelné", de: "Teilweise machbar", zh: "部分可行", sk: "Čiastočne realizovateľné" },
-            "Unrealistic": { cs: "Nereálné", de: "Unrealistisch", zh: "不现实", sk: "Nereálne" },
-            "To be verified": { cs: "K ověření", de: "Zu überprüfen", zh: "待验证", sk: "Na overenie" },
-            "No additional target studies required — Datum is Stable": { cs: "Nejsou vyžadovány žádné další cílové studie — základny jsou stabilní", de: "Keine weiteren Zielstudien erforderlich — Bezug ist stabil", zh: "无需额外的目标研究 — 基准稳定", sk: "Nie sú potrebné žiadne ďalšie cieľové štúdie — základne sú stabilné" },
-            "No recommended actions — Datum is Stable and feasible": { cs: "Žádná doporučená opatření — základny jsou stabilní a proveditelné", de: "Keine empfohlenen Maßnahmen — Bezug ist stabil und machbar", zh: "无建议措施 — 基准稳定且可行", sk: "Žiadne odporúčané opatrenia — základne sú stabilné a realizovateľné" },
-            "— Select Datum Feasibility above —": { cs: "— Vyberte výše proveditelnost základen —", de: "— Wählen Sie oben die Machbarkeit des Bezugs —", zh: "— 请在上方选择基准可行性 —", sk: "— Vyberte vyššie realizovateľnosť základní —" },
-            "Tolerance negotiation should be discussed with the Customer": { cs: "Vyjednávání tolerancí je třeba projednat se zákazníkem", de: "Toleranzverhandlungen sollten mit dem Kunden besprochen werden", zh: "公差协商应与客户讨论", sk: "Vyjednávanie tolerancií je potrebné prerokovať so zákazníkom" },
-            "Tolerance results to be aligned with the Production plant": { cs: "Výsledky tolerancí je třeba sladit s výrobním závodem", de: "Toleranzergebnisse sind mit dem Produktionswerk abzustimmen", zh: "公差结果需与生产工厂对齐", sk: "Výsledky tolerancií je potrebné zladiť s výrobným závodom" },
-            "Full Product": { cs: "Celý produkt", de: "Gesamtprodukt", zh: "完整产品", sk: "Celý produkt" },
-            "Sub-System": { cs: "Subsystém", de: "Teilsystem", zh: "子系统", sk: "Subsystém" },
-            "Headlamp": { cs: "Světlomet", de: "Scheinwerfer", zh: "前照灯", sk: "Svetlomet" },
-            "Rear Lamp": { cs: "Zadní svítilna", de: "Heckleuchte", zh: "后灯", sk: "Zadné svietidlo" },
-            "Tail": { cs: "Koncové světlo", de: "Schlussleuchte", zh: "尾灯", sk: "Koncové svetlo" },
-            "LB - Low Beam, HB - High Beam, DRL - Daytime Running Light, TI - Turn Indicator, PO - Position lamp": { cs: "LB - potkávací světlo, HB - dálkové světlo, DRL - denní svícení, TI - směrové světlo, PO - poziční světlo", de: "LB - Abblendlicht, HB - Fernlicht, DRL - Tagfahrlicht, TI - Blinker, PO - Positionsleuchte", zh: "LB - 近光灯，HB - 远光灯，DRL - 日间行车灯，TI - 转向灯，PO - 位置灯", sk: "LB - stretávacie svetlo, HB - diaľkové svetlo, DRL - denné svietenie, TI - smerové svetlo, PO - pozičné svetlo" },
-            "Gluing": { cs: "Lepení", de: "Kleben", zh: "粘接", sk: "Lepenie" },
-            "Hot Plate": { cs: "Horká deska", de: "Heizelement", zh: "热板焊接", sk: "Horúca doska" },
-            "Ultrasonic": { cs: "Ultrazvuk", de: "Ultraschall", zh: "超声波", sk: "Ultrazvuk" },
-            "Vibration": { cs: "Vibrační", de: "Vibration", zh: "振动", sk: "Vibračné" },
-            "Hollow screw": { cs: "Dutý šroub", de: "Hohlschraube", zh: "空心螺钉", sk: "Dutá skrutka" },
-            "Fixture": { cs: "Přípravek", de: "Vorrichtung", zh: "工装夹具", sk: "Prípravok" },
-            "Gripper Suction repeatability": { cs: "Opakovatelnost sání chapadla", de: "Wiederholgenauigkeit der Greifer-Ansaugung", zh: "抓手吸附重复性", sk: "Opakovateľnosť nasávania chápadla" },
-            "Gluing Process Tolerance": { cs: "Tolerance procesu lepení", de: "Toleranz des Klebeprozesses", zh: "粘接工艺公差", sk: "Tolerancia procesu lepenia" },
-            "Welding process tolerances in mm": { cs: "Tolerance svařovacího procesu v mm", de: "Schweißprozesstoleranzen in mm", zh: "焊接工艺公差 (mm)", sk: "Tolerancie zváracieho procesu v mm" },
-            "Welding tolerances in WD": { cs: "Tolerance svařování ve směru WD", de: "Schweißtoleranzen in WD", zh: "WD方向焊接公差", sk: "Tolerancie zvárania v smere WD" },
-            "Vibration tolerance in VD": { cs: "Vibrační tolerance ve směru VD", de: "Vibrationstoleranz in VD", zh: "VD方向振动公差", sk: "Vibračná tolerancia v smere VD" },
-            "Welding/Vibration/Tertiary direction": { cs: "Směr svařování/vibrací/terciární", de: "Schweiß-/Vibrations-/Tertiärrichtung", zh: "焊接/振动/第三方向", sk: "Smer zvárania/vibrácií/terciárny" },
-            "— Welding Direction": { cs: "— směr svařování", de: "— Schweißrichtung", zh: "— 焊接方向", sk: "— smer zvárania" },
-            "— Vibration Direction": { cs: "— směr vibrací", de: "— Vibrationsrichtung", zh: "— 振动方向", sk: "— smer vibrácií" },
-            "— Tertiary Direction": { cs: "— terciární směr", de: "— Tertiärrichtung", zh: "— 第三方向", sk: "— terciárny smer" },
-            "Measuring process Tolerances in mm": { cs: "Tolerance měřicího procesu v mm", de: "Messprozesstoleranzen in mm", zh: "测量工艺公差 (mm)", sk: "Tolerancie meracieho procesu v mm" },
-            "Measuring inaccuracy (Free state)": { cs: "Nepřesnost měření (volný stav)", de: "Messungenauigkeit (freier Zustand)", zh: "测量误差（自由状态）", sk: "Nepresnosť merania (voľný stav)" },
-            "Operator Repeatability in WD, VD, TD": { cs: "Opakovatelnost operátora ve WD, VD, TD", de: "Bediener-Wiederholgenauigkeit in WD, VD, TD", zh: "操作员在WD、VD、TD方向的重复性", sk: "Opakovateľnosť operátora vo WD, VD, TD" },
-            "Operator repeatability for the Housing-Jig": { cs: "Opakovatelnost operátora pro přípravek pouzdra", de: "Bediener-Wiederholgenauigkeit für die Gehäuse-Lehre", zh: "壳体夹具的操作员重复性", sk: "Opakovateľnosť operátora pre prípravok puzdra" },
-            "Positioning Tolerance for the Housing-Jig": { cs: "Tolerance polohování pro přípravek pouzdra", de: "Positioniertoleranz für die Gehäuse-Lehre", zh: "壳体夹具的定位公差", sk: "Tolerancia polohovania pre prípravok puzdra" },
-            "Process Tolerance (Joining/Measurement)": { cs: "Procesní tolerance (spojování/měření)", de: "Prozesstoleranz (Fügen/Messen)", zh: "工艺公差（连接/测量）", sk: "Procesná tolerancia (spájanie/meranie)" },
-            "Single Component tolerances in mm": { cs: "Tolerance jednotlivých komponent v mm", de: "Einzelkomponententoleranzen in mm", zh: "单个组件公差 (mm)", sk: "Tolerancie jednotlivých komponentov v mm" },
-            "(Single Component - If applicable)": { cs: "(jednotlivá komponenta - pokud relevantní)", de: "(Einzelkomponente - falls zutreffend)", zh: "（单个组件 - 如适用）", sk: "(jednotlivý komponent - ak je relevantné)" },
-            "(Single Component/PCB - If applicable)": { cs: "(jednotlivá komponenta/PCB - pokud relevantní)", de: "(Einzelkomponente/PCB - falls zutreffend)", zh: "（单个组件/PCB - 如适用）", sk: "(jednotlivý komponent/PCB - ak je relevantné)" },
-            "(For PCB - 1.33Cpk)": { cs: "(pro PCB - Cpk 1,33)", de: "(für PCB - 1,33 Cpk)", zh: "（PCB - 1.33Cpk）", sk: "(pre PCB - Cpk 1,33)" },
-            "Headlamp Assembly Tolerances in mm": { cs: "Montážní tolerance světlometu v mm", de: "Scheinwerfer-Montagetoleranzen in mm", zh: "前照灯装配公差 (mm)", sk: "Montážne tolerancie svetlometu v mm" },
-            "Lens Deformation factor in Preferred Edge": { cs: "Faktor deformace krycího skla na preferované hraně", de: "Linsendeformationsfaktor an der bevorzugten Kante", zh: "首选边缘的透镜变形系数", sk: "Faktor deformácie krycieho skla na preferovanej hrane" },
-            "Lens Deformation factor in non-preferred edge": { cs: "Faktor deformace krycího skla na nepreferované hraně", de: "Linsendeformationsfaktor an der nicht bevorzugten Kante", zh: "非首选边缘的透镜变形系数", sk: "Faktor deformácie krycieho skla na nepreferovanej hrane" },
-            "Preferred Edge": { cs: "Preferovaná hrana", de: "Bevorzugte Kante", zh: "首选边缘", sk: "Preferovaná hrana" },
-            "In Housing": { cs: "V pouzdře", de: "Im Gehäuse", zh: "在壳体中", sk: "V puzdre" },
-            "In Cover lens": { cs: "V krycím skle", de: "In der Abdecklinse", zh: "在罩镜中", sk: "V krycom skle" },
-            "Housing & Cover Lens": { cs: "Pouzdro a krycí sklo", de: "Gehäuse & Abdecklinse", zh: "壳体与罩镜", sk: "Puzdro a krycie sklo" },
-            "Local Bumper": { cs: "Lokální nárazník", de: "Lokaler Stoßfänger", zh: "局部保险杠", sk: "Lokálny nárazník" },
-            "FreeState": { cs: "Volný stav", de: "Freier Zustand", zh: "自由状态", sk: "Voľný stav" },
-            "The measuring is in free-state.": { cs: "Měření probíhá ve volném stavu.", de: "Die Messung erfolgt im freien Zustand.", zh: "测量在自由状态下进行。", sk: "Meranie prebieha vo voľnom stave." },
-            "Deformations of parts are not part of the simulation.": { cs: "Deformace dílů nejsou součástí simulace.", de: "Verformungen der Teile sind nicht Teil der Simulation.", zh: "零件变形不包含在仿真中。", sk: "Deformácie dielov nie sú súčasťou simulácie." },
-            "Results are based on 10,000 Monte-Carlo simulations.": { cs: "Výsledky vycházejí z 10 000 simulací Monte Carlo.", de: "Die Ergebnisse basieren auf 10.000 Monte-Carlo-Simulationen.", zh: "结果基于10,000次蒙特卡洛仿真。", sk: "Výsledky vychádzajú z 10 000 simulácií Monte Carlo." },
-            "Simulation software assumes unstressed assembly process.": { cs: "Simulační software předpokládá montáž bez pnutí.", de: "Die Simulationssoftware geht von einem spannungsfreien Montageprozess aus.", zh: "仿真软件假定装配过程无应力。", sk: "Simulačný softvér predpokladá montáž bez pnutia." },
-            "General tolerances ISO:20457:2020": { cs: "Obecné tolerance ISO 20457:2020", de: "Allgemeintoleranzen ISO 20457:2020", zh: "一般公差 ISO 20457:2020", sk: "Všeobecné tolerancie ISO 20457:2020" },
-            "Plastics - DIN 16742 ,ISO 20457": { cs: "Plasty - DIN 16742, ISO 20457", de: "Kunststoffe - DIN 16742, ISO 20457", zh: "塑料 - DIN 16742，ISO 20457", sk: "Plasty - DIN 16742, ISO 20457" },
-            "Plastics - General tolerances ISO:20457:2020": { cs: "Plasty - obecné tolerance ISO 20457:2020", de: "Kunststoffe - Allgemeintoleranzen ISO 20457:2020", zh: "塑料 - 一般公差 ISO 20457:2020", sk: "Plasty - všeobecné tolerancie ISO 20457:2020" },
-            "Castings - DIN EN ISO 8062_3": { cs: "Odlitky - DIN EN ISO 8062-3", de: "Gussteile - DIN EN ISO 8062-3", zh: "铸件 - DIN EN ISO 8062-3", sk: "Odliatky - DIN EN ISO 8062-3" },
-            "Machining - DIN EN ISO 2768": { cs: "Obrábění - DIN EN ISO 2768", de: "Zerspanung - DIN EN ISO 2768", zh: "机加工 - DIN EN ISO 2768", sk: "Obrábanie - DIN EN ISO 2768" },
-            "Stamping - DIN 6930-m , DIN 6935 , DIN ISO 2768": { cs: "Lisování - DIN 6930-m, DIN 6935, DIN ISO 2768", de: "Stanzen - DIN 6930-m, DIN 6935, DIN ISO 2768", zh: "冲压 - DIN 6930-m，DIN 6935，DIN ISO 2768", sk: "Lisovanie - DIN 6930-m, DIN 6935, DIN ISO 2768" },
-            "Welding - DIN EN ISO 13920 , DIN ISO 2768": { cs: "Svařování - DIN EN ISO 13920, DIN ISO 2768", de: "Schweißen - DIN EN ISO 13920, DIN ISO 2768", zh: "焊接 - DIN EN ISO 13920，DIN ISO 2768", sk: "Zváranie - DIN EN ISO 13920, DIN ISO 2768" },
-            "\"Complete\" - Parameters Entry": { cs: "„Kompletní“ - zadání parametrů", de: "„Vollständig“ - Parametereingabe", zh: "“完整” - 参数输入", sk: "„Kompletné“ - zadanie parametrov" },
-            "\"Incomplete\" - Parameters Entry": { cs: "„Nekompletní“ - zadání parametrů", de: "„Unvollständig“ - Parametereingabe", zh: "“不完整” - 参数输入", sk: "„Nekompletné“ - zadanie parametrov" },
-
-            /* Placeholders */
-            "Type project name here": { cs: "Zadejte název projektu", de: "Projektnamen hier eingeben", zh: "在此输入项目名称", sk: "Zadajte názov projektu" },
-            "Name of requesting engineer": { cs: "Jméno žádajícího inženýra", de: "Name des anfragenden Ingenieurs", zh: "申请工程师姓名", sk: "Meno žiadajúceho inžiniera" },
-            "Type the problem statement": { cs: "Zadejte popis problému", de: "Problemstellung eingeben", zh: "输入问题描述", sk: "Zadajte popis problému" },
-            "dd/mm/yyyy": { cs: "dd/mm/rrrr", de: "TT/MM/JJJJ", zh: "日/月/年", sk: "dd/mm/rrrr" },
-            "Reason for revision": { cs: "Důvod revize", de: "Grund der Revision", zh: "修订原因", sk: "Dôvod revízie" },
-            "Part Name": { cs: "Název dílu", de: "Teilename", zh: "零件名称", sk: "Názov dielu" },
-            "TG Class": { cs: "Třída TG", de: "TG-Klasse", zh: "TG等级", sk: "Trieda TG" },
-            "Type in TG": { cs: "Zadejte TG", de: "TG eingeben", zh: "输入TG", sk: "Zadajte TG" },
-            "Type in Box": { cs: "Zadejte text", de: "In das Feld eingeben", zh: "在框中输入", sk: "Zadajte text" },
-            "Type in box": { cs: "Zadejte text", de: "In das Feld eingeben", zh: "在框中输入", sk: "Zadajte text" },
-            "Type in box for remarks": { cs: "Zadejte poznámky", de: "Anmerkungen eingeben", zh: "在框中输入备注", sk: "Zadajte poznámky" },
-            "Remarks": { cs: "Poznámky", de: "Anmerkungen", zh: "备注", sk: "Poznámky" },
-            "Please specify reason": { cs: "Uveďte prosím důvod", de: "Bitte Grund angeben", zh: "请说明原因", sk: "Uveďte prosím dôvod" },
-            "Please specify reason for No": { cs: "Uveďte prosím důvod pro „Ne“", de: "Bitte Grund für „Nein“ angeben", zh: "请说明选择“否”的原因", sk: "Uveďte prosím dôvod pre „Nie“" },
-            "Please specify reason for Not Applicable": { cs: "Uveďte prosím důvod pro „Nevztahuje se“", de: "Bitte Grund für „Nicht zutreffend“ angeben", zh: "请说明选择“不适用”的原因", sk: "Uveďte prosím dôvod pre „Nevzťahuje sa“" },
-            "DIS Number / Sharepoint link": { cs: "Číslo DIS / odkaz SharePoint", de: "DIS-Nummer / SharePoint-Link", zh: "DIS编号 / SharePoint链接", sk: "Číslo DIS / odkaz SharePoint" },
-            "DIS no / Sharepoint link": { cs: "Číslo DIS / odkaz SharePoint", de: "DIS-Nr. / SharePoint-Link", zh: "DIS编号 / SharePoint链接", sk: "Číslo DIS / odkaz SharePoint" },
-            "Sharepoint link/Dis": { cs: "Odkaz SharePoint / DIS", de: "SharePoint-Link / DIS", zh: "SharePoint链接 / DIS", sk: "Odkaz SharePoint / DIS" },
-            "Other Light Functions": { cs: "Jiné světelné funkce", de: "Andere Lichtfunktionen", zh: "其他灯光功能", sk: "Iné svetelné funkcie" },
-            "Initial phase - General Tolerance , Detailing phase - Moldflow": { cs: "Počáteční fáze - obecná tolerance, fáze detailování - Moldflow", de: "Anfangsphase - Allgemeintoleranz, Detaillierungsphase - Moldflow", zh: "初始阶段 - 一般公差，详细设计阶段 - Moldflow", sk: "Počiatočná fáza - všeobecná tolerancia, fáza detailovania - Moldflow" },
-            "Initial phase - General Tolerance , Detailing phase - Moldflow/Moldcool": { cs: "Počáteční fáze - obecná tolerance, fáze detailování - Moldflow/Moldcool", de: "Anfangsphase - Allgemeintoleranz, Detaillierungsphase - Moldflow/Moldcool", zh: "初始阶段 - 一般公差，详细设计阶段 - Moldflow/Moldcool", sk: "Počiatočná fáza - všeobecná tolerancia, fáza detailovania - Moldflow/Moldcool" }
-        };
-
-        /* ────────────────────────────────────────────────────────────
-           3. TRANSLATION ENGINE
-           ──────────────────────────────────────────────────────────── */
-        const LANG_META = {
-            en: { label: 'English', flag: 'https://flagcdn.com/w20/gb.png' },
-            cs: { label: 'Čeština', flag: 'https://flagcdn.com/w20/cz.png' },
-            de: { label: 'Deutsch', flag: 'https://flagcdn.com/w20/de.png' },
-            zh: { label: '中文', flag: 'https://flagcdn.com/w20/cn.png' },
-            sk: { label: 'Slovenčina', flag: 'https://flagcdn.com/w20/sk.png' }
-        };
-
-        let currentLang = 'en';                    // Default = English
-        const i18nTextNodes = [];                  // { node, original }
-        const i18nPlaceholders = [];               // { el, original }
-        const i18nTracked = new WeakSet();         // avoid double-registering
-        const i18nOriginalTitle = document.title;
-
-        const normKey = (s) => s.replace(/\s+/g, ' ').trim();
-        const tr = (key, lang) => {
-            lang = lang || currentLang;
-            if (lang === 'en') return key;
-            const entry = I18N[normKey(key)];
-            return (entry && entry[lang]) ? entry[lang] : key;
-        };
-
-        function isExcluded(el) {
-            while (el && el.nodeType === 1) {
-                const tag = el.tagName;
-                if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'TEXTAREA') return true;
-                if (el.hasAttribute && el.hasAttribute('data-no-i18n')) return true;
-                el = el.parentElement;
-            }
-            return false;
-        }
-
-        // Collect (or re-collect) every translatable text node & placeholder
-        function collectI18nNodes() {
-            const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
-                acceptNode(node) {
-                    if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
-                    if (isExcluded(node.parentElement)) return NodeFilter.FILTER_REJECT;
-                    return NodeFilter.FILTER_ACCEPT;
+        <script>
+            /* ────────────────────────────────────────────────────────────
+               1. REVISION HISTORY TOGGLE
+               ──────────────────────────────────────────────────────────── */
+            let revHistoryOpen = false;
+            function toggleRevisionHistory(e) {
+                if (e) e.preventDefault();
+                revHistoryOpen = !revHistoryOpen;
+                const panel = document.getElementById('revisionHistoryPanel');
+                const link = document.getElementById('revHistoryLink');
+                if (panel) {
+                    panel.classList.toggle('hidden', !revHistoryOpen);
+                    panel.style.display = revHistoryOpen ? '' : 'none';
                 }
-            });
-            let n;
-            while ((n = walker.nextNode())) {
-                if (!i18nTracked.has(n)) {
-                    i18nTracked.add(n);
-                    i18nTextNodes.push({ node: n, original: n.nodeValue });
-                }
+                if (link) link.textContent = tr(revHistoryOpen ? 'Hide History' : 'View History');
             }
-            document.querySelectorAll('[placeholder]').forEach(el => {
-                if (!i18nTracked.has(el) && !isExcluded(el)) {
-                    i18nTracked.add(el);
-                    i18nPlaceholders.push({ el, original: el.getAttribute('placeholder') });
+
+            /* ────────────────────────────────────────────────────────────
+               2. TRANSLATION DICTIONARY
+               Key = English string (whitespace-collapsed).
+               Languages: cs = Czech, de = German, zh = Chinese, sk = Slovak
+               ──────────────────────────────────────────────────────────── */
+            const I18N = {
+                "Tolerance Simulation Request / Input Review Form": { cs: "Žádost o simulaci tolerancí / Formulář kontroly vstupů", de: "Toleranzsimulationsanfrage / Eingabeprüfformular", zh: "公差仿真申请 / 输入审核表", sk: "Žiadosť o simuláciu tolerancií / Formulár kontroly vstupov" },
+                "For queries contact": { cs: "V případě dotazů kontaktujte", de: "Bei Fragen wenden Sie sich an", zh: "如有疑问请联系", sk: "V prípade otázok kontaktujte" },
+                "Revision:": { cs: "Revize:", de: "Revision:", zh: "修订：", sk: "Revízia:" },
+                "View History": { cs: "Zobrazit historii", de: "Historie anzeigen", zh: "查看历史", sk: "Zobraziť históriu" },
+                "Hide History": { cs: "Skrýt historii", de: "Historie ausblenden", zh: "隐藏历史", sk: "Skryť históriu" },
+                "Revision History": { cs: "Historie revizí", de: "Revisionshistorie", zh: "修订历史", sk: "História revízií" },
+                "Rev No": { cs: "Č. revize", de: "Rev.-Nr.", zh: "修订号", sk: "Č. revízie" },
+                "Date": { cs: "Datum", de: "Datum", zh: "日期", sk: "Dátum" },
+                "Created By": { cs: "Vytvořil", de: "Erstellt von", zh: "创建人", sk: "Vytvoril" },
+                "Approved By": { cs: "Schválil", de: "Genehmigt von", zh: "批准人", sk: "Schválil" },
+                "Modified By": { cs: "Upravil", de: "Geändert von", zh: "修改人", sk: "Upravil" },
+                "Description of Change": { cs: "Popis změny", de: "Änderungsbeschreibung", zh: "变更描述", sk: "Popis zmeny" },
+                "Status": { cs: "Stav", de: "Status", zh: "状态", sk: "Stav" },
+                "Initial release of the form": { cs: "První vydání formuláře", de: "Erstveröffentlichung des Formulars", zh: "表单初始发布", sk: "Prvé vydanie formulára" },
+                "Added Excel export and bug fixes": { cs: "Přidán export do Excelu a opravy chyb", de: "Excel-Export hinzugefügt und Fehler behoben", zh: "新增Excel导出及错误修复", sk: "Pridaný export do Excelu a opravy chýb" },
+                "Added contact info, revision history & multi-language support": { cs: "Přidány kontaktní údaje, historie revizí a vícejazyčná podpora", de: "Kontaktinformationen, Revisionshistorie & Mehrsprachigkeit hinzugefügt", zh: "新增联系信息、修订历史和多语言支持", sk: "Pridané kontaktné údaje, história revízií a viacjazyčná podpora" },
+                "Released": { cs: "Vydáno", de: "Freigegeben", zh: "已发布", sk: "Vydané" },
+                "Current": { cs: "Aktuální", de: "Aktuell", zh: "当前", sk: "Aktuálne" },
+
+                /* Header buttons */
+                "Reset": { cs: "Obnovit", de: "Zurücksetzen", zh: "重置", sk: "Obnoviť" },
+                "📄 Convert to PDF": { cs: "📄 Převést do PDF", de: "📄 In PDF umwandeln", zh: "📄 转换为PDF", sk: "📄 Previesť do PDF" },
+                "📊 Convert to PPT": { cs: "📊 Převést do PPT", de: "📊 In PPT umwandeln", zh: "📊 转换为PPT", sk: "📊 Previesť do PPT" },
+                "📈 Convert to Excel": { cs: "📈 Převést do Excelu", de: "📈 In Excel umwandeln", zh: "📈 转换为Excel", sk: "📈 Previesť do Excelu" },
+                "📧 Send via Mail": { cs: "📧 Odeslat e-mailem", de: "📧 Per E-Mail senden", zh: "📧 通过邮件发送", sk: "📧 Odoslať e-mailom" },
+
+                /* Progress / status pills */
+                "Input Requirements": { cs: "Vstupní požadavky", de: "Eingabeanforderungen", zh: "输入要求", sk: "Vstupné požiadavky" },
+                "Insufficient": { cs: "Nedostatečné", de: "Unzureichend", zh: "不足", sk: "Nedostatočné" },
+                "Partially sufficient": { cs: "Částečně dostatečné", de: "Teilweise ausreichend", zh: "部分充足", sk: "Čiastočne dostatočné" },
+                "Sufficient": { cs: "Dostatečné", de: "Ausreichend", zh: "充足", sk: "Dostatočné" },
+
+                /* Section headers */
+                "Project Information": { cs: "Informace o projektu", de: "Projektinformationen", zh: "项目信息", sk: "Informácie o projekte" },
+                "Simulation Input": { cs: "Vstup simulace", de: "Simulationseingabe", zh: "仿真输入", sk: "Vstup simulácie" },
+                "Analysis Specific Assumptions": { cs: "Předpoklady specifické pro analýzu", de: "Analysespezifische Annahmen", zh: "分析特定假设", sk: "Predpoklady špecifické pre analýzu" },
+
+                /* Project fields */
+                "Project Name": { cs: "Název projektu", de: "Projektname", zh: "项目名称", sk: "Názov projektu" },
+                "Ordered By": { cs: "Objednal", de: "Bestellt von", zh: "申请人", sk: "Objednal" },
+                "Type of Product/Phase": { cs: "Typ produktu/fáze", de: "Produkttyp/Phase", zh: "产品类型/阶段", sk: "Typ produktu/fáza" },
+                "Type of Tolerance Analysis": { cs: "Typ toleranční analýzy", de: "Art der Toleranzanalyse", zh: "公差分析类型", sk: "Typ tolerančnej analýzy" },
+                "Request Date (dd/mm/yyyy)": { cs: "Datum žádosti (dd/mm/rrrr)", de: "Anfragedatum (TT/MM/JJJJ)", zh: "申请日期（日/月/年）", sk: "Dátum žiadosti (dd/mm/rrrr)" },
+                "Expected Output CW": { cs: "Očekávaný výstup (KT)", de: "Erwartete Ausgabe KW", zh: "预计输出周次 (CW)", sk: "Očakávaný výstup (KT)" },
+                "Revision Number": { cs: "Číslo revize", de: "Revisionsnummer", zh: "修订号", sk: "Číslo revízie" },
+                "Problem Statement": { cs: "Popis problému", de: "Problemstellung", zh: "问题描述", sk: "Popis problému" },
+
+                /* Select placeholders (option 0) */
+                "-- Select --": { cs: "-- Vyberte --", de: "-- Auswählen --", zh: "-- 选择 --", sk: "-- Vyberte --" },
+                "-- Select OEM --": { cs: "-- Vyberte OEM --", de: "-- OEM auswählen --", zh: "-- 选择OEM --", sk: "-- Vyberte OEM --" },
+                "-- Select Product --": { cs: "-- Vyberte produkt --", de: "-- Produkt auswählen --", zh: "-- 选择产品 --", sk: "-- Vyberte produkt --" },
+                "-- Select Type --": { cs: "-- Vyberte typ --", de: "-- Typ auswählen --", zh: "-- 选择类型 --", sk: "-- Vyberte typ --" },
+                "-- Select Calendar Week --": { cs: "-- Vyberte kalendářní týden --", de: "-- Kalenderwoche auswählen --", zh: "-- 选择日历周 --", sk: "-- Vyberte kalendárny týždeň --" },
+
+                /* Product / phase options */
+                "Headlamp - RFQ Phase": { cs: "Světlomet - fáze RFQ", de: "Scheinwerfer - RFQ-Phase", zh: "前照灯 - RFQ阶段", sk: "Svetlomet - fáza RFQ" },
+                "Rearlamp - RFQ Phase": { cs: "Zadní svítilna - fáze RFQ", de: "Heckleuchte - RFQ-Phase", zh: "后灯 - RFQ阶段", sk: "Zadné svietidlo - fáza RFQ" },
+                "Car Body Lighting - RFQ Phase": { cs: "Osvětlení karoserie - fáze RFQ", de: "Karosseriebeleuchtung - RFQ-Phase", zh: "车身照明 - RFQ阶段", sk: "Osvetlenie karosérie - fáza RFQ" },
+                "Interior Lighting - RFQ Phase": { cs: "Vnitřní osvětlení - fáze RFQ", de: "Innenbeleuchtung - RFQ-Phase", zh: "内饰照明 - RFQ阶段", sk: "Vnútorné osvetlenie - fáza RFQ" },
+                "Headlamp - Concept Phase": { cs: "Světlomet - koncepční fáze", de: "Scheinwerfer - Konzeptphase", zh: "前照灯 - 概念阶段", sk: "Svetlomet - koncepčná fáza" },
+                "Rearlamp - Concept Phase": { cs: "Zadní svítilna - koncepční fáze", de: "Heckleuchte - Konzeptphase", zh: "后灯 - 概念阶段", sk: "Zadné svietidlo - koncepčná fáza" },
+                "Car Body Lighting - Concept Phase": { cs: "Osvětlení karoserie - koncepční fáze", de: "Karosseriebeleuchtung - Konzeptphase", zh: "车身照明 - 概念阶段", sk: "Osvetlenie karosérie - koncepčná fáza" },
+                "Interior Lighting - Concept Phase": { cs: "Vnitřní osvětlení - koncepční fáze", de: "Innenbeleuchtung - Konzeptphase", zh: "内饰照明 - 概念阶段", sk: "Vnútorné osvetlenie - koncepčná fáza" },
+                "Headlamp - Detailing Phase": { cs: "Světlomet - fáze detailování", de: "Scheinwerfer - Detaillierungsphase", zh: "前照灯 - 详细设计阶段", sk: "Svetlomet - fáza detailovania" },
+                "Rearlamp - Detailing Phase": { cs: "Zadní svítilna - fáze detailování", de: "Heckleuchte - Detaillierungsphase", zh: "后灯 - 详细设计阶段", sk: "Zadné svietidlo - fáza detailovania" },
+                "Car Body Lighting - Detailing Phase": { cs: "Osvětlení karoserie - fáze detailování", de: "Karosseriebeleuchtung - Detaillierungsphase", zh: "车身照明 - 详细设计阶段", sk: "Osvetlenie karosérie - fáza detailovania" },
+                "Interior Lighting - Detailing Phase": { cs: "Vnitřní osvětlení - fáze detailování", de: "Innenbeleuchtung - Detaillierungsphase", zh: "内饰照明 - 详细设计阶段", sk: "Vnútorné osvetlenie - fáza detailovania" },
+                "Headlamp - Qualification Phase": { cs: "Světlomet - kvalifikační fáze", de: "Scheinwerfer - Qualifizierungsphase", zh: "前照灯 - 认证阶段", sk: "Svetlomet - kvalifikačná fáza" },
+                "Rearlamp - Qualification Phase": { cs: "Zadní svítilna - kvalifikační fáze", de: "Heckleuchte - Qualifizierungsphase", zh: "后灯 - 认证阶段", sk: "Zadné svietidlo - kvalifikačná fáza" },
+                "Car Body Lighting - Qualification Phase": { cs: "Osvětlení karoserie - kvalifikační fáze", de: "Karosseriebeleuchtung - Qualifizierungsphase", zh: "车身照明 - 认证阶段", sk: "Osvetlenie karosérie - kvalifikačná fáza" },
+                "Interior Lighting - Qualification Phase": { cs: "Vnitřní osvětlení - kvalifikační fáze", de: "Innenbeleuchtung - Qualifizierungsphase", zh: "内饰照明 - 认证阶段", sk: "Vnútorné osvetlenie - kvalifikačná fáza" },
+
+                /* Analysis type options */
+                "Internal - Optical/Connector Study": { cs: "Interní - optická studie / studie konektorů", de: "Intern - Optik-/Steckerstudie", zh: "内部 - 光学/连接器研究", sk: "Interná - optická štúdia / štúdia konektorov" },
+                "Internal - Sub Assembly/Product": { cs: "Interní - podsestava/produkt", de: "Intern - Baugruppe/Produkt", zh: "内部 - 子装配/产品", sk: "Interná - podzostava/produkt" },
+                "External - GAP & FLUSH": { cs: "Externí - GAP & FLUSH (spára a lícování)", de: "Extern - Spalt & Bündigkeit (GAP & FLUSH)", zh: "外部 - 间隙与平齐 (GAP & FLUSH)", sk: "Externá - GAP & FLUSH (škára a lícovanie)" },
+                "Root Cause Analysis": { cs: "Analýza kořenových příčin", de: "Ursachenanalyse", zh: "根本原因分析", sk: "Analýza koreňových príčin" },
+
+                /* Common yes/no/status */
+                "Yes": { cs: "Ano", de: "Ja", zh: "是", sk: "Áno" },
+                "No": { cs: "Ne", de: "Nein", zh: "否", sk: "Nie" },
+                "Not Applicable": { cs: "Nevztahuje se", de: "Nicht zutreffend", zh: "不适用", sk: "Nevzťahuje sa" },
+                "Completed": { cs: "Dokončeno", de: "Abgeschlossen", zh: "已完成", sk: "Dokončené" },
+                "InProgress": { cs: "Probíhá", de: "In Bearbeitung", zh: "进行中", sk: "Prebieha" },
+                "Incomplete": { cs: "Nedokončeno", de: "Unvollständig", zh: "未完成", sk: "Nedokončené" },
+                "Available": { cs: "K dispozici", de: "Verfügbar", zh: "可用", sk: "K dispozícii" },
+                "Not Available": { cs: "Není k dispozici", de: "Nicht verfügbar", zh: "不可用", sk: "Nie je k dispozícii" },
+                "Add": { cs: "Přidat", de: "Hinzufügen", zh: "添加", sk: "Pridať" },
+                "Stop": { cs: "Stop", de: "Stopp", zh: "停止", sk: "Stop" },
+                "Reverse": { cs: "Obrátit", de: "Umkehren", zh: "反向", sk: "Obrátiť" },
+
+                /* Simulation input fields */
+                "CAD data (DIS No)": { cs: "CAD data (DIS č.)", de: "CAD-Daten (DIS-Nr.)", zh: "CAD数据（DIS编号）", sk: "CAD dáta (DIS č.)" },
+                "CAD Data": { cs: "CAD data", de: "CAD-Daten", zh: "CAD数据", sk: "CAD dáta" },
+                "2D drawings": { cs: "2D výkresy", de: "2D-Zeichnungen", zh: "2D图纸", sk: "2D výkresy" },
+                "2D drawings (Optional during concept phase)": { cs: "2D výkresy (volitelné v koncepční fázi)", de: "2D-Zeichnungen (optional in der Konzeptphase)", zh: "2D图纸（概念阶段可选）", sk: "2D výkresy (voliteľné v koncepčnej fáze)" },
+                "3D Scan Data": { cs: "Data 3D skenování", de: "3D-Scandaten", zh: "3D扫描数据", sk: "Dáta 3D skenovania" },
+                "Assembly sequence": { cs: "Montážní sekvence", de: "Montagereihenfolge", zh: "装配顺序", sk: "Montážna sekvencia" },
+                "Joining process": { cs: "Proces spojování", de: "Fügeverfahren", zh: "连接工艺", sk: "Proces spájania" },
+                "Reference system (Datum/RPS)": { cs: "Referenční systém (Datum/RPS)", de: "Referenzsystem (Bezug/RPS)", zh: "参考系统（基准/RPS）", sk: "Referenčný systém (Datum/RPS)" },
+                "Light Functions": { cs: "Světelné funkce", de: "Lichtfunktionen", zh: "灯光功能", sk: "Svetelné funkcie" },
+                "Number of Component Involved": { cs: "Počet zapojených komponent", de: "Anzahl beteiligter Komponenten", zh: "涉及组件数量", sk: "Počet zapojených komponentov" },
+                "Part Name/Material/ Tolerance group for involved components (TG)": { cs: "Název dílu/materiál/toleranční skupina zapojených komponent (TG)", de: "Teilename/Material/Toleranzgruppe der beteiligten Komponenten (TG)", zh: "涉及组件的零件名称/材料/公差组 (TG)", sk: "Názov dielu/materiál/tolerančná skupina zapojených komponentov (TG)" },
+                "Single part tolerance": { cs: "Tolerance jednotlivého dílu", de: "Einzelteiltoleranz", zh: "单件公差", sk: "Tolerancia jednotlivého dielu" },
+                "Cpk for single part": { cs: "Cpk pro jednotlivý díl", de: "Cpk für Einzelteil", zh: "单件Cpk", sk: "Cpk pre jednotlivý diel" },
+                "Cpk for Single Part": { cs: "Cpk pro jednotlivý díl", de: "Cpk für Einzelteil", zh: "单件Cpk", sk: "Cpk pre jednotlivý diel" },
+                "Cpk for Assembly": { cs: "Cpk pro sestavu", de: "Cpk für Baugruppe", zh: "装配Cpk", sk: "Cpk pre zostavu" },
+                "Cpk for Gap & Flush": { cs: "Cpk pro spáru a lícování", de: "Cpk für Spalt & Bündigkeit", zh: "间隙与平齐Cpk", sk: "Cpk pre škáru a lícovanie" },
+                "Cpk = 1.00 (Default)": { cs: "Cpk = 1,00 (výchozí)", de: "Cpk = 1,00 (Standard)", zh: "Cpk = 1.00（默认）", sk: "Cpk = 1,00 (predvolené)" },
+                "Cpk = 1.33 (Default)": { cs: "Cpk = 1,33 (výchozí)", de: "Cpk = 1,33 (Standard)", zh: "Cpk = 1.33（默认）", sk: "Cpk = 1,33 (predvolené)" },
+                "Cpk = 1.33 (Standard)": { cs: "Cpk = 1,33 (standard)", de: "Cpk = 1,33 (Standard)", zh: "Cpk = 1.33（标准）", sk: "Cpk = 1,33 (štandard)" },
+                "Tolerance studies - Type": { cs: "Toleranční studie - typ", de: "Toleranzstudien - Typ", zh: "公差研究 - 类型", sk: "Tolerančné štúdie - typ" },
+                "General Tolerance": { cs: "Obecná tolerance", de: "Allgemeintoleranz", zh: "一般公差", sk: "Všeobecná tolerancia" },
+                ".STL file of Moldflow/Moldcool/3D Scan Data for critical studies": { cs: "Soubor .STL z Moldflow/Moldcool/3D skenování pro kritické studie", de: ".STL-Datei aus Moldflow/Moldcool/3D-Scan für kritische Studien", zh: "用于关键研究的Moldflow/Moldcool/3D扫描.STL文件", sk: "Súbor .STL z Moldflow/Moldcool/3D skenovania pre kritické štúdie" },
+                "Customer Datum system": { cs: "Zákaznický systém základen (Datum)", de: "Kunden-Bezugssystem", zh: "客户基准系统", sk: "Zákaznícky systém základní (Datum)" },
+                "Customer Gap & Flush tolerance requirements": { cs: "Požadavky zákazníka na tolerance spáry a lícování", de: "Kundenanforderungen an Spalt- & Bündigkeitstoleranzen", zh: "客户间隙与平齐公差要求", sk: "Požiadavky zákazníka na tolerancie škáry a lícovania" },
+                "Customer GAP / FLUSH tolerance": { cs: "Zákaznická tolerance GAP / FLUSH", de: "Kunden-Spalt-/Bündigkeitstoleranz", zh: "客户间隙/平齐公差", sk: "Zákaznícka tolerancia GAP / FLUSH" },
+                "Customer Document(s)": { cs: "Dokument(y) zákazníka", de: "Kundendokument(e)", zh: "客户文件", sk: "Dokument(y) zákazníka" },
+                "Car Surrounding geometry": { cs: "Okolní geometrie vozu", de: "Umgebungsgeometrie des Fahrzeugs", zh: "车身周边几何", sk: "Okolitá geometria vozidla" },
+                "Customer lamp fixation - Datum's feasibility": { cs: "Upevnění svítilny zákazníka - proveditelnost základen", de: "Kundenseitige Leuchtenbefestigung - Machbarkeit der Bezüge", zh: "客户灯具固定 - 基准可行性", sk: "Upevnenie svietidla zákazníka - realizovateľnosť základní" },
+                "Customer Datum Fixation Review (Functional Design & Dimensioning Method)": { cs: "Kontrola upevnění zákaznických základen (metoda funkčního návrhu a kótování)", de: "Prüfung der Kunden-Bezugsbefestigung (Methode Funktionales Design & Bemaßung)", zh: "客户基准固定审核（功能设计与标注方法）", sk: "Kontrola upevnenia zákazníckych základní (metóda funkčného návrhu a kótovania)" },
+                "Concept review for Functional Design & Dimensioning (FDD)": { cs: "Koncepční kontrola funkčního návrhu a kótování (FDD)", de: "Konzeptprüfung für Funktionales Design & Bemaßung (FDD)", zh: "功能设计与标注 (FDD) 概念审核", sk: "Koncepčná kontrola funkčného návrhu a kótovania (FDD)" },
+                "Updated/Latest Location & Fixation Concept PPT": { cs: "Aktualizovaná/nejnovější PPT koncepce umístění a upevnění", de: "Aktualisierte/neueste PPT zu Positions- & Befestigungskonzept", zh: "更新/最新的定位与固定概念PPT", sk: "Aktualizovaná/najnovšia PPT koncepcia umiestnenia a upevnenia" },
+                "Updated/Latest Location & Fixation Concept & Assembly sequence PPT": { cs: "Aktualizovaná/nejnovější PPT koncepce umístění, upevnění a montážní sekvence", de: "Aktualisierte/neueste PPT zu Positions- & Befestigungskonzept & Montagereihenfolge", zh: "更新/最新的定位、固定概念与装配顺序PPT", sk: "Aktualizovaná/najnovšia PPT koncepcia umiestnenia, upevnenia a montážnej sekvencie" },
+                "Additional Fixations": { cs: "Dodatečná upevnění", de: "Zusätzliche Befestigungen", zh: "附加固定", sk: "Dodatočné upevnenia" },
+                "Additional remarks": { cs: "Další poznámky", de: "Zusätzliche Anmerkungen", zh: "附加备注", sk: "Ďalšie poznámky" },
+                "Remarks / Recommended actions": { cs: "Poznámky / doporučená opatření", de: "Anmerkungen / empfohlene Maßnahmen", zh: "备注/建议措施", sk: "Poznámky / odporúčané opatrenia" },
+                "Remarks on the Tolerance study": { cs: "Poznámky k toleranční studii", de: "Anmerkungen zur Toleranzstudie", zh: "公差研究备注", sk: "Poznámky k tolerančnej štúdii" },
+                "Risk - Level": { cs: "Úroveň rizika", de: "Risikostufe", zh: "风险等级", sk: "Úroveň rizika" },
+                "Connector Type (Drawing)": { cs: "Typ konektoru (výkres)", de: "Steckertyp (Zeichnung)", zh: "连接器类型（图纸）", sk: "Typ konektora (výkres)" },
+                "LED Type (Drawing)": { cs: "Typ LED (výkres)", de: "LED-Typ (Zeichnung)", zh: "LED类型（图纸）", sk: "Typ LED (výkres)" },
+                "Lamp Measurement Method": { cs: "Metoda měření svítilny", de: "Messmethode der Leuchte", zh: "灯具测量方法", sk: "Metóda merania svietidla" },
+                "Optical simulation": { cs: "Optická simulace", de: "Optische Simulation", zh: "光学仿真", sk: "Optická simulácia" },
+                "Connector study": { cs: "Studie konektoru", de: "Steckerstudie", zh: "连接器研究", sk: "Štúdia konektora" },
+                "Optical": { cs: "Optická", de: "Optisch", zh: "光学", sk: "Optická" },
+                "Internal": { cs: "Interní", de: "Intern", zh: "内部", sk: "Interná" },
+                "Scope of Analysis - Optical - Variation between LED to Optical surface in X, Y & Z directions": { cs: "Rozsah analýzy - optika - variace mezi LED a optickou plochou ve směrech X, Y a Z", de: "Analyseumfang - Optik - Variation zwischen LED und optischer Fläche in X-, Y- & Z-Richtung", zh: "分析范围 - 光学 - LED与光学表面在X、Y、Z方向的偏差", sk: "Rozsah analýzy - optika - variácia medzi LED a optickou plochou v smeroch X, Y a Z" },
+                "Connector Study - Position of terminals in X, Y & Z relative to housing connector receiving geometries": { cs: "Studie konektoru - poloha terminálů v X, Y a Z vůči přijímacím geometriím konektoru pouzdra", de: "Steckerstudie - Position der Kontakte in X, Y & Z relativ zu den Aufnahmegeometrien des Gehäusesteckers", zh: "连接器研究 - 端子在X、Y、Z方向相对于壳体连接器接收几何的位置", sk: "Štúdia konektora - poloha terminálov v X, Y a Z voči prijímacím geometriám konektora puzdra" },
+                "Connector Study - Parking connector assembly verification": { cs: "Studie konektoru - ověření montáže parkovacího konektoru", de: "Steckerstudie - Überprüfung der Montage des Parksteckers", zh: "连接器研究 - 停放连接器装配验证", sk: "Štúdia konektora - overenie montáže parkovacieho konektora" },
+                "Scope of study - Virtual Assembly build for clearances between parts": { cs: "Rozsah studie - virtuální sestavení pro vůle mezi díly", de: "Studienumfang - virtueller Zusammenbau für Spiele zwischen Teilen", zh: "研究范围 - 用于零件间间隙的虚拟装配", sk: "Rozsah štúdie - virtuálna zostava pre vôle medzi dielmi" },
+                "Target of the study": { cs: "Cíl studie", de: "Ziel der Studie", zh: "研究目标", sk: "Cieľ štúdie" },
+                "Gap & Flush of Lamp": { cs: "Spára a lícování svítilny", de: "Spalt & Bündigkeit der Leuchte", zh: "灯具间隙与平齐", sk: "Škára a lícovanie svietidla" },
+                "Outer geometry analysis for GAP & FLUSH (General tolerance + Moldflow + Moldcool)": { cs: "Analýza vnější geometrie pro GAP & FLUSH (obecná tolerance + Moldflow + Moldcool)", de: "Außengeometrieanalyse für Spalt & Bündigkeit (Allgemeintoleranz + Moldflow + Moldcool)", zh: "外部几何的间隙与平齐分析（一般公差 + Moldflow + Moldcool）", sk: "Analýza vonkajšej geometrie pre GAP & FLUSH (všeobecná tolerancia + Moldflow + Moldcool)" },
+                "Datum sensitivity analysis for the existing Customer Datum": { cs: "Analýza citlivosti stávajících zákaznických základen", de: "Sensitivitätsanalyse des bestehenden Kunden-Bezugs", zh: "现有客户基准的敏感性分析", sk: "Analýza citlivosti existujúcich zákazníckych základní" },
+                "HELLA's Datum proposals & sensitivity comparisons (DOE)": { cs: "Návrhy základen HELLA a porovnání citlivosti (DOE)", de: "HELLA-Bezugsvorschläge & Sensitivitätsvergleiche (DOE)", zh: "HELLA基准建议与敏感性比较 (DOE)", sk: "Návrhy základní HELLA a porovnania citlivosti (DOE)" },
+                "Internal review of lamp fixation": { cs: "Interní kontrola upevnění svítilny", de: "Interne Prüfung der Leuchtenbefestigung", zh: "灯具固定内部审核", sk: "Interná kontrola upevnenia svietidla" },
+                "Datum system Position (Optional)": { cs: "Poloha systému základen (volitelné)", de: "Position des Bezugssystems (optional)", zh: "基准系统位置（可选）", sk: "Poloha systému základní (voliteľné)" },
+                "Gap & Flush Measurement Points (Optional)": { cs: "Body měření spáry a lícování (volitelné)", de: "Messpunkte für Spalt & Bündigkeit (optional)", zh: "间隙与平齐测量点（可选）", sk: "Body merania škáry a lícovania (voliteľné)" },
+                "Aux Datum": { cs: "Pomocné základny", de: "Hilfsbezug", zh: "辅助基准", sk: "Pomocné základne" },
+                "Mixed reference system": { cs: "Smíšený referenční systém", de: "Gemischtes Referenzsystem", zh: "混合参考系统", sk: "Zmiešaný referenčný systém" },
+                "Underconstrained / Not defined": { cs: "Nedostatečně určeno / nedefinováno", de: "Unterbestimmt / nicht definiert", zh: "约束不足/未定义", sk: "Nedostatočne určené / nedefinované" },
+                "Unstable Datum system": { cs: "Nestabilní systém základen", de: "Instabiles Bezugssystem", zh: "不稳定的基准系统", sk: "Nestabilný systém základní" },
+                "Stable": { cs: "Stabilní", de: "Stabil", zh: "稳定", sk: "Stabilné" },
+                "Achievable": { cs: "Dosažitelné", de: "Erreichbar", zh: "可实现", sk: "Dosiahnuteľné" },
+                "Partially feasible": { cs: "Částečně proveditelné", de: "Teilweise machbar", zh: "部分可行", sk: "Čiastočne realizovateľné" },
+                "Unrealistic": { cs: "Nereálné", de: "Unrealistisch", zh: "不现实", sk: "Nereálne" },
+                "To be verified": { cs: "K ověření", de: "Zu überprüfen", zh: "待验证", sk: "Na overenie" },
+                "No additional target studies required — Datum is Stable": { cs: "Nejsou vyžadovány žádné další cílové studie — základny jsou stabilní", de: "Keine weiteren Zielstudien erforderlich — Bezug ist stabil", zh: "无需额外的目标研究 — 基准稳定", sk: "Nie sú potrebné žiadne ďalšie cieľové štúdie — základne sú stabilné" },
+                "No recommended actions — Datum is Stable and feasible": { cs: "Žádná doporučená opatření — základny jsou stabilní a proveditelné", de: "Keine empfohlenen Maßnahmen — Bezug ist stabil und machbar", zh: "无建议措施 — 基准稳定且可行", sk: "Žiadne odporúčané opatrenia — základne sú stabilné a realizovateľné" },
+                "— Select Datum Feasibility above —": { cs: "— Vyberte výše proveditelnost základen —", de: "— Wählen Sie oben die Machbarkeit des Bezugs —", zh: "— 请在上方选择基准可行性 —", sk: "— Vyberte vyššie realizovateľnosť základní —" },
+                "Tolerance negotiation should be discussed with the Customer": { cs: "Vyjednávání tolerancí je třeba projednat se zákazníkem", de: "Toleranzverhandlungen sollten mit dem Kunden besprochen werden", zh: "公差协商应与客户讨论", sk: "Vyjednávanie tolerancií je potrebné prerokovať so zákazníkom" },
+                "Tolerance results to be aligned with the Production plant": { cs: "Výsledky tolerancí je třeba sladit s výrobním závodem", de: "Toleranzergebnisse sind mit dem Produktionswerk abzustimmen", zh: "公差结果需与生产工厂对齐", sk: "Výsledky tolerancií je potrebné zladiť s výrobným závodom" },
+                "Full Product": { cs: "Celý produkt", de: "Gesamtprodukt", zh: "完整产品", sk: "Celý produkt" },
+                "Sub-System": { cs: "Subsystém", de: "Teilsystem", zh: "子系统", sk: "Subsystém" },
+                "Headlamp": { cs: "Světlomet", de: "Scheinwerfer", zh: "前照灯", sk: "Svetlomet" },
+                "Rear Lamp": { cs: "Zadní svítilna", de: "Heckleuchte", zh: "后灯", sk: "Zadné svietidlo" },
+                "Tail": { cs: "Koncové světlo", de: "Schlussleuchte", zh: "尾灯", sk: "Koncové svetlo" },
+                "LB - Low Beam, HB - High Beam, DRL - Daytime Running Light, TI - Turn Indicator, PO - Position lamp": { cs: "LB - potkávací světlo, HB - dálkové světlo, DRL - denní svícení, TI - směrové světlo, PO - poziční světlo", de: "LB - Abblendlicht, HB - Fernlicht, DRL - Tagfahrlicht, TI - Blinker, PO - Positionsleuchte", zh: "LB - 近光灯，HB - 远光灯，DRL - 日间行车灯，TI - 转向灯，PO - 位置灯", sk: "LB - stretávacie svetlo, HB - diaľkové svetlo, DRL - denné svietenie, TI - smerové svetlo, PO - pozičné svetlo" },
+                "Gluing": { cs: "Lepení", de: "Kleben", zh: "粘接", sk: "Lepenie" },
+                "Hot Plate": { cs: "Horká deska", de: "Heizelement", zh: "热板焊接", sk: "Horúca doska" },
+                "Ultrasonic": { cs: "Ultrazvuk", de: "Ultraschall", zh: "超声波", sk: "Ultrazvuk" },
+                "Vibration": { cs: "Vibrační", de: "Vibration", zh: "振动", sk: "Vibračné" },
+                "Hollow screw": { cs: "Dutý šroub", de: "Hohlschraube", zh: "空心螺钉", sk: "Dutá skrutka" },
+                "Fixture": { cs: "Přípravek", de: "Vorrichtung", zh: "工装夹具", sk: "Prípravok" },
+                "Gripper Suction repeatability": { cs: "Opakovatelnost sání chapadla", de: "Wiederholgenauigkeit der Greifer-Ansaugung", zh: "抓手吸附重复性", sk: "Opakovateľnosť nasávania chápadla" },
+                "Gluing Process Tolerance": { cs: "Tolerance procesu lepení", de: "Toleranz des Klebeprozesses", zh: "粘接工艺公差", sk: "Tolerancia procesu lepenia" },
+                "Welding process tolerances in mm": { cs: "Tolerance svařovacího procesu v mm", de: "Schweißprozesstoleranzen in mm", zh: "焊接工艺公差 (mm)", sk: "Tolerancie zváracieho procesu v mm" },
+                "Welding tolerances in WD": { cs: "Tolerance svařování ve směru WD", de: "Schweißtoleranzen in WD", zh: "WD方向焊接公差", sk: "Tolerancie zvárania v smere WD" },
+                "Vibration tolerance in VD": { cs: "Vibrační tolerance ve směru VD", de: "Vibrationstoleranz in VD", zh: "VD方向振动公差", sk: "Vibračná tolerancia v smere VD" },
+                "Welding/Vibration/Tertiary direction": { cs: "Směr svařování/vibrací/terciární", de: "Schweiß-/Vibrations-/Tertiärrichtung", zh: "焊接/振动/第三方向", sk: "Smer zvárania/vibrácií/terciárny" },
+                "— Welding Direction": { cs: "— směr svařování", de: "— Schweißrichtung", zh: "— 焊接方向", sk: "— smer zvárania" },
+                "— Vibration Direction": { cs: "— směr vibrací", de: "— Vibrationsrichtung", zh: "— 振动方向", sk: "— smer vibrácií" },
+                "— Tertiary Direction": { cs: "— terciární směr", de: "— Tertiärrichtung", zh: "— 第三方向", sk: "— terciárny smer" },
+                "Measuring process Tolerances in mm": { cs: "Tolerance měřicího procesu v mm", de: "Messprozesstoleranzen in mm", zh: "测量工艺公差 (mm)", sk: "Tolerancie meracieho procesu v mm" },
+                "Measuring inaccuracy (Free state)": { cs: "Nepřesnost měření (volný stav)", de: "Messungenauigkeit (freier Zustand)", zh: "测量误差（自由状态）", sk: "Nepresnosť merania (voľný stav)" },
+                "Operator Repeatability in WD, VD, TD": { cs: "Opakovatelnost operátora ve WD, VD, TD", de: "Bediener-Wiederholgenauigkeit in WD, VD, TD", zh: "操作员在WD、VD、TD方向的重复性", sk: "Opakovateľnosť operátora vo WD, VD, TD" },
+                "Operator repeatability for the Housing-Jig": { cs: "Opakovatelnost operátora pro přípravek pouzdra", de: "Bediener-Wiederholgenauigkeit für die Gehäuse-Lehre", zh: "壳体夹具的操作员重复性", sk: "Opakovateľnosť operátora pre prípravok puzdra" },
+                "Positioning Tolerance for the Housing-Jig": { cs: "Tolerance polohování pro přípravek pouzdra", de: "Positioniertoleranz für die Gehäuse-Lehre", zh: "壳体夹具的定位公差", sk: "Tolerancia polohovania pre prípravok puzdra" },
+                "Process Tolerance (Joining/Measurement)": { cs: "Procesní tolerance (spojování/měření)", de: "Prozesstoleranz (Fügen/Messen)", zh: "工艺公差（连接/测量）", sk: "Procesná tolerancia (spájanie/meranie)" },
+                "Single Component tolerances in mm": { cs: "Tolerance jednotlivých komponent v mm", de: "Einzelkomponententoleranzen in mm", zh: "单个组件公差 (mm)", sk: "Tolerancie jednotlivých komponentov v mm" },
+                "(Single Component - If applicable)": { cs: "(jednotlivá komponenta - pokud relevantní)", de: "(Einzelkomponente - falls zutreffend)", zh: "（单个组件 - 如适用）", sk: "(jednotlivý komponent - ak je relevantné)" },
+                "(Single Component/PCB - If applicable)": { cs: "(jednotlivá komponenta/PCB - pokud relevantní)", de: "(Einzelkomponente/PCB - falls zutreffend)", zh: "（单个组件/PCB - 如适用）", sk: "(jednotlivý komponent/PCB - ak je relevantné)" },
+                "(For PCB - 1.33Cpk)": { cs: "(pro PCB - Cpk 1,33)", de: "(für PCB - 1,33 Cpk)", zh: "（PCB - 1.33Cpk）", sk: "(pre PCB - Cpk 1,33)" },
+                "Headlamp Assembly Tolerances in mm": { cs: "Montážní tolerance světlometu v mm", de: "Scheinwerfer-Montagetoleranzen in mm", zh: "前照灯装配公差 (mm)", sk: "Montážne tolerancie svetlometu v mm" },
+                "Lens Deformation factor in Preferred Edge": { cs: "Faktor deformace krycího skla na preferované hraně", de: "Linsendeformationsfaktor an der bevorzugten Kante", zh: "首选边缘的透镜变形系数", sk: "Faktor deformácie krycieho skla na preferovanej hrane" },
+                "Lens Deformation factor in non-preferred edge": { cs: "Faktor deformace krycího skla na nepreferované hraně", de: "Linsendeformationsfaktor an der nicht bevorzugten Kante", zh: "非首选边缘的透镜变形系数", sk: "Faktor deformácie krycieho skla na nepreferovanej hrane" },
+                "Preferred Edge": { cs: "Preferovaná hrana", de: "Bevorzugte Kante", zh: "首选边缘", sk: "Preferovaná hrana" },
+                "In Housing": { cs: "V pouzdře", de: "Im Gehäuse", zh: "在壳体中", sk: "V puzdre" },
+                "In Cover lens": { cs: "V krycím skle", de: "In der Abdecklinse", zh: "在罩镜中", sk: "V krycom skle" },
+                "Housing & Cover Lens": { cs: "Pouzdro a krycí sklo", de: "Gehäuse & Abdecklinse", zh: "壳体与罩镜", sk: "Puzdro a krycie sklo" },
+                "Local Bumper": { cs: "Lokální nárazník", de: "Lokaler Stoßfänger", zh: "局部保险杠", sk: "Lokálny nárazník" },
+                "FreeState": { cs: "Volný stav", de: "Freier Zustand", zh: "自由状态", sk: "Voľný stav" },
+                "The measuring is in free-state.": { cs: "Měření probíhá ve volném stavu.", de: "Die Messung erfolgt im freien Zustand.", zh: "测量在自由状态下进行。", sk: "Meranie prebieha vo voľnom stave." },
+                "Deformations of parts are not part of the simulation.": { cs: "Deformace dílů nejsou součástí simulace.", de: "Verformungen der Teile sind nicht Teil der Simulation.", zh: "零件变形不包含在仿真中。", sk: "Deformácie dielov nie sú súčasťou simulácie." },
+                "Results are based on 10,000 Monte-Carlo simulations.": { cs: "Výsledky vycházejí z 10 000 simulací Monte Carlo.", de: "Die Ergebnisse basieren auf 10.000 Monte-Carlo-Simulationen.", zh: "结果基于10,000次蒙特卡洛仿真。", sk: "Výsledky vychádzajú z 10 000 simulácií Monte Carlo." },
+                "Simulation software assumes unstressed assembly process.": { cs: "Simulační software předpokládá montáž bez pnutí.", de: "Die Simulationssoftware geht von einem spannungsfreien Montageprozess aus.", zh: "仿真软件假定装配过程无应力。", sk: "Simulačný softvér predpokladá montáž bez pnutia." },
+                "General tolerances ISO:20457:2020": { cs: "Obecné tolerance ISO 20457:2020", de: "Allgemeintoleranzen ISO 20457:2020", zh: "一般公差 ISO 20457:2020", sk: "Všeobecné tolerancie ISO 20457:2020" },
+                "Plastics - DIN 16742 ,ISO 20457": { cs: "Plasty - DIN 16742, ISO 20457", de: "Kunststoffe - DIN 16742, ISO 20457", zh: "塑料 - DIN 16742，ISO 20457", sk: "Plasty - DIN 16742, ISO 20457" },
+                "Plastics - General tolerances ISO:20457:2020": { cs: "Plasty - obecné tolerance ISO 20457:2020", de: "Kunststoffe - Allgemeintoleranzen ISO 20457:2020", zh: "塑料 - 一般公差 ISO 20457:2020", sk: "Plasty - všeobecné tolerancie ISO 20457:2020" },
+                "Castings - DIN EN ISO 8062_3": { cs: "Odlitky - DIN EN ISO 8062-3", de: "Gussteile - DIN EN ISO 8062-3", zh: "铸件 - DIN EN ISO 8062-3", sk: "Odliatky - DIN EN ISO 8062-3" },
+                "Machining - DIN EN ISO 2768": { cs: "Obrábění - DIN EN ISO 2768", de: "Zerspanung - DIN EN ISO 2768", zh: "机加工 - DIN EN ISO 2768", sk: "Obrábanie - DIN EN ISO 2768" },
+                "Stamping - DIN 6930-m , DIN 6935 , DIN ISO 2768": { cs: "Lisování - DIN 6930-m, DIN 6935, DIN ISO 2768", de: "Stanzen - DIN 6930-m, DIN 6935, DIN ISO 2768", zh: "冲压 - DIN 6930-m，DIN 6935，DIN ISO 2768", sk: "Lisovanie - DIN 6930-m, DIN 6935, DIN ISO 2768" },
+                "Welding - DIN EN ISO 13920 , DIN ISO 2768": { cs: "Svařování - DIN EN ISO 13920, DIN ISO 2768", de: "Schweißen - DIN EN ISO 13920, DIN ISO 2768", zh: "焊接 - DIN EN ISO 13920，DIN ISO 2768", sk: "Zváranie - DIN EN ISO 13920, DIN ISO 2768" },
+                "\"Complete\" - Parameters Entry": { cs: "„Kompletní“ - zadání parametrů", de: "„Vollständig“ - Parametereingabe", zh: "“完整” - 参数输入", sk: "„Kompletné“ - zadanie parametrov" },
+                "\"Incomplete\" - Parameters Entry": { cs: "„Nekompletní“ - zadání parametrů", de: "„Unvollständig“ - Parametereingabe", zh: "“不完整” - 参数输入", sk: "„Nekompletné“ - zadanie parametrov" },
+
+                /* Placeholders */
+                "Type project name here": { cs: "Zadejte název projektu", de: "Projektnamen hier eingeben", zh: "在此输入项目名称", sk: "Zadajte názov projektu" },
+                "Name of requesting engineer": { cs: "Jméno žádajícího inženýra", de: "Name des anfragenden Ingenieurs", zh: "申请工程师姓名", sk: "Meno žiadajúceho inžiniera" },
+                "Type the problem statement": { cs: "Zadejte popis problému", de: "Problemstellung eingeben", zh: "输入问题描述", sk: "Zadajte popis problému" },
+                "dd/mm/yyyy": { cs: "dd/mm/rrrr", de: "TT/MM/JJJJ", zh: "日/月/年", sk: "dd/mm/rrrr" },
+                "Reason for revision": { cs: "Důvod revize", de: "Grund der Revision", zh: "修订原因", sk: "Dôvod revízie" },
+                "Part Name": { cs: "Název dílu", de: "Teilename", zh: "零件名称", sk: "Názov dielu" },
+                "TG Class": { cs: "Třída TG", de: "TG-Klasse", zh: "TG等级", sk: "Trieda TG" },
+                "Type in TG": { cs: "Zadejte TG", de: "TG eingeben", zh: "输入TG", sk: "Zadajte TG" },
+                "Type in Box": { cs: "Zadejte text", de: "In das Feld eingeben", zh: "在框中输入", sk: "Zadajte text" },
+                "Type in box": { cs: "Zadejte text", de: "In das Feld eingeben", zh: "在框中输入", sk: "Zadajte text" },
+                "Type in box for remarks": { cs: "Zadejte poznámky", de: "Anmerkungen eingeben", zh: "在框中输入备注", sk: "Zadajte poznámky" },
+                "Remarks": { cs: "Poznámky", de: "Anmerkungen", zh: "备注", sk: "Poznámky" },
+                "Please specify reason": { cs: "Uveďte prosím důvod", de: "Bitte Grund angeben", zh: "请说明原因", sk: "Uveďte prosím dôvod" },
+                "Please specify reason for No": { cs: "Uveďte prosím důvod pro „Ne“", de: "Bitte Grund für „Nein“ angeben", zh: "请说明选择“否”的原因", sk: "Uveďte prosím dôvod pre „Nie“" },
+                "Please specify reason for Not Applicable": { cs: "Uveďte prosím důvod pro „Nevztahuje se“", de: "Bitte Grund für „Nicht zutreffend“ angeben", zh: "请说明选择“不适用”的原因", sk: "Uveďte prosím dôvod pre „Nevzťahuje sa“" },
+                "DIS Number / Sharepoint link": { cs: "Číslo DIS / odkaz SharePoint", de: "DIS-Nummer / SharePoint-Link", zh: "DIS编号 / SharePoint链接", sk: "Číslo DIS / odkaz SharePoint" },
+                "DIS no / Sharepoint link": { cs: "Číslo DIS / odkaz SharePoint", de: "DIS-Nr. / SharePoint-Link", zh: "DIS编号 / SharePoint链接", sk: "Číslo DIS / odkaz SharePoint" },
+                "Sharepoint link/Dis": { cs: "Odkaz SharePoint / DIS", de: "SharePoint-Link / DIS", zh: "SharePoint链接 / DIS", sk: "Odkaz SharePoint / DIS" },
+                "Other Light Functions": { cs: "Jiné světelné funkce", de: "Andere Lichtfunktionen", zh: "其他灯光功能", sk: "Iné svetelné funkcie" },
+                "Initial phase - General Tolerance , Detailing phase - Moldflow": { cs: "Počáteční fáze - obecná tolerance, fáze detailování - Moldflow", de: "Anfangsphase - Allgemeintoleranz, Detaillierungsphase - Moldflow", zh: "初始阶段 - 一般公差，详细设计阶段 - Moldflow", sk: "Počiatočná fáza - všeobecná tolerancia, fáza detailovania - Moldflow" },
+                "Initial phase - General Tolerance , Detailing phase - Moldflow/Moldcool": { cs: "Počáteční fáze - obecná tolerance, fáze detailování - Moldflow/Moldcool", de: "Anfangsphase - Allgemeintoleranz, Detaillierungsphase - Moldflow/Moldcool", zh: "初始阶段 - 一般公差，详细设计阶段 - Moldflow/Moldcool", sk: "Počiatočná fáza - všeobecná tolerancia, fáza detailovania - Moldflow/Moldcool" }
+            };
+
+            /* ────────────────────────────────────────────────────────────
+               3. TRANSLATION ENGINE
+               ──────────────────────────────────────────────────────────── */
+            const LANG_META = {
+                en: { label: 'English', flag: 'https://flagcdn.com/w20/gb.png' },
+                cs: { label: 'Čeština', flag: 'https://flagcdn.com/w20/cz.png' },
+                de: { label: 'Deutsch', flag: 'https://flagcdn.com/w20/de.png' },
+                zh: { label: '中文', flag: 'https://flagcdn.com/w20/cn.png' },
+                sk: { label: 'Slovenčina', flag: 'https://flagcdn.com/w20/sk.png' }
+            };
+
+            let currentLang = 'en';                    // Default = English
+            const i18nTextNodes = [];                  // { node, original }
+            const i18nPlaceholders = [];               // { el, original }
+            const i18nTracked = new WeakSet();         // avoid double-registering
+            const i18nOriginalTitle = document.title;
+
+            const normKey = (s) => s.replace(/\s+/g, ' ').trim();
+            const tr = (key, lang) => {
+                lang = lang || currentLang;
+                if (lang === 'en') return key;
+                const entry = I18N[normKey(key)];
+                return (entry && entry[lang]) ? entry[lang] : key;
+            };
+
+            function isExcluded(el) {
+                while (el && el.nodeType === 1) {
+                    const tag = el.tagName;
+                    if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'TEXTAREA') return true;
+                    if (el.hasAttribute && el.hasAttribute('data-no-i18n')) return true;
+                    el = el.parentElement;
                 }
-            });
-        }
+                return false;
+            }
 
-        // Apply the active language to every tracked node
-        function applyLanguage() {
-            i18nTextNodes.forEach(({ node, original }) => {
-                if (!node.isConnected) return;
-                if (currentLang === 'en') { node.nodeValue = original; return; }
-                const entry = I18N[normKey(original)];
-                if (entry && entry[currentLang]) {
-                    // Preserve original leading/trailing whitespace (inline spacing)
-                    const lead = (original.match(/^\s*/) || [''])[0];
-                    const tail = (original.match(/\s*$/) || [''])[0];
-                    node.nodeValue = lead + entry[currentLang] + tail;
-                } else {
-                    node.nodeValue = original; // fallback: keep English
+            // Collect (or re-collect) every translatable text node & placeholder
+            function collectI18nNodes() {
+                const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+                    acceptNode(node) {
+                        if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+                        if (isExcluded(node.parentElement)) return NodeFilter.FILTER_REJECT;
+                        return NodeFilter.FILTER_ACCEPT;
+                    }
+                });
+                let n;
+                while ((n = walker.nextNode())) {
+                    if (!i18nTracked.has(n)) {
+                        i18nTracked.add(n);
+                        i18nTextNodes.push({ node: n, original: n.nodeValue });
+                    }
                 }
-            });
-            i18nPlaceholders.forEach(({ el, original }) => {
-                if (!el.isConnected) return;
-                el.setAttribute('placeholder', tr(original));
-            });
-            // Browser tab title
-            document.title = tr(i18nOriginalTitle.replace(/\s+/g, ' ').trim() ===
-                'Tolerance Simulation Request/ Input Review Form'
-                ? 'Tolerance Simulation Request / Input Review Form'
-                : i18nOriginalTitle);
-            // Revision-history link (managed manually, excluded from walker)
-            const revLink = document.getElementById('revHistoryLink');
-            if (revLink) revLink.textContent = tr(revHistoryOpen ? 'Hide History' : 'View History');
-            // <html lang=""> attribute for accessibility
-            document.documentElement.setAttribute('lang',
-                { en: 'en-GB', cs: 'cs-CZ', de: 'de-DE', zh: 'zh-CN', sk: 'sk-SK' }[currentLang]);
-        }
-
-        function setLanguage(lang) {
-            currentLang = lang;
-            collectI18nNodes();      // pick up any rows added since last run
-            applyLanguage();
-            const meta = LANG_META[lang];
-            const flagEl = document.getElementById('langBtnFlag');
-            const labelEl = document.getElementById('langBtnLabel');
-            if (flagEl) flagEl.src = meta.flag;
-            if (labelEl) labelEl.textContent = meta.label;
-            const menu = document.getElementById('langMenu');
-            if (menu) { menu.classList.add('hidden'); menu.style.display = 'none'; }
-        }
-
-        /* Language dropdown open/close */
-        function toggleLangMenu(e) {
-            if (e) e.stopPropagation();
-            const menu = document.getElementById('langMenu');
-            if (!menu) return;
-            const isHidden = menu.style.display === 'none' || menu.classList.contains('hidden');
-            if (isHidden) {
-                menu.classList.remove('hidden');
-                menu.style.display = '';
-            } else {
-                menu.classList.add('hidden');
-                menu.style.display = 'none';
+                document.querySelectorAll('[placeholder]').forEach(el => {
+                    if (!i18nTracked.has(el) && !isExcluded(el)) {
+                        i18nTracked.add(el);
+                        i18nPlaceholders.push({ el, original: el.getAttribute('placeholder') });
+                    }
+                });
             }
-        }
-        document.addEventListener('click', (e) => {
-            const menu = document.getElementById('langMenu');
-            if (menu && menu.style.display !== 'none' && !e.target.closest('#langSwitcher')) {
-                menu.classList.add('hidden');
-                menu.style.display = 'none';
-            }
-        });
 
-        /* Keep dynamically added content (e.g. new TG part rows) translated */
-        let i18nMutationTimer = null;
-        const i18nObserver = new MutationObserver(() => {
-            if (currentLang === 'en') return;
-            clearTimeout(i18nMutationTimer);
-            i18nMutationTimer = setTimeout(() => {
-                collectI18nNodes();
+            // Apply the active language to every tracked node
+            function applyLanguage() {
+                i18nTextNodes.forEach(({ node, original }) => {
+                    if (!node.isConnected) return;
+                    if (currentLang === 'en') { node.nodeValue = original; return; }
+                    const entry = I18N[normKey(original)];
+                    if (entry && entry[currentLang]) {
+                        // Preserve original leading/trailing whitespace (inline spacing)
+                        const lead = (original.match(/^\s*/) || [''])[0];
+                        const tail = (original.match(/\s*$/) || [''])[0];
+                        node.nodeValue = lead + entry[currentLang] + tail;
+                    } else {
+                        node.nodeValue = original; // fallback: keep English
+                    }
+                });
+                i18nPlaceholders.forEach(({ el, original }) => {
+                    if (!el.isConnected) return;
+                    el.setAttribute('placeholder', tr(original));
+                });
+                // Browser tab title
+                document.title = tr(i18nOriginalTitle.replace(/\s+/g, ' ').trim() ===
+                    'Tolerance Simulation Request/ Input Review Form'
+                    ? 'Tolerance Simulation Request / Input Review Form'
+                    : i18nOriginalTitle);
+                // Revision-history link (managed manually, excluded from walker)
+                const revLink = document.getElementById('revHistoryLink');
+                if (revLink) revLink.textContent = tr(revHistoryOpen ? 'Hide History' : 'View History');
+                // <html lang=""> attribute for accessibility
+                document.documentElement.setAttribute('lang',
+                    { en: 'en-GB', cs: 'cs-CZ', de: 'de-DE', zh: 'zh-CN', sk: 'sk-SK' }[currentLang]);
+            }
+
+            function setLanguage(lang) {
+                currentLang = lang;
+                collectI18nNodes();      // pick up any rows added since last run
                 applyLanguage();
-            }, 120);
-        });
+                const meta = LANG_META[lang];
+                const flagEl = document.getElementById('langBtnFlag');
+                const labelEl = document.getElementById('langBtnLabel');
+                if (flagEl) flagEl.src = meta.flag;
+                if (labelEl) labelEl.textContent = meta.label;
+                const menu = document.getElementById('langMenu');
+                if (menu) { menu.classList.add('hidden'); menu.style.display = 'none'; }
+            }
 
-        /* Init after every other script has populated the DOM */
-        window.addEventListener('load', () => {
-            collectI18nNodes();
-            i18nObserver.observe(document.getElementById('toleranceForm') || document.body,
-                { childList: true, subtree: true });
-        });
-    </script>
+            /* Language dropdown open/close */
+            function toggleLangMenu(e) {
+                if (e) e.stopPropagation();
+                const menu = document.getElementById('langMenu');
+                if (!menu) return;
+                const isHidden = menu.style.display === 'none' || menu.classList.contains('hidden');
+                if (isHidden) {
+                    menu.classList.remove('hidden');
+                    menu.style.display = '';
+                } else {
+                    menu.classList.add('hidden');
+                    menu.style.display = 'none';
+                }
+            }
+            document.addEventListener('click', (e) => {
+                const menu = document.getElementById('langMenu');
+                if (menu && menu.style.display !== 'none' && !e.target.closest('#langSwitcher')) {
+                    menu.classList.add('hidden');
+                    menu.style.display = 'none';
+                }
+            });
+
+            /* Keep dynamically added content (e.g. new TG part rows) translated */
+            let i18nMutationTimer = null;
+            const i18nObserver = new MutationObserver(() => {
+                if (currentLang === 'en') return;
+                clearTimeout(i18nMutationTimer);
+                i18nMutationTimer = setTimeout(() => {
+                    collectI18nNodes();
+                    applyLanguage();
+                }, 120);
+            });
+
+            /* Init after every other script has populated the DOM */
+            window.addEventListener('load', () => {
+                collectI18nNodes();
+                i18nObserver.observe(document.getElementById('toleranceForm') || document.body,
+                    { childList: true, subtree: true });
+            });
+        </script>
 
 </body>
 
