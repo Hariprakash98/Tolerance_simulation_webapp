@@ -1331,7 +1331,8 @@
                                                     directions</label>
                                                 <label
                                                     class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none">
-                                                    <input type="checkbox" name="Optical Scope Analysis" value="Others" />
+                                                    <input type="checkbox" name="Optical Scope Analysis"
+                                                        value="Others" />
                                                     Others</label>
                                             </div>
                                         </div>
@@ -2087,9 +2088,8 @@
                                 <!-- Datum Feasibility -->
 
                                 <div class="grid-row">
-                                    <label class="bg-brandDark p-2 text-sm rounded">Customer Datum Fixation Review
-                                        (Functional Design & Dimensioning
-                                        Method)</label>
+                                    <label class="bg-brandDark p-2 text-sm rounded">Review of the Lamp Datum system with
+                                        the Vehicle interface</label>
                                     <div class="grid-control">
                                         <div class="flex flex-col gap-2">
                                             <select name="fddReview" id="fddReview-geometry"
@@ -2534,7 +2534,8 @@
                                                 <span class="tol-row-default cpk-default" data-default="1.00">Cpk = 1.00
                                                     (Default)</span>
                                                 <select name="cpkSinglePartOga" class="field-input cpk-select">
-                                                    <option value="1.00">-- Select Cpk if there any deviation from standard
+                                                    <option value="1.00">-- Select Cpk if there any deviation from
+                                                        standard
                                                         --</option>
                                                     <option value="1.33">Cpk = 1.33</option>
                                                     <option value="1.67">Cpk = 1.67</option>
@@ -2552,7 +2553,8 @@
                                             <span class="tol-row-default cpk-default" data-default="1.33">Cpk = 1.33
                                                 (Default)</span>
                                             <select name="cpkAssemblyOga" class="field-input cpk-select">
-                                                <option value="1.33">-- Select Cpk if there any deviation from standard --
+                                                <option value="1.33">-- Select Cpk if there any deviation from standard
+                                                    --
                                                 </option>
                                                 <option value="1.00">Cpk = 1.00</option>
                                                 <option value="1.67">Cpk = 1.67</option>
@@ -4113,6 +4115,13 @@
 
             // ── 8. Data Collection ─────────────────────────────────────────────
 
+            // Wraps text with Unicode combining strikethrough marks so a struck-out
+            // value keeps looking struck-out even once it's plain exported text
+            // (PDF/PPT/Excel/Mail can't apply CSS classes).
+            function strikeText(str) {
+                return String(str).split('').map(ch => ch + '\u0336').join('');
+            }
+
             function collectToleranceGroupRows(activeSection) {
                 const parts = [];
                 if (!activeSection) return parts;
@@ -4122,8 +4131,12 @@
                     const pn = row.querySelector('.tg-part-name')?.value.trim() || '';
                     const cat = row.querySelector('.tg-material-category')?.value.trim() || '';
                     const mt = row.querySelector('.tg-material')?.value.trim() || '';
-                    const tg = row.querySelector('.tg-group-value')?.value.trim() || '';
+                    const tgField = row.querySelector('.tg-group-value');
+                    let tg = tgField?.value.trim() || '';
                     const ex = row.querySelector('.tg-extra-input')?.value.trim() || '';
+                    // NEW: if this TG class is struck-through on screen, carry that
+                    // strike-through into the exported text too.
+                    if (tg && tgField?.classList.contains('tg-struck')) tg = strikeText(tg);
                     if (pn || cat || mt || tg || ex) {
                         parts.push(`${pn || '-'} / ${cat || '-'} / ${mt || '-'} / ${tg || '-'} / ${ex || '-'}`);
                     }
