@@ -2530,11 +2530,15 @@
                                     <div class="grid-row">
                                         <label class="bg-brandDark p-2 text-sm rounded">Cpk for Single Part</label>
                                         <div class="grid-control">
-                                            <select name="cpkSinglePartOga" class="field-input">
-                                                <option value="1.00">Cpk = 1.00 (Default)</option>
-                                                <option value="1.33">Cpk = 1.33</option>
-                                                <option value="1.67">Cpk = 1.67</option>
-                                            </select>
+                                            <div class="flex items-center gap-2">
+                                                <span class="tol-row-default cpk-default" data-default="1.00">Cpk = 1.00
+                                                    (Default)</span>
+                                                <select name="cpkSinglePartOga" class="field-input cpk-select">
+                                                    <option value="">-- Select Cpk if there any deviation from standard --</option>
+                                                    <option value="1.33">Cpk = 1.33</option>
+                                                    <option value="1.67">Cpk = 1.67</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -2543,11 +2547,15 @@
                                 <div class="grid-row">
                                     <label class="bg-brandDark p-2 text-sm rounded">Cpk for Gap & Flush</label>
                                     <div class="grid-control">
-                                        <select name="cpkAssemblyOga" class="field-input">
-                                            <option value="1.33">Cpk = 1.33 (Default)</option>
-                                            <option value="1.00">Cpk = 1.00</option>
-                                            <option value="1.67">Cpk = 1.67</option>
-                                        </select>
+                                        <div class="flex items-center gap-2">
+                                            <span class="tol-row-default cpk-default" data-default="1.33">Cpk = 1.33
+                                                (Default)</span>
+                                            <select name="cpkAssemblyOga" class="field-input cpk-select">
+                                                <option value="">-- Select Cpk if there any deviation from standard --</option>
+                                                <option value="1.00">Cpk = 1.00</option>
+                                                <option value="1.67">Cpk = 1.67</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -5035,6 +5043,18 @@
                 }
             });
 
+            // NEW: Strike-through the Cpk default label whenever the dropdown is
+            // changed away from its default value (Cpk for Single Part / Cpk for Gap & Flush).
+            document.addEventListener('change', (e) => {
+                if (e.target.matches('.cpk-select')) {
+                    const wrap = e.target.closest('.grid-control');
+                    const defaultVal = wrap ? wrap.querySelector('.cpk-default') : null;
+                    if (defaultVal) {
+                        defaultVal.classList.toggle('tol-struck', e.target.value !== defaultVal.dataset.default);
+                    }
+                }
+            });
+
             document.addEventListener('change', (e) => {
                 if (e.target.closest('#toleranceForm')) refreshAllFieldStatuses();
             });
@@ -5194,6 +5214,8 @@
                 "Light Functions": { cs: "Světelné funkce", de: "Lichtfunktionen", zh: "灯光功能", sk: "Svetelné funkcie" },
                 "Number of Component Involved": { cs: "Počet zapojených komponent", de: "Anzahl beteiligter Komponenten", zh: "涉及组件数量", sk: "Počet zapojených komponentov" },
                 "Part Name/Material/ Tolerance group for involved components (TG)": { cs: "Název dílu/materiál/toleranční skupina zapojených komponent (TG)", de: "Teilename/Material/Toleranzgruppe der beteiligten Komponenten (TG)", zh: "涉及组件的零件名称/材料/公差组 (TG)", sk: "Názov dielu/materiál/tolerančná skupina zapojených komponentov (TG)" },
+                "Scope of Analysis - Optical": { cs: "Rozsah analýzy – Optická simulace", de: "Analyseumfang – Optische Simulation", zh: "分析范围 - 光学仿真", sk: "Rozsah analýzy – Optická simulácia" },
+                "Others": { cs: "Ostatní", de: "Andere", zh: "其他", sk: "Ostatné" },
                 "Single part tolerance": { cs: "Tolerance jednotlivého dílu", de: "Einzelteiltoleranz", zh: "单件公差", sk: "Tolerancia jednotlivého dielu" },
                 "Cpk for single part": { cs: "Cpk pro jednotlivý díl", de: "Cpk für Einzelteil", zh: "单件Cpk", sk: "Cpk pre jednotlivý diel" },
                 "Cpk for Single Part": { cs: "Cpk pro jednotlivý díl", de: "Cpk für Einzelteil", zh: "单件Cpk", sk: "Cpk pre jednotlivý diel" },
