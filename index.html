@@ -1317,13 +1317,29 @@
                             <!-- ===== Internal - Optical: study note ===== -->
 
                             <div id="opticalNoteBlock" class="lf-grid optical-scope-note">
-                                <label class="bg-brandDark p-2 text-sm rounded"> Scope of Analysis - Optical - Variation
-                                    between LED to Optical
-                                    surface in X, Y &amp; Z directions</label>
+                                <label class="bg-brandDark p-2 text-sm rounded">Scope of Analysis - Optical</label>
                                 <div class="grid-control">
-
-                                    <textarea name="opticalStudyRemarks" rows="2" class="field-input resize-none"
-                                        placeholder="Remarks"></textarea>
+                                    <div class="single-tol-wrap">
+                                        <div class="tol-checks">
+                                            <div
+                                                class="square-checkbox-group flex gap-1 p-1 rounded items-center overflow-x-auto">
+                                                <label
+                                                    class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none">
+                                                    <input type="checkbox" name="opticalScopeAnalysis"
+                                                        value="Variation between LED to Optical surface in X, Y & Z directions" />
+                                                    Variation between LED to Optical surface in X, Y &amp; Z
+                                                    directions</label>
+                                                <label
+                                                    class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none">
+                                                    <input type="checkbox" name="opticalScopeAnalysis" value="Others" />
+                                                    Others</label>
+                                            </div>
+                                        </div>
+                                        <div class="tol-link">
+                                            <textarea name="opticalStudyRemarks" rows="2"
+                                                class="field-input resize-none" placeholder="Remarks"></textarea>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="right-note"></div>
                             </div>
@@ -1604,18 +1620,30 @@
                                  shared content block regardless of which toggle was active) ===== -->
 
                             <div id="opticalNoteBlock-connectorstudy" class="lf-grid optical-scope-note">
-
-
-                                <label class="bg-brandDark p-2 text-sm rounded">
-                                    Connector Study - Position of terminals in X, Y & Z relative to housing connector
-                                    receiving geometries
-                                    <br /><br />
-                                    Connector Study - Parking connector assembly verification
-                                </label>
-
+                                <label class="bg-brandDark p-2 text-sm rounded">Scope of Analysis - Connector
+                                    Study</label>
                                 <div class="grid-control">
-                                    <textarea name="opticalStudyRemarks" rows="2" class="field-input resize-none"
-                                        placeholder="Remarks"></textarea>
+                                    <div class="single-tol-wrap">
+                                        <div class="tol-checks">
+                                            <div
+                                                class="square-checkbox-group flex gap-1 p-1 rounded items-center overflow-x-auto">
+                                                <label
+                                                    class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none">
+                                                    <input type="checkbox" name="connectorScopeAnalysis"
+                                                        value="Position of terminals in X, Y & Z relative to housing connector receiving geometries" />
+                                                    Position of terminals in X, Y &amp; Z</label>
+                                                <label
+                                                    class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none">
+                                                    <input type="checkbox" name="connectorScopeAnalysis"
+                                                        value="Parking connector assembly verification" />
+                                                    Parking connector assembly verification</label>
+                                            </div>
+                                        </div>
+                                        <div class="tol-link">
+                                            <textarea name="opticalStudyRemarks" rows="2"
+                                                class="field-input resize-none" placeholder="Remarks"></textarea>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="right-note"></div>
                             </div>
