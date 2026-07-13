@@ -2534,7 +2534,7 @@
                                                 <span class="tol-row-default cpk-default" data-default="1.00">Cpk = 1.00
                                                     (Default)</span>
                                                 <select name="cpkSinglePartOga" class="field-input cpk-select">
-                                                    <option value="">-- Select Cpk if there any deviation from standard
+                                                    <option value="1.00">-- Select Cpk if there any deviation from standard
                                                         --</option>
                                                     <option value="1.33">Cpk = 1.33</option>
                                                     <option value="1.67">Cpk = 1.67</option>
@@ -2552,7 +2552,7 @@
                                             <span class="tol-row-default cpk-default" data-default="1.33">Cpk = 1.33
                                                 (Default)</span>
                                             <select name="cpkAssemblyOga" class="field-input cpk-select">
-                                                <option value="">-- Select Cpk if there any deviation from standard --
+                                                <option value="1.33">-- Select Cpk if there any deviation from standard --
                                                 </option>
                                                 <option value="1.00">Cpk = 1.00</option>
                                                 <option value="1.67">Cpk = 1.67</option>
@@ -4205,14 +4205,24 @@
                 return `${parts[2]}/${parts[1]}/${parts[0]}`;
             }
 
+            // Translate a field's label / value using the currently selected language
+            function trLabel(key) {
+                return tr(FIELD_LABELS[key] || key);
+            }
+            function trValue(v) {
+                if (Array.isArray(v)) return v.length ? v.map(x => tr(x)).join(', ') : '-';
+                const s = (v && String(v).trim()) ? String(v).trim() : '';
+                return s ? tr(s) : '-';
+            }
+
             function rowsFromData(data) {
                 const projectRows = COMMON_FIELD_NAMES.map(key => [
-                    FIELD_LABELS[key] || key,
+                    trLabel(key),
                     key === 'studyTarget'
-                        ? (STUDY_NAMES[data[key]] || data[key] || '-')
+                        ? tr(STUDY_NAMES[data[key]] || data[key] || '-')
                         : key === 'requestDate'
                             ? (formatDateDDMMYYYY(data[key]) || '-')
-                            : displayValue(data[key])
+                            : trValue(data[key])
                 ]);
                 // NOTE (bug fix): 'moldflowFile' — the .STL file of Moldflow/Moldcool/
                 // 3D Scan Data link/DIS number that goes with the "Available / Not
@@ -4229,7 +4239,7 @@
                 // reference for every "Type of Tolerance Analysis" section.
                 const activeRows = Object.keys(data)
                     .filter(k => !COMMON_FIELD_NAMES.includes(k))
-                    .map(k => [FIELD_LABELS[k] || k, displayValue(data[k])]);
+                    .map(k => [trLabel(k), trValue(data[k])]);
                 return { projectRows, activeRows };
             }
 
@@ -4595,9 +4605,9 @@
                 const bodyLines = Object.keys(data)
                     .filter(k => { const v = data[k]; return v !== undefined && v !== null && v !== '' && !(Array.isArray(v) && v.length === 0); })
                     .map(k => {
-                        const label = FIELD_LABELS[k] || k;
-                        const value = k === 'studyTarget' ? (STUDY_NAMES[data[k]] || data[k])
-                            : displayValue(data[k]);
+                        const label = trLabel(k);
+                        const value = k === 'studyTarget' ? tr(STUDY_NAMES[data[k]] || data[k])
+                            : trValue(data[k]);
                         return `${label}: ${value}`;
                     });
 
