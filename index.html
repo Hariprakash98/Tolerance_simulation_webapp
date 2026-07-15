@@ -1272,7 +1272,7 @@
 
                         <!-- ===== Internal - Sub Assembly/Product: study note ===== -->
 
-                        <div id="subAssemblyNoteBlock" class="lf-grid" style="display:none;">
+                        <div id="subAssemblyNoteBlock" class="lf-grid" style="display:none;" data-weight="10">
                             <label class="bg-brandDark p-2 text-sm rounded"> Scope of study - Virtual Assembly build for
                                 clearances between
                                 parts</label>
@@ -1291,7 +1291,7 @@
 
                         <!-- ===== Internal - Connector: study note (single remarks box for both lines) ===== -->
 
-                        <div id="connectorNoteBlock" class="lf-grid" style="display:none;">
+                        <div id="connectorNoteBlock" class="lf-grid" style="display:none;" >
                             <label class="bg-brandDark p-2 text-sm rounded">
                                 Connector Study - Position of terminals in X, Y & Z relative to housing connector
                                 receiving geometries
@@ -1316,7 +1316,7 @@
 
                             <!-- ===== Internal - Optical: study note ===== -->
 
-                            <div id="opticalNoteBlock" class="lf-grid optical-scope-note">
+                            <div id="opticalNoteBlock" class="lf-grid optical-scope-note" data-weight="7.5">
                                 <label class="bg-brandDark p-2 text-sm rounded">Scope of Analysis - Optical</label>
                                 <div class="grid-control">
                                     <div class="single-tol-wrap">
@@ -1338,17 +1338,17 @@
                                         </div>
                                         <div class="tol-link">
                                             <textarea name="opticalStudyRemarks" rows="2"
-                                                class="field-input resize-none" placeholder="Remarks"></textarea>
+                                                class="field-input resize-none" placeholder="Remarks (if others)"></textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="right-note"></div>
                             </div>
 
-                           
+
 
                             <!-- Light Functions -->
-                            <div class="lf-grid" id="lightFunctionsRow">
+                            <div class="lf-grid" id="lightFunctionsRow" data-weight="10">
                                 <label class="bg-brandDark p-2 text-sm rounded">Light Functions
                                     <span class="text-xs text-gray-400 font-normal"><br />LB - Low Beam, HB - High Beam,
                                         DRL
@@ -1390,7 +1390,7 @@
                             </div>
 
                             <!-- FDD Review -->
-                            <div class="lf-grid">
+                            <div class="lf-grid" data-weight="10">
                                 <label class="bg-brandDark p-2 text-sm rounded">Concept review for Functional Design
                                     &amp;
                                     Dimensioning (FDD)</label>
@@ -1413,7 +1413,7 @@
                             </div>
 
                             <!-- Reviewed Location & Fixation Concept PPT -->
-                            <div class="lf-grid">
+                            <div class="lf-grid" data-weight="10">
                                 <label class="bg-brandDark p-2 text-sm rounded">Updated/Latest Location &amp; Fixation
                                     Concept
                                     PPT</label>
@@ -1438,7 +1438,7 @@
                             </div>
 
                             <!-- Assembly Sequence -->
-                            <div class="lf-grid">
+                            <div class="lf-grid" data-weight="10">
                                 <label class="bg-brandDark p-2 text-sm rounded">Assembly sequence</label>
                                 <div class="grid-control">
                                     <div class="moldflow-avail-row">
@@ -1460,9 +1460,9 @@
                                 <div class="right-note"></div>
                             </div>
 
-                             <!-- Single Part Tolerance -->
+                            <!-- Single Part Tolerance -->
 
-                            <div class="lf-grid">
+                            <div class="lf-grid" data-weight="10">
                                 <label class="bg-brandDark p-2 text-sm rounded">Single part tolerance</label>
                                 <div class="grid-control">
                                     <div class="single-tol-wrap">
@@ -1493,7 +1493,7 @@
                             </div>
 
                             <!-- Part Name / Material / TG -->
-                            <div class="lf-grid">
+                            <div class="lf-grid" data-weight="10">
                                 <label class="bg-brandDark p-2 text-sm rounded">Part Name/Material/ Tolerance group for
                                     involved components (TG)
                                     <br />
@@ -1511,7 +1511,7 @@
                             </div>
 
                             <!-- CAD Data -->
-                            <div class="lf-grid">
+                            <div class="lf-grid" data-weight="10">
                                 <label class="bg-brandDark p-2 text-sm rounded">CAD data (DIS No)</label>
                                 <div class="grid-control">
                                     <div class="moldflow-avail-row">
@@ -1533,8 +1533,8 @@
                                 <div class="right-note"></div>
                             </div>
 
-                            <!-- Connector Type -->
-                            <div class="lf-grid">
+                            <!-- LED Type -->
+                            <div class="lf-grid" data-weight="2.5">
                                 <label class="bg-brandDark p-2 text-sm rounded">LED Type (Drawing)</label>
                                 <div class="grid-control">
                                     <input type="text" name="ledType" placeholder="DIS Number / Sharepoint link"
@@ -1544,7 +1544,7 @@
                             </div>
 
                             <!-- 2D Drawings -->
-                            <div class="lf-grid">
+                            <div class="lf-grid" data-weight="2.5">
                                 <label class="bg-brandDark p-2 text-sm rounded">
                                     2D drawings
                                     <span class="text-xs text-gray-400 font-normal">(Single Component/PCB - If
@@ -1558,7 +1558,7 @@
                             </div>
 
                             <!-- Cpk for Single Part -->
-                            <div class="lf-grid">
+                            <div class="lf-grid" data-weight="2.5">
                                 <label class="bg-brandDark p-2 text-sm rounded">Cpk for single part <span
                                         class="text-xs text-gray-400 font-normal">(For PCB - 1.33Cpk)</span></label>
                                 <div class="grid-control">
@@ -1573,7 +1573,7 @@
                             </div>
 
                             <!-- Moldflow (with Available / Not Available checkboxes) -->
-                            <div class="lf-grid">
+                            <div class="lf-grid" data-weight="2.5">
                                 <label class="bg-brandDark p-2 text-sm rounded">.STL file of Moldflow/Moldcool/3D Scan
                                     Data for critical studies</label>
                                 <div class="grid-control">
@@ -1622,7 +1622,7 @@
                                  matching previous behaviour where this note lived inside the
                                  shared content block regardless of which toggle was active) ===== -->
 
-                            <div id="opticalNoteBlock-connectorstudy" class="lf-grid optical-scope-note">
+                            <div id="opticalNoteBlock-connectorstudy" class="lf-grid optical-scope-note" data-weight="15">
                                 <label class="bg-brandDark p-2 text-sm rounded">Scope of Analysis - Connector
                                     Study</label>
                                 <div class="grid-control">
@@ -1644,7 +1644,7 @@
                                         </div>
                                         <div class="tol-link">
                                             <textarea name="opticalStudyRemarks" rows="2"
-                                                class="field-input resize-none" placeholder="Remarks"></textarea>
+                                                class="field-input resize-none" placeholder="Remarks (if others)"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -1652,7 +1652,7 @@
                             </div>
 
                             <!-- FDD Review -->
-                            <div class="lf-grid">
+                            <div class="lf-grid" data-weight="10">
                                 <label class="bg-brandDark p-2 text-sm rounded">Concept review for Functional Design
                                     &amp;
                                     Dimensioning (FDD)</label>
@@ -1675,7 +1675,7 @@
                             </div>
 
                             <!-- Reviewed Location & Fixation Concept PPT -->
-                            <div class="lf-grid">
+                            <div class="lf-grid" data-weight="10">
                                 <label class="bg-brandDark p-2 text-sm rounded">Updated/Latest Location &amp; Fixation
                                     Concept
                                     PPT</label>
@@ -1700,7 +1700,7 @@
                             </div>
 
                             <!-- Assembly Sequence -->
-                            <div class="lf-grid">
+                            <div class="lf-grid" data-weight="10">
                                 <label class="bg-brandDark p-2 text-sm rounded">Assembly sequence</label>
                                 <div class="grid-control">
                                     <div class="moldflow-avail-row">
@@ -1722,9 +1722,9 @@
                                 <div class="right-note"></div>
                             </div>
 
-                             <!-- Single Part Tolerance -->
+                            <!-- Single Part Tolerance -->
 
-                            <div class="lf-grid">
+                            <div class="lf-grid" data-weight="10">
                                 <label class="bg-brandDark p-2 text-sm rounded">Single part tolerance</label>
                                 <div class="grid-control">
                                     <div class="single-tol-wrap">
@@ -1755,7 +1755,7 @@
                             </div>
 
                             <!-- Part Name / Material / TG -->
-                            <div class="lf-grid">
+                            <div class="lf-grid" data-weight="10">
                                 <label class="bg-brandDark p-2 text-sm rounded">Part Name/Material/ Tolerance group for
                                     involved components (TG)
                                     <br />
@@ -1773,7 +1773,7 @@
                             </div>
 
                             <!-- CAD Data -->
-                            <div class="lf-grid">
+                            <div class="lf-grid" data-weight="10">
                                 <label class="bg-brandDark p-2 text-sm rounded">CAD data (DIS No)</label>
                                 <div class="grid-control">
                                     <div class="moldflow-avail-row">
@@ -1795,8 +1795,8 @@
                                 <div class="right-note"></div>
                             </div>
 
-                            <!-- LED Type -->
-                            <div class="lf-grid">
+                            <!-- Connector Type -->
+                            <div class="lf-grid" data-weight="10">
                                 <label class="bg-brandDark p-2 text-sm rounded">Connector Type (Drawing)</label>
                                 <div class="grid-control">
                                     <input type="text" name="ledType" placeholder="DIS Number / Sharepoint link"
@@ -1806,7 +1806,7 @@
                             </div>
 
                             <!-- 2D Drawings -->
-                            <div class="lf-grid">
+                            <div class="lf-grid" data-weight="5">
                                 <label class="bg-brandDark p-2 text-sm rounded">
                                     2D drawings
                                     <span class="text-xs text-gray-400 font-normal">(Single Component - If
@@ -1820,7 +1820,7 @@
                             </div>
 
                             <!-- Cpk for Single Part -->
-                            <div class="lf-grid">
+                            <div class="lf-grid" data-weight="2.5">
                                 <label class="bg-brandDark p-2 text-sm rounded">Cpk for single part </label>
                                 <div class="grid-control">
                                     <select name="cpkTarget" id="cpkSinglePart-connectorstudy"
@@ -1834,7 +1834,7 @@
                             </div>
 
                             <!-- Moldflow (with Available / Not Available checkboxes) -->
-                            <div class="lf-grid">
+                            <div class="lf-grid" data-weight="2.5">
                                 <label class="bg-brandDark p-2 text-sm rounded">.STL file of Moldflow/Moldcool/3D Scan
                                     Data for critical studies</label>
                                 <div class="grid-control">
@@ -1876,8 +1876,8 @@
                          status bar, and PDF/PPT/Excel/Email export all work automatically. -->
                         <div id="subAssemblyContent" style="display:none;">
 
-                             <!-- FDD Review -->
-                            <div class="lf-grid">
+                            <!-- FDD Review -->
+                            <div class="lf-grid" data-weight="7.5">
                                 <label class="bg-brandDark p-2 text-sm rounded">Concept review for Functional Design
                                     &amp;
                                     Dimensioning (FDD)</label>
@@ -1901,7 +1901,7 @@
 
 
                             <!-- Updated/Latest Location & Fixation Concept PPT -->
-                            <div class="lf-grid">
+                            <div class="lf-grid" data-weight="2.5">
                                 <label class="bg-brandDark p-2 text-sm rounded">Updated/Latest Location &amp; Fixation
                                     Concept PPT</label>
                                 <div class="grid-control">
@@ -1925,7 +1925,7 @@
                             </div>
 
                             <!-- Assembly Sequence -->
-                            <div class="lf-grid">
+                            <div class="lf-grid" data-weight="2.5">
                                 <label class="bg-brandDark p-2 text-sm rounded">Assembly sequence</label>
                                 <div class="grid-control">
                                     <div class="moldflow-avail-row">
@@ -1988,7 +1988,7 @@
                         </div> -->
 
                             <!-- CAD Data -->
-                            <div class="lf-grid">
+                            <div class="lf-grid" data-weight="2.5">
                                 <label class="bg-brandDark p-2 text-sm rounded">CAD data (DIS No)</label>
                                 <div class="grid-control">
                                     <div class="moldflow-avail-row">
@@ -2011,7 +2011,7 @@
                             </div>
 
                             <!-- EBOM Data -->
-                            <div class="lf-grid">
+                            <div class="lf-grid" data-weight="2.5">
                                 <label class="bg-brandDark p-2 text-sm rounded">EBOM (DIS No)</label>
                                 <div class="grid-control">
                                     <div class="moldflow-avail-row">
@@ -2153,7 +2153,7 @@
                                     </div>
                                 </div>
 
-                                <div class="grid-row">
+                                <div class="grid-row" data-weight="7.5">
                                     <label id="datumFeasibilityLabel" class="bg-brandDark p-2 text-sm rounded">Customer
                                         lamp fixation - Datum's
                                         feasibility</label>
@@ -2240,7 +2240,7 @@
                                 </div>
 
                                 <!-- Additional Tolerance Studies -->
-                                <div class="grid-row">
+                                <div class="grid-row" data-weight="7.5">
                                     <label class="bg-brandDark p-2 text-sm rounded">Tolerance studies - Type</label>
                                     <div class="grid-control">
                                         <div class="flex gap-2 flex-wrap p-1">
@@ -2371,7 +2371,7 @@
 
                                 <!-- ── Tolerance Considerations ─────────────────────── -->
 
-                                <div class="tol-considerations-wrap">
+                                <div class="tol-considerations-wrap" >
                                     <div class="tol-considerations-header">Process Tolerance (Joining/Measurement)</div>
                                     <div class="tol-lamp-toggle">
                                         <button type="button" class="tol-lamp-btn" data-lamp="headlamp"
@@ -2379,7 +2379,7 @@
                                         <button type="button" class="tol-lamp-btn" data-lamp="rearlamp"
                                             onclick="toggleLampTolerance('rearlamp')">Rear Lamp</button>
                                     </div>
-                                    <div id="rearLampConsiderations" style="display:none;">
+                                    <div id="rearLampConsiderations" style="display:none;"data-weight="5">
                                         <div class="tol-subsections-grid">
 
                                             <!-- Sub-section 1: Welding process tolerances -->
@@ -2576,7 +2576,7 @@
 
                                 <!-- Cpk for Single Part -->
                                 <div>
-                                    <div class="grid-row">
+                                    <div class="grid-row" data-weight="5">
                                         <label class="bg-brandDark p-2 text-sm rounded">Cpk for Single Part</label>
                                         <div class="grid-control">
                                             <div class="flex items-center gap-2">
@@ -2595,7 +2595,7 @@
                                 </div>
 
                                 <!-- Cpk for Assembly -->
-                                <div class="grid-row">
+                                <div class="grid-row" data-weight="15">
                                     <label class="bg-brandDark p-2 text-sm rounded">Cpk for Gap & Flush</label>
                                     <div class="grid-control">
                                         <div class="flex items-center gap-2">
@@ -2614,7 +2614,7 @@
 
 
                                 <!-- Part Name / Material / TG -->
-                                <div class="grid-row">
+                                <div class="grid-row" data-weight="5">
                                     <label class="bg-brandDark p-2 text-sm rounded">Part Name/Material/ Tolerance group
                                         for
                                         involved
@@ -2630,7 +2630,7 @@
                                 </div>
 
                                 <!-- Reference System -->
-                                <div class="grid-row">
+                                <div class="grid-row" data-weight="15">
                                     <label class="bg-brandDark p-2 text-sm rounded">Reference system (Datum/RPS)</label>
                                     <div class="grid-control">
                                         <div
@@ -2655,7 +2655,7 @@
                                 </div>
 
                                 <!-- Joining Process -->
-                                <div class="grid-row">
+                                <div class="grid-row" data-weight="5">
                                     <label class="bg-brandDark p-2 text-sm rounded">Joining process</label>
                                     <div class="grid-control">
                                         <div
@@ -2681,7 +2681,7 @@
                                 </div>
 
                                 <!-- Single Part Tolerance -->
-                                <div class="grid-row">
+                                <div class="grid-row" data-weight="5">
                                     <label class="bg-brandDark p-2 text-sm rounded">Single part tolerance</label>
                                     <div class="grid-control">
                                         <div class="single-tol-wrap">
@@ -2716,7 +2716,7 @@
 
 
                                 <!-- Lamp Measurement Method -->
-                                <div class="grid-row">
+                                <div class="grid-row" data-weight="5">
                                     <label class="bg-brandDark p-2 text-sm rounded">Lamp Measurement Method</label>
                                     <div class="grid-control">
                                         <div
@@ -2739,7 +2739,7 @@
                                 </div>
 
                                 <!-- Other Fixations -->
-                                <div class="grid-row">
+                                <div class="grid-row" data-weight="5">
                                     <label class="bg-brandDark p-2 text-sm rounded">Additional Datum System</label>
                                     <div class="grid-control">
                                         <div class="flex gap-1 p-1 rounded items-center overflow-x-auto">
@@ -2764,7 +2764,7 @@
                                 </div>
 
                                 <!-- CAD Data with Checklist -->
-                                <div class="grid-row">
+                                <div class="grid-row" data-weight="10">
                                     <div class="bg-brandDark p-2 text-sm rounded CAD-Data">
                                         CAD Data
                                         <label class="item-check-row"><input type="checkbox" name="cadCheck_HSG"
@@ -2791,7 +2791,7 @@
                                 </div>
 
                                 <!-- Document -->
-                                <div class="grid-row">
+                                <div class="grid-row" data-weight="6">
                                     <div class="bg-brandDark p-2 text-sm rounded">
                                         Customer Document(s)
                                         <label class="item-check-row">
@@ -3158,7 +3158,7 @@
 
 
                             <!-- Problem Statement -->
-                            <div class="grid-row">
+                            <div class="grid-row" data-weight="30">
                                 <label class="bg-brandDark p-2 text-sm rounded">Problem Statement</label>
                                 <div class="grid-control">
                                     <input type="text" name="rcaInternalProblemStatement"
@@ -3168,8 +3168,8 @@
                             </div>
 
                             <!-- Single Part Tolerance -->
-                            <div class="grid-row">
-                                <label class="bg-brandDark p-2 text-sm rounded">Single part tolerance</label>
+                            <div class="grid-row" data-weight="20">
+                                <label class="bg-brandDark p-2 text-sm rounded">Supplier Measurement report</label>
                                 <div class="grid-control">
                                     <div class="single-tol-wrap">
                                         <div class="tol-checks">
@@ -3178,14 +3178,14 @@
                                                 <label
                                                     class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
                                                         type="checkbox" name="rcaOpticalSinglePartTolerance"
-                                                        value="General Tolerance" /> General Tolerance</label>
-                                                <label
+                                                        value="General Tolerance" /> IQS</label>
+                                                <!-- <label
                                                     class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
                                                         type="checkbox" name="rcaOpticalSinglePartTolerance"
                                                         value="Moldflow" />
                                                     Moldflow</label>
-                                                <label
-                                                    class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
+                                                <label -->
+                                                    <!-- class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
                                                         type="checkbox" name="rcaOpticalSinglePartTolerance"
                                                         value="Moldcool" />
                                                     Moldcool</label>
@@ -3193,12 +3193,12 @@
                                                     class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
                                                         type="checkbox" name="rcaOpticalSinglePartTolerance"
                                                         value="3D Scan Data" />
-                                                    3D Scan Data</label>
+                                                    3D Scan Data</label> -->
                                             </div>
                                         </div>
                                         <div class="tol-link">
                                             <input type="text" name="rcaOpticalSinglePartToleranceLink"
-                                                placeholder="Initial phase - General Tolerance , Detailing phase - Moldflow/Moldcool"
+                                                placeholder="DIS no/SharePoint link"
                                                 class="field-input" />
                                         </div>
                                     </div>
@@ -3207,7 +3207,7 @@
                             </div>
 
                             <!-- Updated/Latest Location & Fixation Concept PPT -->
-                            <div class="grid-row">
+                            <div class="grid-row" data-weight="10">
                                 <label class="bg-brandDark p-2 text-sm rounded">Updated/Latest Location &amp; Fixation
                                     Concept
                                     PPT</label>
@@ -3232,7 +3232,7 @@
                             </div>
 
                             <!-- Assembly Sequence -->
-                            <div class="grid-row">
+                            <div class="grid-row" data-weight="5">
                                 <label class="bg-brandDark p-2 text-sm rounded">Assembly sequence</label>
                                 <div class="grid-control">
                                     <div class="moldflow-avail-row">
@@ -3255,7 +3255,7 @@
                             </div>
 
                             <!-- CAD Data -->
-                            <div class="grid-row">
+                            <div class="grid-row" data-weight="10">
                                 <label class="bg-brandDark p-2 text-sm rounded">CAD data (DIS No)</label>
                                 <div class="grid-control">
                                     <div class="moldflow-avail-row">
@@ -3278,7 +3278,7 @@
                             </div>
 
                             <!-- Cpk for Single Part -->
-                            <div class="grid-row">
+                            <div class="grid-row" data-weight="5">
                                 <label class="bg-brandDark p-2 text-sm rounded">Cpk for single part</label>
                                 <div class="grid-control">
                                     <select name="rcaInternalCpkTarget" id="cpkSinglePart-rcainternal"
@@ -3292,7 +3292,7 @@
                             </div>
 
                             <!-- Moldflow (with Available / Not Available checkboxes) -->
-                            <div class="grid-row">
+                            <div class="grid-row" data-weight="20">
                                 <label class="bg-brandDark p-2 text-sm rounded">.STL file of Moldflow/Moldcool/3D Scan
                                     Data for critical studies</label>
                                 <div class="grid-control">
@@ -5018,6 +5018,18 @@
                     const statusEl = row.querySelector(':scope > label.bg-brandDark, :scope > div.bg-brandDark');
                     if (statusEl && statusEl.getAttribute('data-status') === 'complete') rowsWeightComplete += w;
                 });
+
+                // Tolerance Considerations block (Operator Repeatability, Welding
+                // tolerances, Gluing Process Tolerance, etc.) — pre-filled with
+                // default values, so it counts as ONE unit, complete once a lamp
+                // type (Headlamp/Rear Lamp) has been selected.
+                const tolWrap = document.querySelector('.tol-considerations-wrap');
+                if (tolWrap && tolWrap.offsetParent !== null) {
+                    const tw = parseFloat(tolWrap.getAttribute('data-weight')) || 1;
+                    rowsWeightTotal += tw;
+                    if (tolWrap.querySelector('.tol-lamp-btn.active')) rowsWeightComplete += tw;
+                }
+
                 const rowsFrac = rowsWeightTotal ? (rowsWeightComplete / rowsWeightTotal) : 0;
 
                 // 3) Combine. If no analysis-type rows are visible yet (no
