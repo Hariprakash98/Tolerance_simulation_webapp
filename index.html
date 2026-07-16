@@ -219,10 +219,10 @@
         .square-checkbox-group input[type="checkbox"] {
             appearance: none;
             -webkit-appearance: none;
-            width: 12px;
-            height: 12px;
-            border: 0px solid #9ca3af;
-            border-radius: 2px;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #9ca3af;
+            border-radius: 3px;
             background: #fff;
             cursor: pointer;
             flex-shrink: 0;
@@ -237,14 +237,23 @@
         .square-checkbox-group input[type="checkbox"]:checked::after {
             content: '';
             position: absolute;
-            left: 3px;
-            top: 0px;
-            width: 5px;
-            height: 9px;
+            left: 6px;
+            top: 2px;
+            width: 6px;
+            height: 11px;
             border: 2px solid #fff;
             border-top: none;
             border-left: none;
             transform: rotate(45deg);
+        }
+
+        /* Enlarge every checkbox in the form (Moldflow Availability, Light Function,
+           Analysis Specific Assumptions, etc.) so all checkboxes are a consistent,
+           noticeably bigger size, even the ones using native browser styling. */
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
         }
 
         .tolernce-cnt {
@@ -912,12 +921,21 @@
 
         .analysis-assumptions-wrap ul {
             margin: 8px 0 0 0;
-            padding-left: 18px;
+            padding-left: 0;
+            list-style: none;
             font-size: .8rem;
             color: #e5e7eb;
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 6px;
+        }
+
+        .analysis-assumptions-wrap ul li label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            user-select: none;
         }
     </style>
 </head>
@@ -1394,7 +1412,7 @@
                             <div class="lf-grid" data-weight="10">
                                 <label class="bg-brandDark p-2 text-sm rounded">Concept design review for Functional
                                     design and dimensioning
-                                    <br>(Dimensional risks - Higher Tolerance chain / Single parts contributing)</label>
+                                    <br>(Dimensional risks due to Tolerance chain / Number of single parts)</label>
                                 <div class="grid-control">
                                     <div class="moldflow-avail-row">
                                         <label><input type="checkbox" name="fddReviewAvailability" value="Available"
@@ -2168,10 +2186,18 @@
                         <div class="analysis-assumptions-wrap">
                             <span class="section-header">Analysis Specific Assumptions</span>
                             <ul>
-                                <li>Deformations of parts are not part of the simulation.</li>
-                                <li>Simulation software assumes unstressed assembly process.</li>
-                                <li>The measuring is in free-state.</li>
-                                <li>Results are based on 10,000 Monte-Carlo simulations.</li>
+                                <li><label><input type="checkbox" name="analysisAssumption-optical"
+                                            value="Deformations of parts are not part of the simulation." checked />
+                                        Deformations of parts are not part of the simulation.</label></li>
+                                <li><label><input type="checkbox" name="analysisAssumption-optical"
+                                            value="Simulation software assumes unstressed assembly process." checked />
+                                        Simulation software assumes unstressed assembly process.</label></li>
+                                <li><label><input type="checkbox" name="analysisAssumption-optical"
+                                            value="The measuring is in free-state." checked />
+                                        The measuring is in free-state.</label></li>
+                                <li><label><input type="checkbox" name="analysisAssumption-optical"
+                                            value="Results are based on 10,000 Monte-Carlo simulations." checked />
+                                        Results are based on 10,000 Monte-Carlo simulations.</label></li>
                             </ul>
                         </div>
 
@@ -2640,12 +2666,8 @@
                                         <label class="bg-brandDark p-2 text-sm rounded">Cpk for Single Part</label>
                                         <div class="grid-control">
                                             <div class="flex items-center gap-2">
-                                                <span class="tol-row-default cpk-default" data-default="1.00">Cpk = 1.00
-                                                    (Default)</span>
                                                 <select name="cpkSinglePartOga" class="field-input cpk-select">
-                                                    <option value="1.00">-- Select Cpk if there any deviation from
-                                                        standard
-                                                        --</option>
+                                                    <option value="1.00">Cpk = 1.00(Default)</option>
                                                     <option value="1.33">Cpk = 1.33</option>
                                                     <option value="1.67">Cpk = 1.67</option>
                                                 </select>
@@ -2656,17 +2678,20 @@
 
                                 <!-- Cpk for Assembly -->
                                 <div class="grid-row" data-weight="15">
-                                    <label class="bg-brandDark p-2 text-sm rounded">Cpk for Gap & Flush</label>
+                                    <label class="bg-brandDark p-2 text-sm rounded">Cpk of Lamp tolerance (GAP & FLUSH)</label>
                                     <div class="grid-control">
                                         <div class="flex items-center gap-2">
-                                            <span class="tol-row-default cpk-default" data-default="1.33">Cpk = 1.33
-                                                (Default)</span>
                                             <select name="cpkAssemblyOga" class="field-input cpk-select">
-                                                <option value="1.33">-- Select Cpk if there any deviation from standard
-                                                    --
-                                                </option>
+                                                <option value="1.33">Cpk = 1.33(Default)</option>
                                                 <option value="1.00">Cpk = 1.00</option>
                                                 <option value="1.67">Cpk = 1.67</option>
+                                                <option value="CoverLens1.0-Housing1.0">Cover lens - 1.0, Housing - 1.0</option>
+                                                <option value="CoverLens1.33-Housing1.0">Cover lens - 1.33, Housing - 1.0</option>
+                                                <option value="CoverLens1.0-Housing1.33">Cover lens - 1.0, Housing - 1.33</option>
+                                                <option value="CoverLens1.33-Housing1.33">Cover lens - 1.33, Housing - 1.33</option>
+                                                <option value="CoverLens1.67-Housing1.0">Cover lens - 1.67, Housing - 1.0</option>
+                                                <option value="CoverLens1.0-Housing1.67">Cover lens - 1.0, Housing - 1.67</option>
+                                                <option value="CoverLens1.67-Housing1.67">Cover lens - 1.67, Housing - 1.67</option>
                                             </select>
                                         </div>
                                     </div>
@@ -2899,10 +2924,18 @@
                         <div class="analysis-assumptions-wrap">
                             <span class="section-header">Analysis Specific Assumptions</span>
                             <ul>
-                                <!-- <li>Deformations of parts are not part of the simulation.</li>
-                                <li>Simulation software assumes unstressed assembly process.</li>
-                                <li>The measuring is in free-state.</li> -->
-                                <li>Results are based on 10,000 Monte-Carlo simulations.</li>
+                                <!-- <li><label><input type="checkbox" name="analysisAssumption-geometry"
+                                            value="Deformations of parts are not part of the simulation." checked />
+                                        Deformations of parts are not part of the simulation.</label></li>
+                                <li><label><input type="checkbox" name="analysisAssumption-geometry"
+                                            value="Simulation software assumes unstressed assembly process." checked />
+                                        Simulation software assumes unstressed assembly process.</label></li>
+                                <li><label><input type="checkbox" name="analysisAssumption-geometry"
+                                            value="The measuring is in free-state." checked />
+                                        The measuring is in free-state.</label></li> -->
+                                <li><label><input type="checkbox" name="analysisAssumption-geometry"
+                                            value="Results are based on 10,000 Monte-Carlo simulations." checked />
+                                        Results are based on 10,000 Monte-Carlo simulations.</label></li>
                             </ul>
                         </div>
 
@@ -3027,7 +3060,7 @@
                             <div class="grid-row">
                                 <label class="bg-brandDark p-2 text-sm rounded">Concept design review for Functional
                                     design and dimensioning
-                                    <br>(Dimensional risks - Higher Tolerance chain / Single parts contributing)</label>
+                                    <br>(Dimensional risks due to Tolerance chain / Number of single parts)</label>
                                 <div class="grid-control">
                                     <div class="moldflow-avail-row">
                                         <label><input type="checkbox" name="fddReviewAvailability" value="Available"
@@ -3393,10 +3426,18 @@
                         <div class="analysis-assumptions-wrap">
                             <span class="section-header">Analysis Specific Assumptions</span>
                             <ul>
-                                <li>Deformations of parts are not part of the simulation.</li>
-                                <li>Simulation software assumes unstressed assembly process.</li>
-                                <li>The measuring is in free-state.</li>
-                                <li>Results are based on 10,000 Monte-Carlo simulations.</li>
+                                <li><label><input type="checkbox" name="analysisAssumption-rootcause"
+                                            value="Deformations of parts are not part of the simulation." checked />
+                                        Deformations of parts are not part of the simulation.</label></li>
+                                <li><label><input type="checkbox" name="analysisAssumption-rootcause"
+                                            value="Simulation software assumes unstressed assembly process." checked />
+                                        Simulation software assumes unstressed assembly process.</label></li>
+                                <li><label><input type="checkbox" name="analysisAssumption-rootcause"
+                                            value="The measuring is in free-state." checked />
+                                        The measuring is in free-state.</label></li>
+                                <li><label><input type="checkbox" name="analysisAssumption-rootcause"
+                                            value="Results are based on 10,000 Monte-Carlo simulations." checked />
+                                        Results are based on 10,000 Monte-Carlo simulations.</label></li>
                             </ul>
                         </div>
 
