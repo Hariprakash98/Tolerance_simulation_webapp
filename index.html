@@ -1325,13 +1325,13 @@
                                                 class="square-checkbox-group flex gap-1 p-1 rounded items-center overflow-x-auto">
                                                 <label
                                                     class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none">
-                                                    <input type="checkbox" name="Optical Scope Analysis"
+                                                    <input type="checkbox" name="Scope of Analysis - Optical Study"
                                                         value="Variation between LED to Optical surface in X, Y & Z directions" />
                                                     Variation between LED to Optical surface in X, Y &amp; Z
                                                     directions</label>
                                                 <label
                                                     class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none">
-                                                    <input type="checkbox" name="Optical Scope Analysis"
+                                                    <input type="checkbox" name="Scope of Analysis - Optical Study"
                                                         value="Others" />
                                                     Others</label>
                                             </div>
@@ -1546,7 +1546,8 @@
                                                 class="moldflow-avail-checkbox" data-moldflow-state="notapplicable"
                                                 onchange="toggleMoldflowState(this)" /> Not Applicable</label> -->
                                     </div>
-                                    <input type="text" name="ledType" placeholder="Remarks / DIS Number / Sharepoint link"
+                                    <input type="text" name="ledType"
+                                        placeholder="Remarks / DIS Number / Sharepoint link"
                                         class="field-input moldflow-input" oninput="refreshAllFieldStatuses()" />
                                 </div>
                                 <div class="right-note"></div>
@@ -1567,9 +1568,10 @@
                                         <label><input type="checkbox" name="drawings2DAvailability"
                                                 value="Not Available" class="moldflow-avail-checkbox"
                                                 data-moldflow-state="notavailable"
-                                                onchange="toggleMoldflowState(this)" /> Not Available</label>            
+                                                onchange="toggleMoldflowState(this)" /> Not Available</label>
                                     </div>
-                                    <input type="text" name="drawings2D" placeholder="Remarks / DIS Number / Sharepoint link"
+                                    <input type="text" name="drawings2D"
+                                        placeholder="Remarks / DIS Number / Sharepoint link"
                                         class="field-input moldflow-input" oninput="refreshAllFieldStatuses()" />
                                 </div>
                                 <div class="right-note"></div>
@@ -1609,7 +1611,8 @@
                                             Not Available</label>
                                     </div>
                                     <input type="text" name="moldflowFile" id="moldflowFile-optical"
-                                        placeholder="Remarks / DIS Number / Sharepoint link" class="field-input moldflow-input" />
+                                        placeholder="Remarks / DIS Number / Sharepoint link"
+                                        class="field-input moldflow-input" />
                                 </div>
                                 <div class="right-note"></div>
                             </div>
@@ -1651,12 +1654,12 @@
                                                 class="square-checkbox-group flex gap-1 p-1 rounded items-center overflow-x-auto">
                                                 <label
                                                     class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none">
-                                                    <input type="checkbox" name="connectorScopeAnalysis"
+                                                    <input type="checkbox" name="Scope of Analysis - Connector Study"
                                                         value="Position of terminals in X, Y & Z relative to housing connector receiving geometries" />
                                                     Position of terminals in X, Y &amp; Z</label>
                                                 <label
                                                     class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none">
-                                                    <input type="checkbox" name="connectorScopeAnalysis"
+                                                    <input type="checkbox" name="Scope of Analysis - Connector Study"
                                                         value="Parking connector assembly verification" />
                                                     Parking connector assembly verification</label>
                                             </div>
@@ -1814,7 +1817,8 @@
                                                 onchange="toggleMoldflowState(this)" />
                                             Not Available</label>
                                     </div>
-                                    <input type="text" name="cadData" placeholder="Remarks / DIS Number / Sharepoint link"
+                                    <input type="text" name="cadData"
+                                        placeholder="Remarks / DIS Number / Sharepoint link"
                                         class="field-input moldflow-input" oninput="refreshAllFieldStatuses()" />
                                 </div>
                                 <div class="right-note"></div>
@@ -1837,7 +1841,8 @@
                                                 data-moldflow-state="notapplicable"
                                                 onchange="toggleMoldflowState(this)" /> Not Applicable</label> -->
                                     </div>
-                                    <input type="text" name="drawings2D" placeholder="Remarks / DIS Number / Sharepoint link"
+                                    <input type="text" name="drawings2D"
+                                        placeholder="Remarks / DIS Number / Sharepoint link"
                                         class="field-input moldflow-input" oninput="refreshAllFieldStatuses()" />
                                 </div>
                                 <div class="right-note"></div>
@@ -1858,9 +1863,10 @@
                                         <label><input type="checkbox" name="drawings2DAvailability"
                                                 value="Not Available" class="moldflow-avail-checkbox"
                                                 data-moldflow-state="notavailable"
-                                                onchange="toggleMoldflowState(this)" /> Not Available</label>                                       
+                                                onchange="toggleMoldflowState(this)" /> Not Available</label>
                                     </div>
-                                    <input type="text" name="drawings2D" placeholder="Remarks / DIS Number / Sharepoint link"
+                                    <input type="text" name="drawings2D"
+                                        placeholder="Remarks / DIS Number / Sharepoint link"
                                         class="field-input moldflow-input" oninput="refreshAllFieldStatuses()" />
                                 </div>
                                 <div class="right-note"></div>
@@ -1953,7 +1959,7 @@
                             <div class="lf-grid" data-weight="2.5" data-glow-on-available="true">
                                 <label class="bg-brandDark p-2 text-sm rounded">Updated/Latest Location &amp; Fixation
                                     Concept PPT</label>
-                                 <div class="grid-control">
+                                <div class="grid-control">
                                     <div class="moldflow-avail-row">
                                         <label><input type="checkbox" name="cadDataAvailability" value="Available"
                                                 class="moldflow-avail-checkbox"
@@ -1967,7 +1973,8 @@
                                                 onchange="toggleMoldflowState(this)" />
                                             Not Available</label>
                                     </div>
-                                    <input type="text" name="subAssyCadData" placeholder="Remarks / DIS Number / Sharepoint link"
+                                    <input type="text" name="subAssyCadData"
+                                        placeholder="Remarks / DIS Number / Sharepoint link"
                                         class="field-input moldflow-input" oninput="refreshAllFieldStatuses()" />
                                 </div>
                                 <div class="right-note"></div>
@@ -1976,7 +1983,7 @@
                             <!-- Assembly Sequence -->
                             <div class="lf-grid" data-weight="2.5" data-glow-on-available="true">
                                 <label class="bg-brandDark p-2 text-sm rounded">Assembly sequence</label>
-                                 <div class="grid-control">
+                                <div class="grid-control">
                                     <div class="moldflow-avail-row">
                                         <label><input type="checkbox" name="cadDataAvailability" value="Available"
                                                 class="moldflow-avail-checkbox"
@@ -1990,7 +1997,8 @@
                                                 onchange="toggleMoldflowState(this)" />
                                             Not Available</label>
                                     </div>
-                                    <input type="text" name="subAssyCadData" placeholder="Remarks / DIS Number / Sharepoint link"
+                                    <input type="text" name="subAssyCadData"
+                                        placeholder="Remarks / DIS Number / Sharepoint link"
                                         class="field-input moldflow-input" oninput="refreshAllFieldStatuses()" />
                                 </div>
                                 <div class="right-note"></div>
@@ -2053,7 +2061,8 @@
                                                 onchange="toggleMoldflowState(this)" />
                                             Not Available</label>
                                     </div>
-                                    <input type="text" name="subAssyCadData" placeholder="Remarks / DIS Number / Sharepoint link"
+                                    <input type="text" name="subAssyCadData"
+                                        placeholder="Remarks / DIS Number / Sharepoint link"
                                         class="field-input moldflow-input" oninput="refreshAllFieldStatuses()" />
                                 </div>
                                 <div class="right-note"></div>
@@ -2061,11 +2070,11 @@
 
                             <!-- EBOM Data -->
                             <div class="lf-grid" data-weight="2.5" data-glow-on-available="true">
-                                <label class="bg-brandDark p-2 text-sm rounded">EBOM (DIS No)</label>
+                                <label class="bg-brandDark p-2 text-sm rounded">EBOM data (DIS No)</label>
                                 <div class="grid-control">
                                     <div class="moldflow-avail-row">
-                                        <label><input type="checkbox" name="subAssyEbomAvailability"
-                                                value="Available" class="moldflow-avail-checkbox"
+                                        <label><input type="checkbox" name="subAssyEbomAvailability" value="Available"
+                                                class="moldflow-avail-checkbox"
                                                 data-moldflow-target="subAssyMoldflowFile"
                                                 data-moldflow-state="available" onchange="toggleMoldflowState(this)" />
                                             Available</label>
@@ -2077,7 +2086,8 @@
                                             Not Available</label>
                                     </div>
                                     <input type="text" name="subAssyMoldflowFile" id="subAssyMoldflowFile"
-                                        placeholder="Remarks / DIS Number / Sharepoint link" class="field-input moldflow-input" />
+                                        placeholder="Remarks / DIS Number / Sharepoint link"
+                                        class="field-input moldflow-input" />
                                 </div>
                                 <div class="right-note"></div>
                             </div>
@@ -2128,7 +2138,8 @@
                                             Not Available</label>
                                     </div>
                                     <input type="text" name="subAssyMoldflowFile" id="subAssyMoldflowFile"
-                                        placeholder="Remarks / DIS Number / Sharepoint link" class="field-input moldflow-input" />
+                                        placeholder="Remarks / DIS Number / Sharepoint link"
+                                        class="field-input moldflow-input" />
                                 </div>
                                 <div class="right-note"></div>
                             </div>
@@ -3048,9 +3059,10 @@
                                                 onchange="toggleMoldflowState(this)" /> Available</label>
                                         <label><input type="checkbox" name="fddReviewAvailability" value="Not Available"
                                                 class="moldflow-avail-checkbox" data-moldflow-state="notavailable"
-                                                onchange="toggleMoldflowState(this)" /> Not Available</label>                                        
+                                                onchange="toggleMoldflowState(this)" /> Not Available</label>
                                     </div>
-                                    <input type="text" name="fddReviewRemarks" placeholder="Remarks / DIS Number / Sharepoint link"
+                                    <input type="text" name="fddReviewRemarks"
+                                        placeholder="Remarks / DIS Number / Sharepoint link"
                                         class="field-input moldflow-input" oninput="refreshAllFieldStatuses()" />
                                 </div>
                                 <div class="right-note"></div>
@@ -3059,16 +3071,17 @@
                             <!-- Assembly Sequence -->
                             <div class="grid-row" data-glow-on-available="true">
                                 <label class="bg-brandDark p-2 text-sm rounded">Assembly sequence</label>
-                                 <div class="grid-control">
+                                <div class="grid-control">
                                     <div class="moldflow-avail-row">
                                         <label><input type="checkbox" name="fddReviewAvailability" value="Available"
                                                 class="moldflow-avail-checkbox" data-moldflow-state="available"
                                                 onchange="toggleMoldflowState(this)" /> Available</label>
                                         <label><input type="checkbox" name="fddReviewAvailability" value="Not Available"
                                                 class="moldflow-avail-checkbox" data-moldflow-state="notavailable"
-                                                onchange="toggleMoldflowState(this)" /> Not Available</label>                                        
+                                                onchange="toggleMoldflowState(this)" /> Not Available</label>
                                     </div>
-                                    <input type="text" name="fddReviewRemarks" placeholder="Remarks / DIS Number / Sharepoint link"
+                                    <input type="text" name="fddReviewRemarks"
+                                        placeholder="Remarks / DIS Number / Sharepoint link"
                                         class="field-input moldflow-input" oninput="refreshAllFieldStatuses()" />
                                 </div>
                                 <div class="right-note"></div>
@@ -3110,8 +3123,8 @@
                                             Not Available</label>
                                     </div>
                                     <input type="text" name="rcaOpticalCadData"
-                                        placeholder="Remarks / DIS Number / Sharepoint link" class="field-input moldflow-input"
-                                        oninput="refreshAllFieldStatuses()" />
+                                        placeholder="Remarks / DIS Number / Sharepoint link"
+                                        class="field-input moldflow-input" oninput="refreshAllFieldStatuses()" />
                                 </div>
                                 <div class="right-note"></div>
                             </div>
@@ -3126,9 +3139,10 @@
                                                 onchange="toggleMoldflowState(this)" /> Available</label>
                                         <label><input type="checkbox" name="ledTypeAvailability" value="Not Available"
                                                 class="moldflow-avail-checkbox" data-moldflow-state="notavailable"
-                                                onchange="toggleMoldflowState(this)" /> Not Available</label>                                        
+                                                onchange="toggleMoldflowState(this)" /> Not Available</label>
                                     </div>
-                                    <input type="text" name="rcaOpticalLedType" placeholder="Remarks / DIS Number / Sharepoint link"
+                                    <input type="text" name="rcaOpticalLedType"
+                                        placeholder="Remarks / DIS Number / Sharepoint link"
                                         class="field-input moldflow-input" oninput="refreshAllFieldStatuses()" />
                                 </div>
                                 <div class="right-note"></div>
@@ -3149,9 +3163,10 @@
                                         <label><input type="checkbox" name="drawings2DAvailability"
                                                 value="Not Available" class="moldflow-avail-checkbox"
                                                 data-moldflow-state="notavailable"
-                                                onchange="toggleMoldflowState(this)" /> Not Available</label>                                       
+                                                onchange="toggleMoldflowState(this)" /> Not Available</label>
                                     </div>
-                                    <input type="text" name="rcaOpticalDrawings2D" placeholder="Remarks / DIS Number / Sharepoint link"
+                                    <input type="text" name="rcaOpticalDrawings2D"
+                                        placeholder="Remarks / DIS Number / Sharepoint link"
                                         class="field-input moldflow-input" oninput="refreshAllFieldStatuses()" />
                                 </div>
                                 <div class="right-note"></div>
@@ -3190,7 +3205,8 @@
                                             Not Available</label>
                                     </div>
                                     <input type="text" name="rcaOpticalMoldflowFile" id="moldflowFile-rcaoptical"
-                                        placeholder="Remarks / DIS Number / Sharepoint link" class="field-input moldflow-input" />
+                                        placeholder="Remarks / DIS Number / Sharepoint link"
+                                        class="field-input moldflow-input" />
                                 </div>
                                 <div class="right-note"></div>
                             </div>
@@ -3235,28 +3251,15 @@
                                                 class="square-checkbox-group flex gap-1 p-1 rounded items-center overflow-x-auto">
                                                 <label
                                                     class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
-                                                        type="checkbox" name="rcaOpticalSinglePartTolerance"
-                                                        value="General Tolerance" /> IQS</label>
-                                                <!-- <label
-                                                    class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
-                                                        type="checkbox" name="rcaOpticalSinglePartTolerance"
-                                                        value="Moldflow" />
-                                                    Moldflow</label>
-                                                <label -->
-                                                <!-- class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
-                                                        type="checkbox" name="rcaOpticalSinglePartTolerance"
-                                                        value="Moldcool" />
-                                                    Moldcool</label>
-                                                <label
-                                                    class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
-                                                        type="checkbox" name="rcaOpticalSinglePartTolerance"
-                                                        value="3D Scan Data" />
-                                                    3D Scan Data</label> -->
+                                                        type="checkbox" name="rcainternalSupplierMeasurementreport"
+                                                        value="IQS" /> IQS</label>
+                
                                             </div>
                                         </div>
                                         <div class="tol-link">
                                             <input type="text" name="rcaOpticalSinglePartToleranceLink"
-                                                placeholder="Remarks / DIS Number / Sharepoint link" class="field-input" />
+                                                placeholder="Remarks / DIS Number / Sharepoint link"
+                                                class="field-input" />
                                         </div>
                                     </div>
                                 </div>
@@ -3278,12 +3281,9 @@
                                                 value="Not Available" class="moldflow-avail-checkbox"
                                                 data-moldflow-state="notavailable"
                                                 onchange="toggleMoldflowState(this)" /> Not Available</label>
-                                        <!-- <label><input type="checkbox" name="fixationConceptAvailability"
-                                                value="Not Applicable" class="moldflow-avail-checkbox"
-                                                data-moldflow-state="notapplicable"
-                                                onchange="toggleMoldflowState(this)" /> Not Applicable</label> -->
                                     </div>
-                                    <input type="text" name="rcaInternalFixationConcept" placeholder="Remarks / DIS Number / Sharepoint link"
+                                    <input type="text" name="rcaInternalFixationConcept"
+                                        placeholder="Remarks / DIS Number / Sharepoint link"
                                         class="field-input moldflow-input" oninput="refreshAllFieldStatuses()" />
                                 </div>
                                 <div class="right-note"></div>
@@ -3307,7 +3307,8 @@
                                                 data-moldflow-state="notapplicable"
                                                 onchange="toggleMoldflowState(this)" /> Not Applicable</label>
                                     </div>
-                                    <input type="text" name="rcaInternalAssemblySequence" placeholder="Remarks / DIS Number / Sharepoint link"
+                                    <input type="text" name="rcaInternalAssemblySequence"
+                                        placeholder="Remarks / DIS Number / Sharepoint link"
                                         class="field-input moldflow-input" oninput="refreshAllFieldStatuses()" />
                                 </div>
                                 <div class="right-note"></div>
@@ -3331,8 +3332,8 @@
                                             Not Available</label>
                                     </div>
                                     <input type="text" name="rcaInternalCadData"
-                                        placeholder="Remarks / DIS Number / Sharepoint link" class="field-input moldflow-input"
-                                        oninput="refreshAllFieldStatuses()" />
+                                        placeholder="Remarks / DIS Number / Sharepoint link"
+                                        class="field-input moldflow-input" oninput="refreshAllFieldStatuses()" />
                                 </div>
                                 <div class="right-note"></div>
                             </div>
@@ -3370,7 +3371,8 @@
                                             Not Available</label>
                                     </div>
                                     <input type="text" name="rcaInternalMoldflowFile" id="moldflowFile-rcainternal"
-                                        placeholder="Remarks / DIS Number / Sharepoint link" class="field-input moldflow-input" />
+                                        placeholder="Remarks / DIS Number / Sharepoint link"
+                                        class="field-input moldflow-input" />
                                 </div>
                                 <div class="right-note"></div>
                             </div>
@@ -3437,12 +3439,19 @@
             };
 
             const STUDY_NAMES = {
-                OTA_OPTICAL: 'Internal - Optical',
-                OTA_SUBASSY: 'Internal - Sub Assembly/Product',
+                OTA_OPTICAL: 'Internal - Optical/Connector Study',
+                OTA_SUBASSY: 'Internal - Sub Assembly/Product Study',
                 OTA_CONNECTOR: 'Internal - Connector',
                 OGA: 'Outer Geometry Analysis',
                 RCA: 'Root Cause Analysis'
             };
+
+            function resolveStudyLabel(studyTargetValue) {
+                if (studyTargetValue === 'OTA_OPTICAL' && opticalSubMode === 'connector') {
+                    return STUDY_NAMES.OTA_CONNECTOR; // 'Internal - Connector'
+                }
+                return STUDY_NAMES[studyTargetValue] || studyTargetValue;
+            }
 
             // ── "Type of Tolerance Analysis" → which study-note block and which
             // Simulation Input content block should be shown. Internal - Connector
@@ -3478,6 +3487,7 @@
             const FIELD_LABELS = {
                 // Root Cause Analysis — "Optical" block (modelled on Optical simulation)
                 rcaOpticalSinglePartTolerance: 'Single Part Tolerance',
+                rcainternalSupplierMeasurementreport: 'Supplier Measurement report',
                 singleTolLensDeformPreferred: 'Welding Section – Lens Deformation Factor (Preferred Edge)',
                 headlampHousingJigOperatorRepeat: 'Headlamp Assembly – Operator Repeatability (Housing-Jig)',
                 rcaOpticalSinglePartToleranceLink: 'Single Part Tolerance - Sharepoint Link / DIS',
@@ -3983,12 +3993,15 @@
             // ══════════════════════════════════════════════════════════════════
             function showOpticalSimulationBlock() {
                 const content = document.getElementById('opticalSimulationContent');
+                opticalSubMode = 'optical';
                 if (!content) return;
                 const btn = document.querySelector('.optical-sim-btn[data-opticalsim="optical"]');
                 const wasActive = btn && btn.classList.contains('active');
 
                 hideOpticalSimulationBlock();
                 hideConnectorStudyBlock();
+
+                if (opticalSubMode === 'optical') opticalSubMode = null;
 
                 if (wasActive) {
                     if (typeof refreshAllFieldStatuses === 'function') refreshAllFieldStatuses();
