@@ -1883,15 +1883,15 @@
                                     Dimensioning (FDD)</label>
                                 <div class="grid-control">
                                     <div class="flex flex-col gap-2">
-                                        <select name="rcaOpticalFddReview" id="fddReview-rcaoptical"
-                                            onchange="toggleFddReason('rcaoptical')" class="field-input">
+                                        <select name="subAssyFddReview" id="fddReview-subassy"
+                                            onchange="toggleFddReason('subassy')" class="field-input">
                                             <option value="YES">Yes</option>
                                             <option value="NO">No</option>
                                             <option value="NA">Not Applicable</option>
                                         </select>
-                                        <input type="text" id="fddReason-NO-rcaoptical" name="rcaOpticalFddReason"
+                                        <input type="text" id="fddReason-NO-subassy" name="subAssyFddReason"
                                             placeholder="Please specify reason for No" class="fdd-reason hidden" />
-                                        <input type="text" id="fddReason-NA-rcaoptical" name="rcaOpticalFddReason"
+                                        <input type="text" id="fddReason-NA-subassy" name="subAssyFddReason"
                                             placeholder="Please specify reason for Not Applicable"
                                             class="fdd-reason hidden" />
                                     </div>
@@ -3423,6 +3423,7 @@
                 rcaOpticalSinglePartToleranceLink: 'Single Part Tolerance - Sharepoint Link / DIS',
                 rcaOpticalLightFunction: 'Light Functions', rcaOpticalOtherFunctions: 'Other Light Functions',
                 rcaOpticalFddReview: 'FDD Review', rcaOpticalFddReason: 'FDD Reason',
+                subAssyFddReview: 'FDD Review', subAssyFddReason: 'FDD Reason',
                 rcaOpticalFixationConcept: 'Location & Fixation Concept / Assembly Sequence PPT',
                 rcaOpticalAssemblySequence: 'Assembly Sequence',
                 rcaOpticalCadData: 'CAD Data (DIS No)', rcaOpticalLedType: 'LED Type',
@@ -4061,7 +4062,7 @@
             // fddReason-NA-<section>) instead of the legacy unsuffixed pair. 'optical'
             // is handled separately below to preserve its original unsuffixed ids
             // exactly as before (backward compatible / no UI change).
-            const FDD_THREE_OPTION_SUFFIXED_SECTIONS = ['connectorstudy', 'rcaoptical'];
+            const FDD_THREE_OPTION_SUFFIXED_SECTIONS = ['connectorstudy', 'rcaoptical', 'subassy'];
 
             function toggleFddReason(section) {
                 const sel = document.getElementById(`fddReview-${section}`);
@@ -4144,7 +4145,7 @@
                     while (c.firstChild) c.removeChild(c.firstChild);
                     addTolerancePartRow(c);
                 });
-                ['optical', 'connectorstudy', 'geometry', 'stackup', 'rootcause', 'rcaoptical'].forEach(s => {
+                ['optical', 'connectorstudy', 'geometry', 'stackup', 'rootcause', 'rcaoptical', 'subassy'].forEach(s => {
                     toggleFddReason(s);
                     checkCpkAlert(s);
                 });
@@ -4794,7 +4795,7 @@
                 populateRevisionOptions();
                 toggleRevisionReason();
                 initialiseTolerancePartRows();
-                ['optical', 'connectorstudy', 'geometry', 'stackup', 'rootcause', 'rcaoptical'].forEach(s => {
+                ['optical', 'connectorstudy', 'geometry', 'stackup', 'rootcause', 'rcaoptical', 'subassy'].forEach(s => {
                     toggleFddReason(s);
                     checkCpkAlert(s);
                 });
@@ -5240,6 +5241,7 @@
                 "Insufficient": { cs: "Nedostatečné", de: "Unzureichend", zh: "不足", sk: "Nedostatočné" },
                 "Partially sufficient": { cs: "Částečně dostatečné", de: "Teilweise ausreichend", zh: "部分充足", sk: "Čiastočne dostatočné" },
                 "Sufficient": { cs: "Dostatečné", de: "Ausreichend", zh: "充足", sk: "Dostatočné" },
+                "Partial": { cs: "Částečné", de: "Teilweise", zh: "部分", sk: "Čiastočné" },
 
                 /* Section headers */
                 "Project Information": { cs: "Informace o projektu", de: "Projektinformationen", zh: "项目信息", sk: "Informácie o projekte" },
@@ -5258,6 +5260,11 @@
 
                 /* Select placeholders (option 0) */
                 "-- Select --": { cs: "-- Vyberte --", de: "-- Auswählen --", zh: "-- 选择 --", sk: "-- Vyberte --" },
+                "-- Select Cpk if there any deviation from standard --": { cs: "-- Vyberte Cpk, pokud se liší od standardu --", de: "-- Cpk auswählen, falls Abweichung vom Standard --", zh: "-- 如与标准有偏差，请选择Cpk --", sk: "-- Vyberte Cpk, ak sa líši od štandardu --" },
+                "Select": { cs: "Vyberte", de: "Auswählen", zh: "选择", sk: "Vyberte" },
+                "Select Category first": { cs: "Nejprve vyberte kategorii", de: "Zuerst Kategorie auswählen", zh: "请先选择类别", sk: "Najprv vyberte kategóriu" },
+                "Grade": { cs: "Třída materiálu", de: "Materialgüte", zh: "牌号", sk: "Trieda materiálu" },
+                "To be added": { cs: "Bude doplněno", de: "Wird ergänzt", zh: "待补充", sk: "Bude doplnené" },
                 "-- Select OEM --": { cs: "-- Vyberte OEM --", de: "-- OEM auswählen --", zh: "-- 选择OEM --", sk: "-- Vyberte OEM --" },
                 "-- Select Product --": { cs: "-- Vyberte produkt --", de: "-- Produkt auswählen --", zh: "-- 选择产品 --", sk: "-- Vyberte produkt --" },
                 "-- Select Type --": { cs: "-- Vyberte typ --", de: "-- Typ auswählen --", zh: "-- 选择类型 --", sk: "-- Vyberte typ --" },
@@ -5292,6 +5299,8 @@
                 "No": { cs: "Ne", de: "Nein", zh: "否", sk: "Nie" },
                 "Not Applicable": { cs: "Nevztahuje se", de: "Nicht zutreffend", zh: "不适用", sk: "Nevzťahuje sa" },
                 "Completed": { cs: "Dokončeno", de: "Abgeschlossen", zh: "已完成", sk: "Dokončené" },
+                "To be started": { cs: "Bude zahájeno", de: "Noch zu beginnen", zh: "待开始", sk: "Bude začaté" },
+                "Review of the Lamp Datum system with the Vehicle interface": { cs: "Kontrola vztažného systému svítilny s rozhraním vozidla", de: "Überprüfung des Leuchten-Bezugssystems mit der Fahrzeugschnittstelle", zh: "灯具基准系统与车辆接口的审核", sk: "Kontrola vzťažného systému svietidla s rozhraním vozidla" },
                 "InProgress": { cs: "Probíhá", de: "In Bearbeitung", zh: "进行中", sk: "Prebieha" },
                 "Incomplete": { cs: "Nedokončeno", de: "Unvollständig", zh: "未完成", sk: "Nedokončené" },
                 "Available": { cs: "K dispozici", de: "Verfügbar", zh: "可用", sk: "K dispozícii" },
