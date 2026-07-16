@@ -54,6 +54,12 @@
     </script>
 
     <style>
+        html {
+            font-size: 112.5%;
+            /* 100% = default 16px. 112.5% ≈ 18px, scales every rem-based
+               font-size in this form (including Tailwind's text-xs/sm/base
+               classes) up proportionally. */
+        }
         .main-grid {
             display: grid;
             grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -213,6 +219,12 @@
         .project-input:focus,
         .project-select:focus {
             box-shadow: 0 0 0 2px rgba(59, 130, 246, .5);
+        }
+
+        #lampMeasurementMethodRow .square-checkbox-group label,
+        #otherFixationsRow .square-checkbox-group label {
+            font-size: 0.9rem;
+            /* increase from default text-xs (~0.75rem) */
         }
 
         /* Square checkbox style for specific fields */
@@ -2678,20 +2690,28 @@
 
                                 <!-- Cpk for Assembly -->
                                 <div class="grid-row" data-weight="15">
-                                    <label class="bg-brandDark p-2 text-sm rounded">Cpk of Lamp tolerance (GAP & FLUSH)</label>
+                                    <label class="bg-brandDark p-2 text-sm rounded">Cpk of Lamp tolerance (GAP &
+                                        FLUSH)</label>
                                     <div class="grid-control">
                                         <div class="flex items-center gap-2">
                                             <select name="cpkAssemblyOga" class="field-input cpk-select">
                                                 <option value="1.33">Cpk = 1.33(Default)</option>
                                                 <option value="1.00">Cpk = 1.00</option>
                                                 <option value="1.67">Cpk = 1.67</option>
-                                                <option value="CoverLens1.0-Housing1.0">Cover lens - 1.0, Housing - 1.0</option>
-                                                <option value="CoverLens1.33-Housing1.0">Cover lens - 1.33, Housing - 1.0</option>
-                                                <option value="CoverLens1.0-Housing1.33">Cover lens - 1.0, Housing - 1.33</option>
-                                                <option value="CoverLens1.33-Housing1.33">Cover lens - 1.33, Housing - 1.33</option>
-                                                <option value="CoverLens1.67-Housing1.0">Cover lens - 1.67, Housing - 1.0</option>
-                                                <option value="CoverLens1.0-Housing1.67">Cover lens - 1.0, Housing - 1.67</option>
-                                                <option value="CoverLens1.67-Housing1.67">Cover lens - 1.67, Housing - 1.67</option>
+                                                <option value="CoverLens1.0-Housing1.0">Cover lens - 1.0, Housing - 1.0
+                                                </option>
+                                                <option value="CoverLens1.33-Housing1.0">Cover lens - 1.33, Housing -
+                                                    1.0</option>
+                                                <option value="CoverLens1.0-Housing1.33">Cover lens - 1.0, Housing -
+                                                    1.33</option>
+                                                <option value="CoverLens1.33-Housing1.33">Cover lens - 1.33, Housing -
+                                                    1.33</option>
+                                                <option value="CoverLens1.67-Housing1.0">Cover lens - 1.67, Housing -
+                                                    1.0</option>
+                                                <option value="CoverLens1.0-Housing1.67">Cover lens - 1.0, Housing -
+                                                    1.67</option>
+                                                <option value="CoverLens1.67-Housing1.67">Cover lens - 1.67, Housing -
+                                                    1.67</option>
                                             </select>
                                         </div>
                                     </div>
@@ -2801,7 +2821,7 @@
 
 
                                 <!-- Lamp Measurement Method -->
-                                <div class="grid-row" data-weight="5">
+                                <div class="grid-row" id="lampMeasurementMethodRow" data-weight="5">
                                     <label class="bg-brandDark p-2 text-sm rounded">Lamp Measurement Method</label>
                                     <div class="grid-control">
                                         <div
@@ -2809,7 +2829,7 @@
                                             <label
                                                 class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
                                                     type="checkbox" name="lampMeasurementMethod" value="FreeState" />
-                                                FreeState</label>
+                                                Free State</label>
                                             <label
                                                 class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
                                                     type="checkbox" name="lampMeasurementMethod" value="Fixture" />
@@ -2824,8 +2844,8 @@
                                 </div>
 
                                 <!-- Other Fixations -->
-                                <div class="grid-row" data-weight="5">
-                                    <label class="bg-brandDark p-2 text-sm rounded">Additional Datum System</label>
+                                <div class="grid-row" id="otherFixationsRow" data-weight="5">
+                                    <label class="bg-brandDark p-2 text-sm rounded">Additional Fixing Geometries</label>
                                     <div class="grid-control">
                                         <div class="flex gap-1 p-1 rounded items-center overflow-x-auto">
                                             <label
@@ -3286,7 +3306,7 @@
                                                     class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
                                                         type="checkbox" name="rcainternalSupplierMeasurementreport"
                                                         value="IQS" /> IQS</label>
-                
+
                                             </div>
                                         </div>
                                         <div class="tol-link">
@@ -4966,16 +4986,16 @@
 
             const otherFixationscheckboxes = document.querySelectorAll('input[name="otherFixations"]');
 
-            otherFixationscheckboxes.forEach(box => {
-                box.addEventListener('change',
-                    function () {
-                        if (this.checked) {
-                            otherFixationscheckboxes.forEach(cb => {
-                                if (cb !== this) cb.checked = false;
-                            });
-                        }
-                    });
-            });
+            // otherFixationscheckboxes.forEach(box => {
+            //     box.addEventListener('change',
+            //         function () {
+            //             if (this.checked) {
+            //                 otherFixationscheckboxes.forEach(cb => {
+            //                     if (cb !== this) cb.checked = false;
+            //                 });
+            //             }
+            //         });
+            // });
 
             function toggleLampTolerance(type) {
                 const rear = document.getElementById('rearLampConsiderations');
@@ -5060,6 +5080,20 @@
                 // NEW: if "Not Available" is checked for a Moldflow row, force incomplete/red
                 const notAvailableChecked = row.querySelector('[data-moldflow-state="notavailable"]:checked');
                 if (notAvailableChecked) {
+                    statusEl.setAttribute('data-status', 'incomplete');
+                    return;
+                }
+
+                // Force incomplete/red for Lamp Measurement Method when "To be verified" is selected
+                const lampToBeVerifiedChecked = row.querySelector('input[name="lampMeasurementMethod"][value="MMTobeVerified"]:checked');
+                if (lampToBeVerifiedChecked) {
+                    statusEl.setAttribute('data-status', 'incomplete');
+                    return;
+                }
+
+                // Force incomplete/red for Additional Fixing Geometries when "To be verified" is selected
+                const fixingToBeVerifiedChecked = row.querySelector('input[name="otherFixations"][value="OFTobeVerified"]:checked');
+                if (fixingToBeVerifiedChecked) {
                     statusEl.setAttribute('data-status', 'incomplete');
                     return;
                 }
