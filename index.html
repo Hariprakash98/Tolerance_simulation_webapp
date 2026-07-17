@@ -964,7 +964,7 @@
                 <h1 class="text-2xl font-bold tracking-wide" style="color:#ffffff;">
                     Tolerance Simulation Request / Input Review Form
                 </h1>
-                <p class="text-sm text-gray-300 mt-1">For queries contact : <a
+                <p class="text-sm text-gray-300 mt-1">E-mail to : <a
                         href="mailto:info.dimensionalmanagement@forvia.com" data-no-i18n
                         class="text-brandAccent underline hover:text-cyan-300">info.dimensionalmanagement@forvia.com</a>
                 </p>
@@ -1030,8 +1030,8 @@
         <!-- ── Revision Tracking (default value + expandable history) ─────── -->
         <div class="flex justify-end items-center -mt-3 mb-3">
             <p class="text-sm text-gray-300">
-                <span>Revision:</span>
-                <span id="currentRevValue" class="font-semibold text-white" data-no-i18n>Rev 1.0</span>
+                <span>Form revision:</span>
+                <span id="currentRevValue" class="font-semibold text-white" data-no-i18n>Rev 0.0</span>
                 &nbsp;—&nbsp;
                 <a href="#" id="revHistoryLink" onclick="toggleRevisionHistory(event)"
                     class="text-brandAccent underline hover:text-cyan-300">View History</a>
@@ -1055,7 +1055,7 @@
                 </thead>
                 <tbody class="text-gray-200">
                     <tr>
-                        <td class="border border-gray-600 px-3 py-2" data-no-i18n>Rev 1.0</td>
+                        <td class="border border-gray-600 px-3 py-2" data-no-i18n>Rev 0.0</td>
                         <td class="border border-gray-600 px-3 py-2" data-no-i18n>10 - Jul - 2026</td>
                         <td class="border border-gray-600 px-3 py-2" data-no-i18n>Hariprakash Subramanian</td>
                         <td class="border border-gray-600 px-3 py-2" data-no-i18n>Vibulanandan Kannan</td>
@@ -1429,10 +1429,10 @@
                                     <div class="moldflow-avail-row">
                                         <label><input type="checkbox" name="fddReviewAvailability" value="Available"
                                                 class="moldflow-avail-checkbox" data-moldflow-state="available"
-                                                onchange="toggleMoldflowState(this)" /> Available</label>
+                                                onchange="toggleMoldflowState(this)" /> Completed</label>
                                         <label><input type="checkbox" name="fddReviewAvailability" value="Not Available"
                                                 class="moldflow-avail-checkbox" data-moldflow-state="notavailable"
-                                                onchange="toggleMoldflowState(this)" /> Not Available</label>
+                                                onchange="toggleMoldflowState(this)" /> To be started</label>
                                         <label><input type="checkbox" name="fddReviewAvailability"
                                                 value="Not Applicable" class="moldflow-avail-checkbox"
                                                 data-moldflow-state="notapplicable"
@@ -1609,7 +1609,7 @@
 
                             <!-- Cpk for Single Part -->
                             <div class="lf-grid" data-weight="2.5">
-                                <label class="bg-brandDark p-2 text-sm rounded">Cpk for single part <span
+                                <label class="bg-brandDark p-2 text-sm rounded">Cpk for single parts <span
                                         class="text-xs text-gray-400 font-normal">(For PCB - 1.33Cpk)</span></label>
                                 <div class="grid-control">
                                     <select name="cpkTarget" id="cpkSinglePart-optical"
@@ -1713,10 +1713,10 @@
                                     <div class="moldflow-avail-row">
                                         <label><input type="checkbox" name="fddReviewAvailability" value="Available"
                                                 class="moldflow-avail-checkbox" data-moldflow-state="available"
-                                                onchange="toggleMoldflowState(this)" /> Available</label>
+                                                onchange="toggleMoldflowState(this)" /> Completed </label>
                                         <label><input type="checkbox" name="fddReviewAvailability" value="Not Available"
                                                 class="moldflow-avail-checkbox" data-moldflow-state="notavailable"
-                                                onchange="toggleMoldflowState(this)" /> Not Available</label>
+                                                onchange="toggleMoldflowState(this)" /> To be started</label>
                                         <label><input type="checkbox" name="fddReviewAvailability"
                                                 value="Not Applicable" class="moldflow-avail-checkbox"
                                                 data-moldflow-state="notapplicable"
@@ -1904,7 +1904,7 @@
 
                             <!-- Cpk for Single Part -->
                             <div class="lf-grid" data-weight="2.5">
-                                <label class="bg-brandDark p-2 text-sm rounded">Cpk for single part </label>
+                                <label class="bg-brandDark p-2 text-sm rounded">Cpk for single parts </label>
                                 <div class="grid-control">
                                     <select name="cpkTarget" id="cpkSinglePart-connectorstudy"
                                         onchange="checkCpkAlert('connectorstudy')" class="field-input">
@@ -1969,10 +1969,10 @@
                                     <div class="moldflow-avail-row">
                                         <label><input type="checkbox" name="fddReviewAvailability" value="Available"
                                                 class="moldflow-avail-checkbox" data-moldflow-state="available"
-                                                onchange="toggleMoldflowState(this)" /> Available</label>
+                                                onchange="toggleMoldflowState(this)" /> Completed </label>
                                         <label><input type="checkbox" name="fddReviewAvailability" value="Not Available"
                                                 class="moldflow-avail-checkbox" data-moldflow-state="notavailable"
-                                                onchange="toggleMoldflowState(this)" /> Not Available</label>
+                                                onchange="toggleMoldflowState(this)" /> To be started</label>
                                         <label><input type="checkbox" name="fddReviewAvailability"
                                                 value="Not Applicable" class="moldflow-avail-checkbox"
                                                 data-moldflow-state="notapplicable"
@@ -2124,7 +2124,7 @@
 
                             <!-- Cpk for Single Part -->
                             <div class="lf-grid">
-                                <label class="bg-brandDark p-2 text-sm rounded">Cpk for single part <span
+                                <label class="bg-brandDark p-2 text-sm rounded">Cpk for single parts <span
                                         class="text-xs text-gray-400 font-normal">(For PCB - 1.33Cpk)</span></label>
                                 <div class="grid-control">
                                     <select name="subAssyCpkTarget" id="cpkSinglePart-subassembly"
@@ -2189,9 +2189,9 @@
                         <!-- ── Field Completion Status Legend ──────────────────────────────── -->
                         <div class="status-legend">
                             <div class="legend-item"><span id="legendIncompleteSwatch"
-                                    class="legend-swatch incomplete"></span>"Incomplete" - Parameters Entry</div>
-                            <div class="legend-item"><span class="legend-swatch complete"></span>"Complete" - Parameters
-                                Entry</div>
+                                    class="legend-swatch incomplete"></span>"Incomplete Input"</div>
+                            <div class="legend-item"><span class="legend-swatch complete"></span>"Sufficient Input"
+                                </div>
                         </div>
 
                         <!-- ── Analysis Specific Assumptions ───────────────────────────── -->
@@ -2200,13 +2200,13 @@
                             <ul>
                                 <li><label><input type="checkbox" name="analysisAssumption-optical"
                                             value="Deformations of parts are not part of the simulation." checked />
-                                        Deformations of parts are not part of the simulation.</label></li>
-                                <li><label><input type="checkbox" name="analysisAssumption-optical"
+                                        Deformation (External forces / stress during assembly process) are not considered in the simulation.</label></li>
+                                <!-- <li><label><input type="checkbox" name="analysisAssumption-optical"
                                             value="Simulation software assumes unstressed assembly process." checked />
-                                        Simulation software assumes unstressed assembly process.</label></li>
-                                <li><label><input type="checkbox" name="analysisAssumption-optical"
+                                        Simulation software assumes unstressed assembly process.</label></li> -->
+                                <!-- <li><label><input type="checkbox" name="analysisAssumption-optical"
                                             value="The measuring is in free-state." checked />
-                                        The measuring is in free-state.</label></li>
+                                        The measuring is in free-state.</label></li> -->
                                 <li><label><input type="checkbox" name="analysisAssumption-optical"
                                             value="Results are based on 10,000 Monte-Carlo simulations." checked />
                                         Results are based on 10,000 Monte-Carlo simulations.</label></li>
@@ -2254,7 +2254,7 @@
                                 <div class="grid-row" data-weight="7.5">
                                     <label id="datumFeasibilityLabel" class="bg-brandDark p-2 text-sm rounded">Customer
                                         lamp fixation - Datum's
-                                        feasibility</label>
+                                        Stability</label>
                                     <div class="grid-control">
                                         <div class="flex gap-1 p-1 rounded items-center flex-wrap">
                                             <label
@@ -2283,6 +2283,9 @@
                                                 <input type="radio" name="datumFeasibility" value="Stable"
                                                     onclick="toggleDatumRadio(this)" /> Stable
                                             </label>
+
+                                            <textarea name="remarksForCriticality" rows="2" class="field-input resize-none"
+                                            placeholder="Remarks to be filled"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -2337,7 +2340,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Additional Tolerance Studies -->
+                                <!-- Additional Tolerance Studies
                                 <div class="grid-row" data-weight="7.5">
                                     <label class="bg-brandDark p-2 text-sm rounded">Tolerance studies - Type</label>
                                     <div class="grid-control">
@@ -2359,7 +2362,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
 
 
@@ -2411,6 +2414,17 @@
                                     </div>
                                 </div>
 
+                                 <!-- Remarks for Criticality -->
+                                <div class="grid-row">
+                                    <label class="bg-brandDark p-2 text-sm rounded status-exempt">Identify any additional Gap & Flush tolerance analysis required 
+                                        (if any)
+                                        </label>
+                                    <div class="grid-control">
+                                        <textarea name="remarksForCriticality" rows="2" class="field-input resize-none"
+                                            placeholder="Include additional studies"></textarea>
+                                    </div>
+                                </div>
+
                                 <!-- Remarks / Recommended Actions (auto-filled) -->
                                 <div class="grid-row">
                                     <label class="bg-brandDark p-2 text-sm rounded status-exempt">Remarks / Recommended
@@ -2454,16 +2468,7 @@
 
 
 
-                                <!-- Remarks for Criticality -->
-                                <div class="grid-row">
-                                    <label class="bg-brandDark p-2 text-sm rounded status-exempt">Remarks on the
-                                        Tolerance
-                                        study</label>
-                                    <div class="grid-control">
-                                        <textarea name="remarksForCriticality" rows="2" class="field-input resize-none"
-                                            placeholder="Type in box for remarks"></textarea>
-                                    </div>
-                                </div>
+                               
 
 
 
@@ -2675,7 +2680,7 @@
                                 <!-- Cpk for Single Part -->
                                 <div>
                                     <div class="grid-row" data-weight="5">
-                                        <label class="bg-brandDark p-2 text-sm rounded">Cpk for Single Part</label>
+                                        <label class="bg-brandDark p-2 text-sm rounded">Cpk for Single Parts</label>
                                         <div class="grid-control">
                                             <div class="flex items-center gap-2">
                                                 <select name="cpkSinglePartOga" class="field-input cpk-select">
@@ -2809,11 +2814,11 @@
                                                         Moldcool</label>
                                                 </div>
                                             </div>
-                                            <div class="tol-link">
+                                            <!-- <div class="tol-link">
                                                 <input type="text" name="singlePartToleranceLink"
                                                     placeholder="Initial phase - General Tolerance , Detailing phase - Moldflow/Moldcool"
                                                     class="field-input" />
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -2838,7 +2843,7 @@
                                                 class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
                                                     type="checkbox" name="lampMeasurementMethod"
                                                     value="MMTobeVerified" />
-                                                To be verified</label>
+                                                To be clarified</label>
                                         </div>
                                     </div>
                                 </div>
@@ -2855,7 +2860,7 @@
                                             <label
                                                 class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
                                                     type="checkbox" name="otherFixations" value="Touch Pad" /> Touch
-                                                Pad</label>
+                                                Pads</label>
                                             <label
                                                 class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
                                                     type="checkbox" name="otherFixations" value="Aux Datum" /> Aux
@@ -2863,8 +2868,18 @@
                                             <label
                                                 class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
                                                     type="checkbox" name="otherFixations" value="OFTobeVerified" />To be
-                                                verified</label>
+                                                clarified</label>
                                         </div>
+                                    </div>
+                                </div>
+
+                                <!-- Additional Remarks -->
+                                <div class="grid-row">
+                                    <label class="bg-brandDark p-2 text-sm rounded status-exempt">Additional
+                                        remarks</label>
+                                    <div class="grid-control">
+                                        <textarea name="additionalRemarks" rows="2"
+                                            class="field-input resize-none"></textarea>
                                     </div>
                                 </div>
 
@@ -2880,13 +2895,12 @@
                                                 data-required-check="true" /><span>Welding/Vibration/Tertiary
                                                 direction</span><span class="status-dot"></span></label>
                                         <label class="item-check-row"><input type="checkbox" name="cadCheck_Car"
-                                                value="YES" data-required-check="true" /><span>Car Surrounding
-                                                geometry</span><span class="status-dot"></span></label>
+                                                value="YES" data-required-check="true" /><span>Car - Vehicle interface geometry (3D CAD data)</span><span class="status-dot"></span></label>
                                         <label class="item-check-row"><input type="checkbox" name="cadCheck_Gap"
-                                                value="YES" /><span>Gap &amp; Flush Measurement Points
-                                                (Optional)</span><span class="status-dot"></span></label>
+                                                value="YES" /><span>Customer defined G  &amp; F measurement points
+                                        </span><span class="status-dot"></span></label>
                                         <label class="item-check-row"><input type="checkbox" name="cadCheck_RPS"
-                                                value="YES" /><span>Datum system Position (Optional)</span><span
+                                                value="YES" /><span>Position of datum system </span><span
                                                 class="status-dot"></span></label>
                                     </div>
                                     <div class="grid-control">
@@ -2908,7 +2922,7 @@
                                         <label class="item-check-row">
                                             <input type="checkbox" name="docCheck_DatumSystem" value="YES"
                                                 data-required-check="true" />
-                                            <span>Customer Datum system</span>
+                                            <span>Customer defined Datum system</span>
                                             <span class="status-dot"></span>
                                         </label>
                                         <label class="item-check-row">
@@ -2923,15 +2937,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Additional Remarks -->
-                                <div class="grid-row">
-                                    <label class="bg-brandDark p-2 text-sm rounded status-exempt">Additional
-                                        remarks</label>
-                                    <div class="grid-control">
-                                        <textarea name="additionalRemarks" rows="2"
-                                            class="field-input resize-none"></textarea>
-                                    </div>
-                                </div>
+                                
 
 
                             </div><!-- /right column -->
@@ -2944,18 +2950,16 @@
                         <div class="analysis-assumptions-wrap">
                             <span class="section-header">Analysis Specific Assumptions</span>
                             <ul>
-                                <!-- <li><label><input type="checkbox" name="analysisAssumption-geometry"
+                                 <li><label><input type="checkbox" name="analysisAssumption-geometry"
                                             value="Deformations of parts are not part of the simulation." checked />
-                                        Deformations of parts are not part of the simulation.</label></li>
-                                <li><label><input type="checkbox" name="analysisAssumption-geometry"
+                                        Deformation (External forces / stress during assembly process) are not considered in the simulation</label></li>
+                                <!-- <li><label><input type="checkbox" name="analysisAssumption-geometry"
                                             value="Simulation software assumes unstressed assembly process." checked />
                                         Simulation software assumes unstressed assembly process.</label></li>
                                 <li><label><input type="checkbox" name="analysisAssumption-geometry"
                                             value="The measuring is in free-state." checked />
-                                        The measuring is in free-state.</label></li> -->
-                                <li><label><input type="checkbox" name="analysisAssumption-geometry"
-                                            value="Results are based on 10,000 Monte-Carlo simulations." checked />
-                                        Results are based on 10,000 Monte-Carlo simulations.</label></li>
+                                        The measuring is in free-state.</label></li> --> 
+                                <li><label>Results are based on 10,000 Monte-Carlo simulations.</label></li>
                             </ul>
                         </div>
 
@@ -3085,10 +3089,10 @@
                                     <div class="moldflow-avail-row">
                                         <label><input type="checkbox" name="fddReviewAvailability" value="Available"
                                                 class="moldflow-avail-checkbox" data-moldflow-state="available"
-                                                onchange="toggleMoldflowState(this)" /> Available</label>
+                                                onchange="toggleMoldflowState(this)" /> Completed </label>
                                         <label><input type="checkbox" name="fddReviewAvailability" value="Not Available"
                                                 class="moldflow-avail-checkbox" data-moldflow-state="notavailable"
-                                                onchange="toggleMoldflowState(this)" /> Not Available</label>
+                                                onchange="toggleMoldflowState(this)" /> To be started</label>
                                         <label><input type="checkbox" name="fddReviewAvailability"
                                                 value="Not Applicable" class="moldflow-avail-checkbox"
                                                 data-moldflow-state="notapplicable"
@@ -3227,7 +3231,7 @@
 
                             <!-- Cpk for Single Part -->
                             <div class="grid-row">
-                                <label class="bg-brandDark p-2 text-sm rounded">Cpk for single part</label>
+                                <label class="bg-brandDark p-2 text-sm rounded">Cpk for single parts</label>
                                 <div class="grid-control">
                                     <select name="rcaOpticalCpkTarget" id="cpkSinglePart-rcaoptical"
                                         onchange="checkCpkAlert('rcaoptical')" class="field-input">
@@ -3393,7 +3397,7 @@
 
                             <!-- Cpk for Single Part -->
                             <div class="grid-row" data-weight="5">
-                                <label class="bg-brandDark p-2 text-sm rounded">Cpk for single part</label>
+                                <label class="bg-brandDark p-2 text-sm rounded">Cpk for single parts</label>
                                 <div class="grid-control">
                                     <select name="rcaInternalCpkTarget" id="cpkSinglePart-rcainternal"
                                         onchange="checkCpkAlert('rcainternal')" class="field-input">
@@ -4830,7 +4834,7 @@
             const DATUM_MAP = {
                 'Unstable Datum system': {
                     gapFlush: 'Unrealistic tolerance requirements (GAP/FLUSH)',
-                    risk: 'Very High', riskBg: '#7f1d1d', riskColor: '#fca5a5',
+                    risk: 'Very High - A deep dive on improving the Datum concept / tolerance values are required', riskBg: '#7f1d1d', riskColor: '#fca5a5',
                     targetState: 'nonstable', actionState: 'nonstable',
                     targetValue: 'Outer geometry analysis for GAP & FLUSH; Datum sensitivity analysis; Datum proposals & sensitivity comparisons (DOE)',
                     actionValue: 'Tolerance negotiation with Customer; Align with Production plant'
