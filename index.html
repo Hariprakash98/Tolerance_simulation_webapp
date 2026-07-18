@@ -754,7 +754,9 @@
             border-radius: 4px;
             padding: 10px 14px;
             margin-bottom: 14px;
-            width: 20%
+            width: 20%;
+            min-width: 240px;
+            max-width: 340px;
         }
 
         .form-progress-labels {
@@ -949,6 +951,76 @@
             cursor: pointer;
             user-select: none;
         }
+
+        /* ── Page Footer (Input Requirements + Export/Send actions) ──────────
+           Plain CSS, not dependent on the Tailwind CDN script, so the
+           bottom bar always renders centered even if the CDN script is
+           slow/blocked on the user's network.
+           Pinned to the bottom of the viewport (position: fixed) so the
+           progress bar and export/send buttons stay visible while the
+           user scrolls through the (long) form, instead of only showing
+           up after scrolling all the way to the end of the page. */
+        .page-footer {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1000;
+            width: 100%;
+            box-sizing: border-box;
+            border-top: 1px solid #4b5563;
+            padding: 14px 24px;
+            margin-top: 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            background: #2d3748;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, .35);
+        }
+
+        /* Reserve space at the bottom of the page so the fixed footer never
+           overlaps/hides the last field of the form. !important is needed
+           here because Tailwind's ".p-5" utility class on <body> has higher
+           selector specificity than a plain "body" element rule and would
+           otherwise override this. */
+        body {
+            padding-bottom: 150px !important;
+        }
+
+        .page-footer .form-progress-wrap {
+            margin-bottom: 0;
+            flex: 0 0 auto;
+        }
+
+        .page-footer .footer-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 0;
+        }
+
+        .page-footer .footer-btn {
+            background: #2b6dcb;
+            color: #ffffff;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: .75rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: background .15s ease;
+        }
+
+        .page-footer .footer-btn:hover {
+            background: #1e5ab5;
+        }
     </style>
 </head>
 
@@ -1007,22 +1079,6 @@
                 <button type="button" onclick="resetForm()"
                     class="bg-[#2b6dcb] hover:bg-[#1e5ab5] text-white px-4 py-1.5 rounded text-sm font-semibold transition shadow">
                     Reset
-                </button>
-                <button type="button" onclick="exportToPDF()"
-                    class="bg-[#2b6dcb] hover:bg-[#1e5ab5] text-white px-3 py-1.5 rounded text-xs font-semibold flex items-center gap-1 transition">
-                    📄 Convert to PDF
-                </button>
-                <button type="button" onclick="exportToPPT()"
-                    class="bg-[#2b6dcb] hover:bg-[#1e5ab5] text-white px-3 py-1.5 rounded text-xs font-semibold flex items-center gap-1 transition">
-                    📊 Convert to PPT
-                </button>
-                <button type="button" onclick="exportToExcel()"
-                    class="bg-[#2b6dcb] hover:bg-[#1e5ab5] text-white px-3 py-1.5 rounded text-xs font-semibold flex items-center gap-1 transition">
-                    📈 Convert to Excel
-                </button>
-                <button type="button" onclick="sendMail()"
-                    class="bg-[#2b6dcb] hover:bg-[#1e5ab5] text-white px-3 py-1.5 rounded text-xs font-semibold flex items-center gap-1 transition">
-                    📧 Send via Mail
                 </button>
             </div>
         </div>
@@ -1083,31 +1139,6 @@
             </table>
         </div>
 
-
-        <!-- ── Form Completion Progress Bar (integrated with sufficiency pills) ── -->
-        <div class="form-progress-wrap">
-            <div class="form-progress-labels">
-                <span>Input Requirements</span>
-                <span id="formProgressPercentText">0%</span>
-            </div>
-            <div class="form-progress-track">
-                <div id="formProgressBarFill" class="form-progress-fill"></div>
-            </div>
-            <div class="form-Progress" style="margin-top:8px; justify-content:flex-start; gap:22px;">
-                <div class="status-pill-group">
-                    <span class="status-pill-label">Insufficient</span>
-                    <span id="pillInsufficient" class="status-pill status-pill-insufficient"></span>
-                </div>
-                <div class="status-pill-group">
-                    <span class="status-pill-label">Partial</span>
-                    <span id="pillPartial" class="status-pill status-pill-partial"></span>
-                </div>
-                <div class="status-pill-group">
-                    <span class="status-pill-label">Sufficient</span>
-                    <span id="pillSufficient" class="status-pill status-pill-sufficient"></span>
-                </div>
-            </div>
-        </div>
 
         <!-- ── Field Completion Status Bar (compact, left-aligned, with %) ──── -->
         <div class="status-bar-compact" style="width: 100%;">
@@ -2213,6 +2244,11 @@
                             </ul>
                         </div>
 
+                        <!-- ── Disclaimer ──────────────────────────────────────────────── -->
+                        <p class="text-xs mt-3" style="color:#fbbf24;font-style:italic;">*Please inform the
+                            Dimensional Engineer of any concept-level changes, including updates to the 3-2-1 datum
+                            scheme, part positioning, or added components</p>
+
                     </div>
                 </div><!-- /opticalSection -->
 
@@ -2963,6 +2999,11 @@
                             </ul>
                         </div>
 
+                        <!-- ── Disclaimer ──────────────────────────────────────────────── -->
+                        <p class="text-xs mt-3" style="color:#fbbf24;font-style:italic;">*Please notify the
+                            Dimensional Engineer of any design changes to the Lamp datum scheme, positioning, or
+                            vehicle interface geometry</p>
+
                     </div>
                 </div><!-- /geometrySection -->
 
@@ -3470,6 +3511,50 @@
 
             </form><!-- /toleranceForm -->
 
+            <!-- ── Page Footer: Input Requirements progress + Export / Send actions ── -->
+            <footer class="page-footer">
+
+                <!-- ── Form Completion Progress Bar (integrated with sufficiency pills) ── -->
+                <div class="form-progress-wrap">
+                    <div class="form-progress-labels">
+                        <span>Input Requirements</span>
+                        <span id="formProgressPercentText">0%</span>
+                    </div>
+                    <div class="form-progress-track">
+                        <div id="formProgressBarFill" class="form-progress-fill"></div>
+                    </div>
+                    <div class="form-Progress" style="margin-top:8px; justify-content:flex-start; gap:22px;">
+                        <div class="status-pill-group">
+                            <span class="status-pill-label">Insufficient</span>
+                            <span id="pillInsufficient" class="status-pill status-pill-insufficient"></span>
+                        </div>
+                        <div class="status-pill-group">
+                            <span class="status-pill-label">Partial</span>
+                            <span id="pillPartial" class="status-pill status-pill-partial"></span>
+                        </div>
+                        <div class="status-pill-group">
+                            <span class="status-pill-label">Sufficient</span>
+                            <span id="pillSufficient" class="status-pill status-pill-sufficient"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-actions">
+                <button type="button" onclick="exportToPDF()" class="footer-btn">
+                    📄 Convert to PDF
+                </button>
+                <button type="button" onclick="exportToPPT()" class="footer-btn">
+                    📊 Convert to PPT
+                </button>
+                <button type="button" onclick="exportToExcel()" class="footer-btn">
+                    📈 Convert to Excel
+                </button>
+                <button type="button" onclick="sendMail()" class="footer-btn">
+                    📧 Send via Mail
+                </button>
+                </div>
+            </footer>
+
         </div><!-- /page wrapper -->
 
 
@@ -3712,6 +3797,10 @@
 
             };
 
+            // Others: no predefined grades — user types the TG value manually
+            // via the "Type in TG" field on the row.
+            const OTHERS_MATERIAL_TG_MAP = {};
+
 
             // Material category → material-grade map, used to cascade the Material dropdown
             const MATERIAL_CATEGORY_MAP = {
@@ -3720,6 +3809,7 @@
                 'Stamping': STAMPING_MATERIAL_TG_MAP,
                 'Welding': WELDING_MATERIAL_TG_MAP,
                 'Machining': MACHINING_MATERIAL_TG_MAP,
+                'Others': OTHERS_MATERIAL_TG_MAP,
 
             };
 
@@ -5629,7 +5719,11 @@
                 "Sharepoint link/Dis": { cs: "Odkaz SharePoint / DIS", de: "SharePoint-Link / DIS", zh: "SharePoint链接 / DIS", sk: "Odkaz SharePoint / DIS" },
                 "Other Light Functions": { cs: "Jiné světelné funkce", de: "Andere Lichtfunktionen", zh: "其他灯光功能", sk: "Iné svetelné funkcie" },
                 "Initial phase - General Tolerance , Detailing phase - Moldflow": { cs: "Počáteční fáze - obecná tolerance, fáze detailování - Moldflow", de: "Anfangsphase - Allgemeintoleranz, Detaillierungsphase - Moldflow", zh: "初始阶段 - 一般公差，详细设计阶段 - Moldflow", sk: "Počiatočná fáza - všeobecná tolerancia, fáza detailovania - Moldflow" },
-                "Initial phase - General Tolerance , Detailing phase - Moldflow/Moldcool": { cs: "Počáteční fáze - obecná tolerance, fáze detailování - Moldflow/Moldcool", de: "Anfangsphase - Allgemeintoleranz, Detaillierungsphase - Moldflow/Moldcool", zh: "初始阶段 - 一般公差，详细设计阶段 - Moldflow/Moldcool", sk: "Počiatočná fáza - všeobecná tolerancia, fáza detailovania - Moldflow/Moldcool" }
+                "Initial phase - General Tolerance , Detailing phase - Moldflow/Moldcool": { cs: "Počáteční fáze - obecná tolerance, fáze detailování - Moldflow/Moldcool", de: "Anfangsphase - Allgemeintoleranz, Detaillierungsphase - Moldflow/Moldcool", zh: "初始阶段 - 一般公差，详细设计阶段 - Moldflow/Moldcool", sk: "Počiatočná fáza - všeobecná tolerancia, fáza detailovania - Moldflow/Moldcool" },
+
+                /* Disclaimers */
+                "*Please notify the Dimensional Engineer of any design changes to the Lamp datum scheme, positioning, or vehicle interface geometry": { cs: "*Informujte prosím dimenzionálního inženýra o jakýchkoli konstrukčních změnách schématu datum svítilny, jejího umístění nebo geometrie rozhraní vozidla", de: "*Bitte informieren Sie den Dimensional Engineer über jegliche Konstruktionsänderungen am Leuchten-Datumschema, der Positionierung oder der Fahrzeugschnittstellengeometrie", zh: "*如灯具基准方案、定位或整车接口几何形状发生任何设计变更，请通知尺寸工程师", sk: "*Informujte prosím dimenzionálneho inžiniera o akýchkoľvek konštrukčných zmenách schémy datum svietidla, jeho umiestnenia alebo geometrie rozhrania vozidla" },
+                "*Please inform the Dimensional Engineer of any concept-level changes, including updates to the 3-2-1 datum scheme, part positioning, or added components": { cs: "*Informujte prosím dimenzionálního inženýra o jakýchkoli koncepčních změnách, včetně aktualizací schématu datum 3-2-1, umístění dílů nebo přidaných komponent", de: "*Bitte informieren Sie den Dimensional Engineer über jegliche konzeptionellen Änderungen, einschließlich Aktualisierungen des 3-2-1-Datumschemas, der Teilepositionierung oder hinzugefügter Komponenten", zh: "*如概念层面发生任何变更，包括3-2-1基准方案更新、零件定位或新增部件，请通知尺寸工程师", sk: "*Informujte prosím dimenzionálneho inžiniera o akýchkoľvek koncepčných zmenách, vrátane aktualizácií schémy datum 3-2-1, umiestnenia dielov alebo pridaných komponentov" }
             };
 
             /* ────────────────────────────────────────────────────────────
