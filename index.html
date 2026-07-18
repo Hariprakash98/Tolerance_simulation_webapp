@@ -612,6 +612,11 @@
             grid-column: 1 / -1;
         }
 
+        .oga-section-label {
+    background-color: #1e3a5f !important;
+    font-style: italic;
+}
+
         @media (max-width: 1200px) {
             .tol-subsections-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -2921,8 +2926,8 @@
 
                                 <!-- CAD Data with Checklist -->
                                 <div class="grid-row" data-weight="10">
-                                    <div class="bg-brandDark p-2 text-sm rounded CAD-Data">
-                                        CAD Data
+                                    <div class="bg-brandDark p-2 text-sm rounded CAD-Data oga-section-label">
+    CAD Data
                                         <label class="item-check-row"><input type="checkbox" name="cadCheck_HSG"
                                                 value="YES" data-required-check="true" /><span>Housing &amp; Cover
                                                 Lens</span><span class="status-dot"></span></label>
@@ -2947,8 +2952,8 @@
 
                                 <!-- Document -->
                                 <div class="grid-row" data-weight="6">
-                                    <div class="bg-brandDark p-2 text-sm rounded">
-                                        Customer Document(s)
+                                    <div class="bg-brandDark p-2 text-sm rounded oga-section-label">
+    Customer Document(s)
                                         <label class="item-check-row">
                                             <input type="checkbox" name="docCheck_GapFlush" value="YES"
                                                 data-required-check="true" />
