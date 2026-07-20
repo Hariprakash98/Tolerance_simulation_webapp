@@ -60,6 +60,7 @@
                font-size in this form (including Tailwind's text-xs/sm/base
                classes) up proportionally. */
         }
+
         .main-grid {
             display: grid;
             grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -468,7 +469,7 @@
         }
 
         .tg-remove-btn {
-            background: #dc2626;
+            background: #68788d;
         }
 
         .tg-remove-btn:hover {
@@ -613,9 +614,9 @@
         }
 
         .oga-section-label {
-    background-color: #1e3a5f !important;
-    font-style: italic;
-}
+            background-color: #1e3a5f !important;
+            font-style: italic;
+        }
 
         @media (max-width: 1200px) {
             .tol-subsections-grid {
@@ -1041,8 +1042,8 @@
                 <h1 class="text-2xl font-bold tracking-wide" style="color:#ffffff;">
                     Tolerance Simulation Request / Input Review Form
                 </h1>
-                <p class="text-sm text-gray-300 mt-1">E-mail to : <a
-                        href="mailto:info.dimensionalmanagement@forvia.com" data-no-i18n
+                <p class="text-sm text-gray-300 mt-1">E-mail to : <a href="mailto:info.dimensionalmanagement@forvia.com"
+                        data-no-i18n
                         class="text-brandAccent underline hover:text-cyan-300">info.dimensionalmanagement@forvia.com</a>
                 </p>
             </div>
@@ -2027,13 +2028,13 @@
                                     Concept PPT</label>
                                 <div class="grid-control">
                                     <div class="moldflow-avail-row">
-                                        <label><input type="checkbox" name="subAssyLocationFixationRemarks" value="Available"
-                                                class="moldflow-avail-checkbox"
+                                        <label><input type="checkbox" name="subAssyLocationFixationRemarks"
+                                                value="Available" class="moldflow-avail-checkbox"
                                                 data-moldflow-target="subAssyMoldflowFile"
                                                 data-moldflow-state="available" onchange="toggleMoldflowState(this)" />
                                             Available</label>
-                                        <label><input type="checkbox" name="subAssyLocationFixationRemarks" value="Not Available"
-                                                class="moldflow-avail-checkbox"
+                                        <label><input type="checkbox" name="subAssyLocationFixationRemarks"
+                                                value="Not Available" class="moldflow-avail-checkbox"
                                                 data-moldflow-target="subAssyMoldflowFile"
                                                 data-moldflow-state="notavailable"
                                                 onchange="toggleMoldflowState(this)" />
@@ -2227,7 +2228,7 @@
                             <div class="legend-item"><span id="legendIncompleteSwatch"
                                     class="legend-swatch incomplete"></span>"Incomplete Input"</div>
                             <div class="legend-item"><span class="legend-swatch complete"></span>"Sufficient Input"
-                                </div>
+                            </div>
                         </div>
 
                         <!-- ── Analysis Specific Assumptions ───────────────────────────── -->
@@ -2236,7 +2237,8 @@
                             <ul>
                                 <li><label><input type="checkbox" name="analysisAssumption-optical"
                                             value="Deformations of parts are not part of the simulation." checked />
-                                        Deformation (External forces / stress during assembly process) are not considered in the simulation.</label></li>
+                                        Deformation (External forces / stress during assembly process) are not
+                                        considered in the simulation.</label></li>
                                 <!-- <li><label><input type="checkbox" name="analysisAssumption-optical"
                                             value="Simulation software assumes unstressed assembly process." checked />
                                         Simulation software assumes unstressed assembly process.</label></li> -->
@@ -2325,8 +2327,9 @@
                                                     onclick="toggleDatumRadio(this)" /> Stable
                                             </label>
 
-                                            <textarea name="remarksForCriticality" rows="2" class="field-input resize-none"
-                                            placeholder="Remarks to be filled"></textarea>
+                                            <textarea name="remarksForCriticality" rows="2"
+                                                class="field-input resize-none"
+                                                placeholder="Remarks to be filled"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -2455,11 +2458,12 @@
                                     </div>
                                 </div>
 
-                                 <!-- Remarks for Criticality -->
+                                <!-- Remarks for Criticality -->
                                 <div class="grid-row">
-                                    <label class="bg-brandDark p-2 text-sm rounded status-exempt">Identify any additional Gap & Flush tolerance analysis required 
+                                    <label class="bg-brandDark p-2 text-sm rounded status-exempt">Identify any
+                                        additional Gap & Flush tolerance analysis required
                                         (if any)
-                                        </label>
+                                    </label>
                                     <div class="grid-control">
                                         <textarea name="remarksForCriticality" rows="2" class="field-input resize-none"
                                             placeholder="Include additional studies"></textarea>
@@ -2509,7 +2513,7 @@
 
 
 
-                               
+
 
 
 
@@ -2553,8 +2557,8 @@
                                                 <div class="tol-row">
                                                     <span class="tol-row-label">Vibration tolerance in VD</span>
                                                     <span class="tol-row-default">±0.10</span>
-                                                    <input type="text" name="weldTolVibration" placeholder="± Type in box"
-                                                        class="tol-row-input" />
+                                                    <input type="text" name="weldTolVibration"
+                                                        placeholder="± Type in box" class="tol-row-input" />
                                                 </div>
                                             </div><!-- /welding -->
 
@@ -2927,7 +2931,7 @@
                                 <!-- CAD Data with Checklist -->
                                 <div class="grid-row" data-weight="10">
                                     <div class="bg-brandDark p-2 text-sm rounded CAD-Data oga-section-label">
-    CAD Data
+                                        CAD Data
                                         <label class="item-check-row"><input type="checkbox" name="cadCheck_HSG"
                                                 value="YES" data-required-check="true" /><span>Housing &amp; Cover
                                                 Lens</span><span class="status-dot"></span></label>
@@ -2936,10 +2940,11 @@
                                                 data-required-check="true" /><span>Welding/Vibration/Tertiary
                                                 direction</span><span class="status-dot"></span></label>
                                         <label class="item-check-row"><input type="checkbox" name="cadCheck_Car"
-                                                value="YES" data-required-check="true" /><span>Car - Vehicle interface geometry (3D CAD data)</span><span class="status-dot"></span></label>
+                                                value="YES" data-required-check="true" /><span>Car-Vehicle interface
+                                                geometry (3D CAD data)</span><span class="status-dot"></span></label>
                                         <label class="item-check-row"><input type="checkbox" name="cadCheck_Gap"
-                                                value="YES" /><span>Customer defined G  &amp; F measurement points
-                                        </span><span class="status-dot"></span></label>
+                                                value="YES" /><span>Customer defined G &amp; F measurement points
+                                            </span><span class="status-dot"></span></label>
                                         <label class="item-check-row"><input type="checkbox" name="cadCheck_RPS"
                                                 value="YES" /><span>Position of datum system </span><span
                                                 class="status-dot"></span></label>
@@ -2953,7 +2958,7 @@
                                 <!-- Document -->
                                 <div class="grid-row" data-weight="6">
                                     <div class="bg-brandDark p-2 text-sm rounded oga-section-label">
-    Customer Document(s)
+                                        Customer Document(s)
                                         <label class="item-check-row">
                                             <input type="checkbox" name="docCheck_GapFlush" value="YES"
                                                 data-required-check="true" />
@@ -2978,7 +2983,7 @@
                                     </div>
                                 </div>
 
-                                
+
 
 
                             </div><!-- /right column -->
@@ -2991,15 +2996,16 @@
                         <div class="analysis-assumptions-wrap">
                             <span class="section-header">Analysis Specific Assumptions</span>
                             <ul>
-                                 <li><label><input type="checkbox" name="analysisAssumption-geometry"
+                                <li><label><input type="checkbox" name="analysisAssumption-geometry"
                                             value="Deformations of parts are not part of the simulation." checked />
-                                        Deformation (External forces / stress during assembly process) are not considered in the simulation</label></li>
+                                        Deformation (External forces / stress during assembly process) are not
+                                        considered in the simulation</label></li>
                                 <!-- <li><label><input type="checkbox" name="analysisAssumption-geometry"
                                             value="Simulation software assumes unstressed assembly process." checked />
                                         Simulation software assumes unstressed assembly process.</label></li>
                                 <li><label><input type="checkbox" name="analysisAssumption-geometry"
                                             value="The measuring is in free-state." checked />
-                                        The measuring is in free-state.</label></li> --> 
+                                        The measuring is in free-state.</label></li> -->
                                 <li><label>Results are based on 10,000 Monte-Carlo simulations.</label></li>
                             </ul>
                         </div>
@@ -3545,18 +3551,18 @@
                 </div>
 
                 <div class="footer-actions">
-                <button type="button" onclick="exportToPDF()" class="footer-btn">
-                    📄 Convert to PDF
-                </button>
-                <button type="button" onclick="exportToPPT()" class="footer-btn">
-                    📊 Convert to PPT
-                </button>
-                <button type="button" onclick="exportToExcel()" class="footer-btn">
-                    📈 Convert to Excel
-                </button>
-                <button type="button" onclick="sendMail()" class="footer-btn">
-                    📧 Send via Mail
-                </button>
+                    <button type="button" onclick="exportToPDF()" class="footer-btn">
+                        📄 Convert to PDF
+                    </button>
+                    <button type="button" onclick="exportToPPT()" class="footer-btn">
+                        📊 Convert to PPT
+                    </button>
+                    <button type="button" onclick="exportToExcel()" class="footer-btn">
+                        📈 Convert to Excel
+                    </button>
+                    <button type="button" onclick="sendMail()" class="footer-btn">
+                        📧 Send via Mail
+                    </button>
                 </div>
             </footer>
 
@@ -4670,7 +4676,7 @@
                 }
 
                 doc.setTextColor(17, 34, 64); doc.setFontSize(18); doc.setFont(undefined, 'bold');
-                doc.text('Tolerance Simulation Request', 55, 14);
+                doc.text('Tolerance Simulation Request / Input Review Form', 55, 14);
                 doc.setFontSize(11); doc.setFont(undefined, 'normal');
                 doc.text(STUDY_NAMES[data.studyTarget] || 'Selected Study', 55, 21);
                 doc.setDrawColor(29, 78, 216); doc.line(12, 27, 285, 27);
@@ -4757,7 +4763,7 @@
                         } else {
                             slide.addText('LOGO', { x: .35, y: .28, w: 1, h: .2, fontSize: 8, bold: true });
                         }
-                        slide.addText('Tolerance Simulation Request', { x: 1.8, y: .15, w: 8.8, h: .32, fontSize: 18, bold: true, color: '112240' });
+                        slide.addText('Tolerance Simulation Request / Input Review Form', { x: 1.8, y: .15, w: 8.8, h: .32, fontSize: 18, bold: true, color: '112240' });
                         slide.addText(STUDY_NAMES[data.studyTarget] || 'Selected Study', { x: 1.8, y: .48, w: 8.8, h: .22, fontSize: 10, color: '475569' });
 
                         // ── Input Requirements progress bar (mirrors the on-screen loader) ──
