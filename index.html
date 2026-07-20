@@ -1285,13 +1285,15 @@
                                     required />
                             </div>
 
-                            <div class="project-field">
-                                <label class="project-label">Expected Output CW <span
+                            <div class="project-field" style="position: relative;">
+                                <label class="project-label">Expected Output Date (dd/mm/yyyy) <span
                                         class="required-star">*</span></label>
-                                <select name="expectedCwProject" class="project-select" data-cw-select="project"
-                                    required>
-                                    <option value="">-- Select Calendar Week --</option>
-                                </select>
+                                <input type="text" id="expectedCwDisplay" class="project-input" placeholder="dd/mm/yyyy"
+                                    autocomplete="off" readonly onclick="openExpectedCwPicker()" />
+                                <input type="date" name="expectedCwProject" id="expectedCwProject"
+                                    onchange="syncExpectedCwDisplay()"
+                                    style="position:absolute; opacity:0; pointer-events:none; width:1px; height:1px; bottom:0; left:0;"
+                                    required />
                             </div>
 
                             <div class="project-field revision-field">
@@ -3471,12 +3473,12 @@
 
                 <div class="footer-note" style="font-size:.80rem; color: #fbbf24ff; max-width:500px; line-height:1.3;">
                     * Insufficient - Simulation Cannot be Performed
-                    <br/><br/>* Partial - Simulation Performed under some considerations
-                    <br/><br/>* Sufficient - Simulation can be Performed
+                    <br /><br />* Partial - Simulation Performed under some considerations
+                    <br /><br />* Sufficient - Simulation can be Performed
                 </div>
 
                 <!-- ── Form Completion Progress Bar (integrated with sufficiency pills) ── -->
-                
+
                 <div class="form-progress-wrap">
                     <div class="form-progress-labels">
                         <span>Input Requirements</span>
@@ -3834,6 +3836,18 @@
                 const display = document.getElementById('requestDateDisplay');
                 if (!dateInput || !display) return;
                 display.value = formatDateDDMMYYYY(dateInput.value);
+            }
+
+            function openExpectedCwPicker() {
+                const d = document.getElementById('expectedCwProject');
+                if (!d) return;
+                if (typeof d.showPicker === 'function') d.showPicker(); else d.focus();
+            }
+            function syncExpectedCwDisplay() {
+                const d = document.getElementById('expectedCwProject');
+                const disp = document.getElementById('expectedCwDisplay');
+                if (!d || !disp) return;
+                disp.value = formatDateDDMMYYYY(d.value);
             }
 
             function populateRevisionOptions() {
