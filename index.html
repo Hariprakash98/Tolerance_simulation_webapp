@@ -1161,7 +1161,7 @@
                         onchange="onMaterialGradeChange(this)"></select>
                     <input type="text" name="toleranceGroupAuto" placeholder="TG Class"
                         class="field-input tg-group-value" readonly />
-                    <input type="text" name="toleranceExtraInput" placeholder="Type in TG"
+                    <input type="text" name="toleranceExtraInput" placeholder="Remarks/Type in TG"
                         class="field-input tg-extra-input" />
                 </div>
             </template>
@@ -2310,6 +2310,18 @@
                                             <label
                                                 class="radio-cnt flex items-center gap-1 text-xs px-2 py-1 rounded cursor-pointer select-none"
                                                 style="background:#68788d;color:#fff;">
+                                                <input type="radio" name="datumFeasibility" value="Stable"
+                                                    onclick="toggleDatumRadio(this)" /> Stable
+                                            </label>
+                                            <label
+                                                class="radio-cnt flex items-center gap-1 text-xs px-2 py-1 rounded cursor-pointer select-none"
+                                                style="background:#68788d;color:#fff;">
+                                                <input type="radio" name="datumFeasibility" value="Overconstrained"
+                                                    onclick="toggleDatumRadio(this)" /> Overconstrained
+                                            </label>
+                                            <label
+                                                class="radio-cnt flex items-center gap-1 text-xs px-2 py-1 rounded cursor-pointer select-none"
+                                                style="background:#68788d;color:#fff;">
                                                 <input type="radio" name="datumFeasibility"
                                                     value="Underconstrained / Not defined"
                                                     onclick="toggleDatumRadio(this)" /> Underconstrained / Not defined
@@ -2320,13 +2332,6 @@
                                                 <input type="radio" name="datumFeasibility" value="To be verified"
                                                     onclick="toggleDatumRadio(this)" /> To be verified
                                             </label>
-                                            <label
-                                                class="radio-cnt flex items-center gap-1 text-xs px-2 py-1 rounded cursor-pointer select-none"
-                                                style="background:#68788d;color:#fff;">
-                                                <input type="radio" name="datumFeasibility" value="Stable"
-                                                    onclick="toggleDatumRadio(this)" /> Stable
-                                            </label>
-
                                             <textarea name="remarksForCriticality" rows="2"
                                                 class="field-input resize-none"
                                                 placeholder="Remarks to be filled"></textarea>
@@ -3939,7 +3944,7 @@
                 placeholder.value = '';
                 placeholder.textContent = !category
                     ? 'Select Category first'
-                    : (grades.length ? 'Grade' : 'To be added');
+                    : (grades.length ? 'Grade' : 'Enter values in Remarks');
                 selectEl.appendChild(placeholder);
 
                 grades.forEach(mat => {
@@ -4954,6 +4959,13 @@
                     targetValue: 'Outer geometry analysis for GAP & FLUSH; Datum sensitivity analysis; Datum proposals & sensitivity comparisons (DOE)',
                     actionValue: 'Tolerance negotiation with Customer; Align with Production plant'
                 },
+                'Overconstrained': {
+                    gapFlush: 'Overconstrained',
+                    risk: 'To be determined after simulation', riskBg: '#713f12', riskColor: '#fef08a',
+                    targetState: 'nonstable', actionState: 'nonstable',
+                    targetValue: 'Outer geometry analysis for GAP & FLUSH; Datum sensitivity analysis; Datum proposals & sensitivity comparisons (DOE)',
+                    actionValue: 'Tolerance negotiation with Customer; Align with Production plant'
+                },
                 'Stable': {
                     gapFlush: 'Feasible',
                     risk: 'Low', riskBg: '#14532d', riskColor: '#86efac',
@@ -4981,9 +4993,18 @@
                 const val = selected ? selected.value : null;
                 const cfg = val ? DATUM_MAP[val] : null;
 
+
+
+
                 // ── GAP / FLUSH ────────────────────────────────────────────────
                 document.querySelectorAll('input[name="gapFlushTolerance"]').forEach(r => {
                     r.checked = cfg ? (r.value === cfg.gapFlush) : false;
+
+                    if (cfg && cfg.gapFlush === 'Overconstrained') {
+
+                        r.checked = (r.value === 'To be verified')
+                    }
+
                 });
 
                 // ── Risk badge ─────────────────────────────────────────────────
@@ -5646,6 +5667,7 @@
                 "Underconstrained / Not defined": { cs: "Nedostatečně určeno / nedefinováno", de: "Unterbestimmt / nicht definiert", zh: "约束不足/未定义", sk: "Nedostatočne určené / nedefinované" },
                 "Unstable Datum system": { cs: "Nestabilní systém základen", de: "Instabiles Bezugssystem", zh: "不稳定的基准系统", sk: "Nestabilný systém základní" },
                 "Stable": { cs: "Stabilní", de: "Stabil", zh: "稳定", sk: "Stabilné" },
+                "Overconstrained": { cs: "Přeurčeno", de: "Überbestimmt", zh: "过约束", sk: "Preurčené" },
                 "Achievable": { cs: "Dosažitelné", de: "Erreichbar", zh: "可实现", sk: "Dosiahnuteľné" },
                 "Partially feasible": { cs: "Částečně proveditelné", de: "Teilweise machbar", zh: "部分可行", sk: "Čiastočne realizovateľné" },
                 "Unrealistic": { cs: "Nereálné", de: "Unrealistisch", zh: "不现实", sk: "Nereálne" },
@@ -5717,7 +5739,7 @@
                 "Reason for revision": { cs: "Důvod revize", de: "Grund der Revision", zh: "修订原因", sk: "Dôvod revízie" },
                 "Part Name": { cs: "Název dílu", de: "Teilename", zh: "零件名称", sk: "Názov dielu" },
                 "TG Class": { cs: "Třída TG", de: "TG-Klasse", zh: "TG等级", sk: "Trieda TG" },
-                "Type in TG": { cs: "Zadejte TG", de: "TG eingeben", zh: "输入TG", sk: "Zadajte TG" },
+                "Remarks/Type in TG": { cs: "Poznámky/Zadejte v TG", de: "Bemerkungen/Eingabe in TG", zh: "备注/在TG中输入", sk: "Poznámky/Zadajte v TG" },
                 "Type in Box": { cs: "Zadejte text", de: "In das Feld eingeben", zh: "在框中输入", sk: "Zadajte text" },
                 "Type in box": { cs: "Zadejte text", de: "In das Feld eingeben", zh: "在框中输入", sk: "Zadajte text" },
                 "Type in box for remarks": { cs: "Zadejte poznámky", de: "Anmerkungen eingeben", zh: "在框中输入备注", sk: "Zadajte poznámky" },
