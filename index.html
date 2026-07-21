@@ -2138,11 +2138,11 @@
                         <div class="analysis-assumptions-wrap">
                             <span class="section-header">Analysis Specific Assumptions</span>
                             <ul>
-                                <li><label><input type="checkbox" name="analysisAssumption-optical"
+                                <li><label><input type="checkbox" name="Analysis Assumption"
                                             value="Deformations of parts are not part of the simulation." checked />
                                         Deformation (External forces / stress during assembly process) are not
                                         considered in the simulation.</label></li>
-                                <li><label><input type="checkbox" name="analysisAssumption-optical"
+                                <li><label><input type="checkbox" name="Analysis Assumption"
                                             value="Results are based on 10,000 Monte-Carlo simulations." checked />
                                         Results are based on 10,000 Monte-Carlo simulations.</label></li>
                             </ul>
@@ -3484,13 +3484,13 @@
                 subAssyFddReview: 'FDD Review', subAssyFddReason: 'FDD Reason',
                 rcaOpticalFixationConcept: 'Location & Fixation Concept / Assembly Sequence PPT',
                 rcaOpticalAssemblySequence: 'Assembly Sequence',
-                rcaOpticalCadData: 'CAD Data (DIS No)', rcaOpticalLedType: 'LED Type',
+                rcaOpticalCadData: 'CAD data ( DIS No - RG / allCATPart )', rcaOpticalLedType: 'LED Type',
                 rcaOpticalDrawings2D: '2D Drawings', rcaOpticalCpkTarget: 'Cpk for Single Part',
                 rcaOpticalMoldflowFile: 'Moldflow .STL File', rcaOpticalMoldflowAvailability: 'Moldflow Availability',
                 rcaOpticalAdditionalRemarks: 'Additional Remarks',
                 // Root Cause Analysis — "Internal" block (modelled on Internal - Sub Assembly/Product)
                 rcaInternalFixationConcept: 'Updated/Latest Location & Fixation Concept PPT',
-                rcaInternalAssemblySequence: 'Assembly Sequence', rcaInternalCadData: 'CAD Data (DIS No)',
+                rcaInternalAssemblySequence: 'Assembly Sequence', rcaInternalCadData: 'CAD data ( DIS No - RG / allCATPart )',
                 rcaInternalCpkTarget: 'Cpk for Single Part', rcaInternalMoldflowFile: 'Moldflow .STL File',
                 rcaInternalMoldflowAvailability: 'Moldflow Availability',
                 rcaInternalAdditionalRemarks: 'Additional Remarks',
@@ -3505,7 +3505,7 @@
                 connectorStudyRemarks: 'Remarks - Connector Study',
                 subAssyFixationConcept: 'Updated/Latest Location & Fixation Concept PPT',
                 subAssyAssemblySequence: 'Assembly Sequence',
-                subAssyCadData: 'CAD Data (DIS No)',
+                subAssyCadData: 'CAD data ( DIS No - RG / allCATPart )',
                 subAssyEbomData: 'EBOM Data (DIS No)',
                 subAssyCpkTarget: 'Cpk for Single Part',
                 subAssyMoldflowFile: 'Moldflow .STL File',
@@ -3525,7 +3525,7 @@
                 assemblySequence: 'Assembly Sequence',
                 toleranceGroup: 'Tolerance Group (Part Name / Material / TG)',
                 numComponentsInvolved: 'Number of Component Involved',
-                cadData: 'CAD Data (DIS No)', ledType: 'LED Type', drawings2D: '2D Drawings',
+                cadData: 'CAD data ( DIS No - RG / allCATPart )', ledType: 'LED Type', drawings2D: '2D Drawings',
                 cpkTarget: 'Cpk for Single Part', moldflowFile: 'Moldflow .STL File',
                 additionalRemarks: 'Additional Remarks',
                 ogaCadData: 'CAD Data - DIS No',
@@ -5434,7 +5434,7 @@
                 "Reverse": { cs: "Obrátit", de: "Umkehren", zh: "反向", sk: "Obrátiť" },
 
                 /* Simulation input fields */
-                "CAD data (DIS No)": { cs: "CAD data (DIS č.)", de: "CAD-Daten (DIS-Nr.)", zh: "CAD数据（DIS编号）", sk: "CAD dáta (DIS č.)" },
+                "CAD data (DIS No - RG / allCATPart)": { cs: "CAD data (DIS No - RG / allCATPart)", de: "CAD-Daten (DIS-Nr. – RG / allCATPart)", zh: "CAD数据（DIS编号 - RG / allCATPart）", sk: "CAD údaje (číslo DIS – RG / allCATPart)" },
                 "EBOM data (DIS No)": { cs: "EBOM data (DIS č.)", de: "EBOM-Daten (DIS-Nr.)", zh: "EBOM数据（DIS编号）", sk: "EBOM dáta (DIS č.)" },
                 "CAD Data": { cs: "CAD data", de: "CAD-Daten", zh: "CAD数据", sk: "CAD dáta" },
                 "2D drawings": { cs: "2D výkresy", de: "2D-Zeichnungen", zh: "2D图纸", sk: "2D výkresy" },
