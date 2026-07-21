@@ -1220,12 +1220,16 @@
                                     </option>
                                     <option value="GL - Headlamp - Detailing">Headlamp - Detailing Phase</option>
                                     <option value="GL - Rearlamp  -Detailing">Rearlamp - Detailing Phase</option>
-                                    <option value="GL - Car Body Lighting - Detailing">Car Body Lighting - Detailing Phase
+                                    <option value="GL - Car Body Lighting - Detailing">Car Body Lighting - Detailing
+                                        Phase
                                     </option>
-                                    <option value="GL - Interior Lighting - Detailng">Interior Lighting - Detailing Phase
+                                    <option value="GL - Interior Lighting - Detailng">Interior Lighting - Detailing
+                                        Phase
                                     </option>
-                                    <option value="GL - Headlamp - Qualification">Headlamp - Qualification Phase</option>
-                                    <option value="GL - Rearlamp - Qualification">Rearlamp - Qualification Phase</option>
+                                    <option value="GL - Headlamp - Qualification">Headlamp - Qualification Phase
+                                    </option>
+                                    <option value="GL - Rearlamp - Qualification">Rearlamp - Qualification Phase
+                                    </option>
                                     <option value="GL - Car Body Lighting - Qualification">Car Body Lighting -
                                         Qualification Phase
                                     </option>
@@ -1550,6 +1554,30 @@
                                 <div class="right-note"></div>
                             </div>
 
+                            <!-- Moldflow (with Available / Not Available checkboxes) -->
+                            <div class="lf-grid" data-weight="2.5" data-glow-on-available="true">
+                                <label class="bg-brandDark p-2 text-sm rounded">.STL file of Moldflow/Moldcool/3D Scan
+                                    Data for critical studies</label>
+                                <div class="grid-control">
+                                    <div class="moldflow-avail-row">
+                                        <label><input type="checkbox" name="moldflowAvailability" value="Available"
+                                                class="moldflow-avail-checkbox"
+                                                data-moldflow-target="moldflowFile-optical"
+                                                data-moldflow-state="available" onchange="toggleMoldflowState(this)" />
+                                            Available</label>
+                                        <label><input type="checkbox" name="moldflowAvailability" value="Not Available"
+                                                class="moldflow-avail-checkbox"
+                                                data-moldflow-target="moldflowFile-optical"
+                                                data-moldflow-state="notavailable"
+                                                onchange="toggleMoldflowState(this)" />
+                                            Not Available</label>
+                                    </div>
+                                    <input type="text" name="moldflowFile" id="moldflowFile-optical"
+                                        placeholder="Remarks / DIS Number" class="field-input moldflow-input" />
+                                </div>
+                                <div class="right-note"></div>
+                            </div>
+
                             <!-- CAD Data -->
                             <div class="lf-grid" data-weight="10" data-glow-on-available="true">
                                 <label class="bg-brandDark p-2 text-sm rounded">CAD data ( DIS No - RG / allCATPart
@@ -1613,7 +1641,8 @@
                             <!-- Cpk for Single Part -->
                             <div class="lf-grid" data-weight="2.5">
                                 <label class="bg-brandDark p-2 text-sm rounded">Cpk for single parts <span
-                                        class="text-xs text-gray-400 font-normal">(For PCB /LED - 1.33Cpk)</span></label>
+                                        class="text-xs text-gray-400 font-normal">(For PCB / LED -
+                                        1.33Cpk)</span></label>
                                 <div class="grid-control">
                                     <select name="cpkTarget" id="cpkSinglePart-optical"
                                         onchange="checkCpkAlert('optical')" class="field-input">
@@ -1621,30 +1650,6 @@
                                         <option value="1.33">Cpk = 1.33</option>
                                         <option value="1.67">Cpk = 1.67</option>
                                     </select>
-                                </div>
-                                <div class="right-note"></div>
-                            </div>
-
-                            <!-- Moldflow (with Available / Not Available checkboxes) -->
-                            <div class="lf-grid" data-weight="2.5" data-glow-on-available="true">
-                                <label class="bg-brandDark p-2 text-sm rounded">.STL file of Moldflow/Moldcool/3D Scan
-                                    Data for critical studies</label>
-                                <div class="grid-control">
-                                    <div class="moldflow-avail-row">
-                                        <label><input type="checkbox" name="moldflowAvailability" value="Available"
-                                                class="moldflow-avail-checkbox"
-                                                data-moldflow-target="moldflowFile-optical"
-                                                data-moldflow-state="available" onchange="toggleMoldflowState(this)" />
-                                            Available</label>
-                                        <label><input type="checkbox" name="moldflowAvailability" value="Not Available"
-                                                class="moldflow-avail-checkbox"
-                                                data-moldflow-target="moldflowFile-optical"
-                                                data-moldflow-state="notavailable"
-                                                onchange="toggleMoldflowState(this)" />
-                                            Not Available</label>
-                                    </div>
-                                    <input type="text" name="moldflowFile" id="moldflowFile-optical"
-                                        placeholder="Remarks / DIS Number" class="field-input moldflow-input" />
                                 </div>
                                 <div class="right-note"></div>
                             </div>
@@ -2046,8 +2051,8 @@
                                 <label class="bg-brandDark p-2 text-sm rounded">EBOM data (DIS No)</label>
                                 <div class="grid-control">
                                     <div class="moldflow-avail-row">
-                                        <label><input type="checkbox" name="Sub Assembly Ebom Availability" value="Available"
-                                                class="moldflow-avail-checkbox"
+                                        <label><input type="checkbox" name="Sub Assembly Ebom Availability"
+                                                value="Available" class="moldflow-avail-checkbox"
                                                 data-moldflow-target="subAssyMoldflowFile"
                                                 data-moldflow-state="available" onchange="toggleMoldflowState(this)" />
                                             Available</label>
@@ -3715,8 +3720,8 @@
                 const d = document.getElementById('expectedCwProject');
                 if (!d) return;
                 if (typeof d.showPicker === 'function') {
-                d.showPicker(); 
-                } else { 
+                    d.showPicker();
+                } else {
                     d.focus();
                 }
             }
