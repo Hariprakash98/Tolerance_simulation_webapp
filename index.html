@@ -1123,24 +1123,7 @@
                         <td class="border border-gray-600 px-3 py-2" data-no-i18n>Vibulanandan Kannan</td>
                         <td class="border border-gray-600 px-3 py-2">Initial release of the form</td>
                         <td class="border border-gray-600 px-3 py-2">Released</td>
-                    </tr>
-                    <!-- <tr>
-                        <td class="border border-gray-600 px-3 py-2" data-no-i18n>Rev 2.0</td>
-                        <td class="border border-gray-600 px-3 py-2" data-no-i18n>20/04/2026</td>
-                        <td class="border border-gray-600 px-3 py-2" data-no-i18n>TS Team</td>
-                        <td class="border border-gray-600 px-3 py-2" data-no-i18n>TS Lead</td>
-                        <td class="border border-gray-600 px-3 py-2">Added Excel export and bug fixes</td>
-                        <td class="border border-gray-600 px-3 py-2">Released</td>
-                    </tr>
-                    <tr class="bg-[#22334f]">
-                        <td class="border border-gray-600 px-3 py-2 font-semibold" data-no-i18n>Rev 3.0</td>
-                        <td class="border border-gray-600 px-3 py-2" data-no-i18n>09/07/2026</td>
-                        <td class="border border-gray-600 px-3 py-2" data-no-i18n>TS Team</td>
-                        <td class="border border-gray-600 px-3 py-2" data-no-i18n>TS Lead</td> -->
-                    <!-- <td class="border border-gray-600 px-3 py-2">Added contact info, revision history &amp;
-                            multi-language support</td>
-                        <td class="border border-gray-600 px-3 py-2 font-semibold text-brandAccent">Current</td> -->
-                    </tr>
+                    </tr>                    
                 </tbody>
             </table>
         </div>
@@ -1255,7 +1238,7 @@
 
                         </div><!-- /row 1 -->
 
-                        <!-- Row 2: Phase | Request Date | Expected CW | Revision -->
+                        <!-- Row 2: Phase | Request Date | Expected Output Date | Revision -->
                         <div class="project-grid-row2">
 
                             <div class="project-field">
@@ -2188,12 +2171,6 @@
                                             value="Deformations of parts are not part of the simulation." checked />
                                         Deformation (External forces / stress during assembly process) are not
                                         considered in the simulation.</label></li>
-                                <!-- <li><label><input type="checkbox" name="analysisAssumption-optical"
-                                            value="Simulation software assumes unstressed assembly process." checked />
-                                        Simulation software assumes unstressed assembly process.</label></li> -->
-                                <!-- <li><label><input type="checkbox" name="analysisAssumption-optical"
-                                            value="The measuring is in free-state." checked />
-                                        The measuring is in free-state.</label></li> -->
                                 <li><label><input type="checkbox" name="analysisAssumption-optical"
                                             value="Results are based on 10,000 Monte-Carlo simulations." checked />
                                         Results are based on 10,000 Monte-Carlo simulations.</label></li>
@@ -2338,32 +2315,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Additional Tolerance Studies
-                                <div class="grid-row" data-weight="7.5">
-                                    <label class="bg-brandDark p-2 text-sm rounded">Tolerance studies - Type</label>
-                                    <div class="grid-control">
-                                        <div class="flex gap-2 flex-wrap p-1">
-                                            <label
-                                                class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none">
-                                                <input type="checkbox" name="additionalToleranceStudies"
-                                                    value="Gap & Flush of Lamp" /> Gap & Flush of Lamp
-                                            </label>
-                                            <label
-                                                class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none">
-                                                <input type="checkbox" name="additionalToleranceStudies"
-                                                    value="Local Bumper" /> Local Bumper
-                                            </label>
-                                            <label
-                                                class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none">
-                                                <input type="checkbox" name="additionalToleranceStudies" value="DLO" />
-                                                DLO
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div> -->
-
-
-
+                                
                                 <!-- Target of the Study (auto-filled) -->
                                 <div class="grid-row">
                                     <label class="bg-brandDark p-2 text-left rounded "
@@ -2942,12 +2894,6 @@
                                             value="Deformations of parts are not part of the simulation." checked />
                                         Deformation (External forces / stress during assembly process) are not
                                         considered in the simulation</label></li>
-                                <!-- <li><label><input type="checkbox" name="analysisAssumption-geometry"
-                                            value="Simulation software assumes unstressed assembly process." checked />
-                                        Simulation software assumes unstressed assembly process.</label></li>
-                                <li><label><input type="checkbox" name="analysisAssumption-geometry"
-                                            value="The measuring is in free-state." checked />
-                                        The measuring is in free-state.</label></li> -->
                                 <li><label>Results are based on 10,000 Monte-Carlo simulations.</label></li>
                             </ul>
                         </div>
@@ -3612,8 +3558,8 @@
                 rcaInternalCpkTarget: 'Cpk for Single Part', rcaInternalMoldflowFile: 'Moldflow .STL File',
                 rcaInternalMoldflowAvailability: 'Moldflow Availability',
                 rcaInternalAdditionalRemarks: 'Additional Remarks',
-                projectName: 'Project Name', Product: 'Type of Product',
-                requestDate: 'Request Date', expectedCwProject: 'Expected CW',
+                projectName: 'Project Name', Product: 'Type of Product / Phase',
+                requestDate: 'Request Date', expectedCwProject: 'Expected Output Date',
                 oem: 'Name of the OEM', requestor: 'Ordered By',
                 revisionNo: 'Revision No',
                 revisionReason: 'Reason for Revision', studyTarget: 'Target of the Study',
