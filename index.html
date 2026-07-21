@@ -1123,7 +1123,7 @@
                         <td class="border border-gray-600 px-3 py-2" data-no-i18n>Vibulanandan Kannan</td>
                         <td class="border border-gray-600 px-3 py-2">Initial release of the form</td>
                         <td class="border border-gray-600 px-3 py-2">Released</td>
-                    </tr>                    
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -1296,18 +1296,14 @@
                     </div><!-- /project-grid-wrap -->
                 </div><!-- /Section 1 -->
 
-
                 <!-- ================================================================
                  CONDITIONAL SECTIONS — all hidden by default
                  showStudyInputs() reveals the active one on study-type change
                  ================================================================ -->
 
-
-
                 <!-- Section 2a: Optical Tolerance Analysis (OTA) -->
                 <div id="opticalSection" class="hidden">
                     <div class="mt-1">
-                        <!-- <span class="section-header">Simulation Input</span> -->
 
                         <!-- ===== Optical simulation / Connector study toggle (Internal - Optical only) =====
                          Two independent buttons. Each reveals its OWN, fully separate content block
@@ -1365,9 +1361,7 @@
                          ============================================================ -->
 
                         <div id="opticalSimulationContent" style="display:none;">
-
                             <!-- ===== Internal - Optical: study note ===== -->
-
                             <div id="opticalNoteBlock" class="lf-grid optical-scope-note" data-weight="7.5">
                                 <label class="bg-brandDark p-2 text-sm rounded">Scope of Analysis - Optical</label>
                                 <div class="grid-control">
@@ -1397,8 +1391,6 @@
                                 </div>
                                 <div class="right-note"></div>
                             </div>
-
-
 
                             <!-- Light Functions -->
                             <div class="lf-grid" id="lightFunctionsRow" data-weight="10">
@@ -1573,7 +1565,6 @@
                                     </div>
                                     <input type="text" name="cadData" placeholder="Remarks / DIS Number"
                                         class="field-input moldflow-input" oninput="refreshAllFieldStatuses()" />
-
                                 </div>
                                 <div class="right-note"></div>
                             </div>
@@ -1589,9 +1580,6 @@
                                         <label><input type="checkbox" name="ledTypeAvailability" value="Not Available"
                                                 class="moldflow-avail-checkbox" data-moldflow-state="notavailable"
                                                 onchange="toggleMoldflowState(this)" /> Not Available</label>
-                                        <!-- <label><input type="checkbox" name="ledTypeAvailability" value="Not Applicable"
-                                                class="moldflow-avail-checkbox" data-moldflow-state="notapplicable"
-                                                onchange="toggleMoldflowState(this)" /> Not Applicable</label> -->
                                     </div>
                                     <input type="text" name="ledType" placeholder="Remarks / DIS Number"
                                         class="field-input moldflow-input" oninput="refreshAllFieldStatuses()" />
@@ -1670,7 +1658,6 @@
                                 </div>
                                 <div class="right-note"></div>
                             </div>
-
                         </div><!-- /opticalSimulationContent (SEPARATE BLOCK #1 ends) -->
 
                         <!-- ============================================================
@@ -1682,11 +1669,9 @@
                          ============================================================ -->
 
                         <div id="connectorStudyContent" style="display:none;">
-
                             <!-- ===== Internal - Optical: study note (shown for Connector study too,
                                  matching previous behaviour where this note lived inside the
                                  shared content block regardless of which toggle was active) ===== -->
-
                             <div id="opticalNoteBlock-connectorstudy" class="lf-grid optical-scope-note"
                                 data-weight="15">
                                 <label class="bg-brandDark p-2 text-sm rounded">Scope of Analysis - Connector
@@ -1757,10 +1742,6 @@
                                                 value="Not Available" class="moldflow-avail-checkbox"
                                                 data-moldflow-state="notavailable"
                                                 onchange="toggleMoldflowState(this)" /> Not Available</label>
-                                        <!-- <label><input type="checkbox" name="fixationConceptAvailability"
-                                                value="Not Applicable" class="moldflow-avail-checkbox"
-                                                data-moldflow-state="notapplicable"
-                                                onchange="toggleMoldflowState(this)" /> Not Applicable</label> -->
                                     </div>
                                     <input type="text" name="fixationConcept" placeholder="Remarks / DIS no"
                                         class="field-input moldflow-input" oninput="refreshAllFieldStatuses()" />
@@ -1781,10 +1762,6 @@
                                                 value="Not Available" class="moldflow-avail-checkbox"
                                                 data-moldflow-state="notavailable"
                                                 onchange="toggleMoldflowState(this)" /> Not Available</label>
-                                        <!-- <label><input type="checkbox" name="assemblySequenceAvailability"
-                                                value="Not Applicable" class="moldflow-avail-checkbox"
-                                                data-moldflow-state="notapplicable"
-                                                onchange="toggleMoldflowState(this)" /> Not Applicable</label> -->
                                     </div>
                                     <input type="text" name="assemblySequence" placeholder="Remarks / DIS no"
                                         class="field-input moldflow-input" oninput="refreshAllFieldStatuses()" />
@@ -1878,10 +1855,6 @@
                                                 value="Not Available" class="moldflow-avail-checkbox"
                                                 data-moldflow-state="notavailable"
                                                 onchange="toggleMoldflowState(this)" /> Not Available</label>
-                                        <!-- <label><input type="checkbox" name="drawings2DAvailability"
-                                                value="Not Applicable" class="moldflow-avail-checkbox"
-                                                data-moldflow-state="notapplicable"
-                                                onchange="toggleMoldflowState(this)" /> Not Applicable</label> -->
                                     </div>
                                     <input type="text" name="drawings2D" placeholder="Remarks / DIS Number"
                                         class="field-input moldflow-input" oninput="refreshAllFieldStatuses()" />
@@ -1959,7 +1932,6 @@
                                 </div>
                                 <div class="right-note"></div>
                             </div>
-
                         </div><!-- /connectorStudyContent (SEPARATE BLOCK #2 ends) -->
 
                         <!-- ===== NEW: Sub Assembly / Product content =====
@@ -2152,7 +2124,6 @@
                                 </div>
                                 <div class="right-note"></div>
                             </div>
-
                         </div><!-- /subAssemblyContent -->
 
                         <!-- ── Field Completion Status Legend ──────────────────────────────── -->
@@ -2184,7 +2155,6 @@
 
                     </div>
                 </div><!-- /opticalSection -->
-
 
 
                 <!-- Section 2b: Outer Geometry Analysis (OGA) -->
@@ -2315,7 +2285,7 @@
                                     </div>
                                 </div>
 
-                                
+
                                 <!-- Target of the Study (auto-filled) -->
                                 <div class="grid-row">
                                     <label class="bg-brandDark p-2 text-left rounded "
@@ -2410,18 +2380,11 @@
                                                 style="display:none;color:#86efac;font-weight:600;">No recommended
                                                 actions —
                                                 Datum is Stable and feasible</span>
-
                                         </div>
                                         <input type="hidden" id="recommendedActionsValue" name="recommendedActions"
                                             value="" />
                                     </div>
                                 </div>
-
-
-
-
-
-
 
                                 <!-- ── Tolerance Considerations ─────────────────────── -->
 
@@ -2515,10 +2478,7 @@
                                                         Direction</span>
                                                 </div>
                                             </div><!-- /measuring -->
-
                                         </div><!-- /tol-subsections-grid -->
-
-                                        <!-- FIND this line ~839 -->
                                     </div><!-- /tol-subsections-grid -->
 
                                 </div><!-- /rearLampConsiderations -->
@@ -2599,21 +2559,11 @@
 
                                     </div><!-- /tol-subsections-grid -->
                                 </div><!-- /headlampConsiderations -->
-
-
-
-
                             </div><!-- /tol-considerations-wrap -->
-
-
-
+                            
                             <!-- Right column: Simulation Input -->
                             <div>
                                 <span class="section-header">Simulation Input</span>
-
-
-
-
 
                                 <!-- Cpk for Single Part -->
                                 <div>
@@ -2757,11 +2707,6 @@
                                                         Moldcool</label>
                                                 </div>
                                             </div>
-                                            <!-- <div class="tol-link">
-                                                <input type="text" name="singlePartToleranceLink"
-                                                    placeholder="Initial phase - General Tolerance , Detailing phase - Moldflow/Moldcool"
-                                                    class="field-input" />
-                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -2883,9 +2828,6 @@
                             </div><!-- /right column -->
                         </div><!-- /left column -->
 
-
-
-
                         <!-- ── Analysis Specific Assumptions ───────────────────────────── -->
                         <div class="analysis-assumptions-wrap">
                             <span class="section-header">Analysis Specific Assumptions</span>
@@ -2905,9 +2847,6 @@
 
                     </div>
                 </div><!-- /geometrySection -->
-
-
-
 
 
                 <!-- Section 2d: Root Cause Analysis (RCA) -->
@@ -3212,7 +3151,6 @@
                                 </div>
                                 <div class="right-note"></div>
                             </div>
-
                         </div><!-- /rcaOpticalContent -->
 
                         <!-- ============================================================
@@ -3245,7 +3183,6 @@
                                                     class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
                                                         type="checkbox" name="rcainternalSupplierMeasurementreport"
                                                         value="IQS" /> IQS</label>
-
                                             </div>
                                         </div>
                                         <div class="tol-link">
@@ -3455,7 +3392,6 @@
                     </button>
                 </div>
             </footer>
-
         </div><!-- /page wrapper -->
 
 
