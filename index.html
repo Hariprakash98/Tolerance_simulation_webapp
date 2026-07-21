@@ -1613,7 +1613,7 @@
                             <!-- Cpk for Single Part -->
                             <div class="lf-grid" data-weight="2.5">
                                 <label class="bg-brandDark p-2 text-sm rounded">Cpk for single parts <span
-                                        class="text-xs text-gray-400 font-normal">(For PCB - 1.33Cpk)</span></label>
+                                        class="text-xs text-gray-400 font-normal">(For PCB /LED - 1.33Cpk)</span></label>
                                 <div class="grid-control">
                                     <select name="cpkTarget" id="cpkSinglePart-optical"
                                         onchange="checkCpkAlert('optical')" class="field-input">
@@ -3714,7 +3714,11 @@
             function openExpectedCwPicker() {
                 const d = document.getElementById('expectedCwProject');
                 if (!d) return;
-                if (typeof d.showPicker === 'function') d.showPicker(); else d.focus();
+                if (typeof d.showPicker === 'function') {
+                d.showPicker(); 
+                } else { 
+                    d.focus();
+                }
             }
             function syncExpectedCwDisplay() {
                 const d = document.getElementById('expectedCwProject');
@@ -4366,7 +4370,7 @@
                     trLabel(key),
                     key === 'studyTarget'
                         ? tr(STUDY_NAMES[data[key]] || data[key] || '-')
-                        : key === 'requestDate'
+                        : (key === 'requestDate' || key === 'expectedCwProject')
                             ? (formatDateDDMMYYYY(data[key]) || '-')
                             : trValue(data[key])
                 ]);
