@@ -3603,7 +3603,7 @@
                 // Root Cause Analysis — "Optical" block (modelled on Optical simulation)
                 rcaOpticalSinglePartTolerance: 'Single Part Tolerance',
                 rcainternalSupplierMeasurementreport: 'Supplier Measurement report',
-                singleTolLensDeformPreferred: 'Welding Section – Lens Deformation Factor (Preferred Edge)',
+                singleTolLensDeformPreferred: 'Lens Deformation Factor (Preferred Edge)',
                 headlampHousingJigOperatorRepeat: 'Headlamp Assembly – Operator Repeatability (Housing-Jig)',
                 rcaOpticalSinglePartToleranceLink: 'Single Part Tolerance - DIS No',
                 rcaOpticalLightFunction: 'Light Functions', rcaOpticalOtherFunctions: 'Other Light Functions',
@@ -3905,7 +3905,7 @@
                 placeholder.value = '';
                 placeholder.textContent = !category
                     ? 'Select Category first'
-                    : (grades.length ? 'Grade' : 'Non STD(Enter values in Remarks)');
+                    : (grades.length ? 'Grade' : 'Non STD (Enter values in Remarks)');
                 selectEl.appendChild(placeholder);
 
                 grades.forEach(mat => {
@@ -5302,7 +5302,7 @@
 
                 if (fill) {
                     fill.style.width = pct + '%';
-                    fill.style.background = pct >= 89 ? '#65a30d' : (pct >= 50 ? '#ca8a04' : '#dc2626');
+                    fill.style.background = pct >= 90 ? '#65a30d' : (pct >= 50 ? '#ca8a04' : '#dc2626');
                 }
                 if (text) text.textContent = pct + '%';
 
