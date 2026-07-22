@@ -99,8 +99,8 @@
         }
 
         .grid-control {
-
-            min-width: 500px;
+            display: flex;
+            gap: 20px;
         }
 
         .grid-control input:not([type="checkbox"]),
@@ -732,6 +732,7 @@
             align-items: center;
             margin-bottom: 6px;
             font-size: .78rem;
+            white-space: nowrap;
         }
 
         .moldflow-avail-row label {
@@ -4762,7 +4763,8 @@
                     .map(k => {
                         const label = trLabel(k);
                         const value = k === 'studyTarget' ? tr(STUDY_NAMES[data[k]] || data[k])
-                            : trValue(data[k]);
+                            : (k === 'requestDate' || k === 'expectedCwProject') ? (formatDateDDMMYYYY(data[k]) || '-')
+                                : trValue(data[k]);
                         return `${label}: ${value}`;
                     });
 
@@ -5184,7 +5186,7 @@
 
                 if (fill) {
                     fill.style.width = pct + '%';
-                    fill.style.background = pct >= 90 ? '#65a30d' : (pct >= 50 ? '#ca8a04' : '#dc2626');
+                    fill.style.background = pct >= 90 ? '#65a30d' : (pct >= 80 ? '#ca8a04' : '#dc2626');
                 }
                 if (text) text.textContent = pct + '%';
 
