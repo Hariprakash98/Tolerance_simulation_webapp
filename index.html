@@ -1254,7 +1254,6 @@
                                     <option value="">-- Select Type --</option>
                                     <option value="OTA_OPTICAL">Internal - Optical/Connector Study</option>
                                     <option value="OTA_SUBASSY">Internal - Sub Assembly/Product</option>
-
                                     <option value="OGA">External - GAP & FLUSH</option>
                                     <option value="RCA">Root Cause Analysis</option>
                                 </select>
@@ -1605,13 +1604,14 @@
                                     <div class="moldflow-avail-row">
                                         <label><input type="checkbox" name="ledTypeAvailability" value="Available"
                                                 class="moldflow-avail-checkbox" data-moldflow-state="available"
-                                                onchange="toggleMoldflowState(this)" /> Available</label>
+                                                onchange="toggleMoldflowState(this)" />New / Available</label>
                                         <label><input type="checkbox" name="ledTypeAvailability" value="Not Available"
                                                 class="moldflow-avail-checkbox" data-moldflow-state="notavailable"
-                                                onchange="toggleMoldflowState(this)" />New / Standard LED</label>
+                                                onchange="toggleMoldflowState(this)" />Standard LED</label>
                                     </div>
                                     <textarea name="ledType" placeholder="Remarks / DIS Number" rows="4"
-                                        class="field-input moldflow-input" oninput="refreshAllFieldStatuses()"></textarea>
+                                        class="field-input moldflow-input"
+                                        oninput="refreshAllFieldStatuses()"></textarea>
                                 </div>
                                 <div class="right-note"></div>
                             </div>
@@ -2332,9 +2332,9 @@
 
                                             <!-- State C: Stable -->
                                             <span id="target-state-stable"
-                                                style="display:none;color:#86efac;font-weight:600;">No additional target
-                                                studies required — Datum is Stable</span>
-
+                                                style="display:none;color:#86efac;font-weight:600;">Tolerance analysis
+                                                to be performed for the identified GAP & FLUSH points using General
+                                                tolerance, Moldflow & Moldcool warpage integration</span>
                                         </div>
                                         <input type="hidden" id="targetOfStudyValue" name="targetOfStudy" value="" />
                                     </div>
@@ -2883,7 +2883,7 @@
                  (showRcaOpticalBlock / hideRcaOpticalBlock). Uses grid-row layout
                  to match the rest of the Root Cause Analysis section.
                  ============================================================ -->
-                        <div id="rcaOpticalContent" style="display:none;">                            
+                        <div id="rcaOpticalContent" style="display:none;">
 
                             <!-- Light Functions -->
                             <div class="grid-row">
@@ -3045,7 +3045,7 @@
                                 <div class="right-note"></div>
                             </div>
 
-                             <!-- Moldflow (with Available / Not Available checkboxes) -->
+                            <!-- Moldflow (with Available / Not Available checkboxes) -->
                             <div class="grid-row" data-weight="20" data-glow-on-available="true">
                                 <label class="bg-brandDark p-2 text-sm rounded">.STL file of Moldflow/Moldcool/3D Scan
                                     Data for critical studies</label>
@@ -3106,7 +3106,8 @@
                                                 onchange="toggleMoldflowState(this)" /> Not Available</label>
                                     </div>
                                     <textarea name="rcaOpticalLedType" placeholder="Remarks / DIS Number" rows="4"
-                                        class="field-input moldflow-input" oninput="refreshAllFieldStatuses()"></textarea>
+                                        class="field-input moldflow-input"
+                                        oninput="refreshAllFieldStatuses()"></textarea>
                                 </div>
                                 <div class="right-note"></div>
                             </div>
@@ -3148,7 +3149,7 @@
                                 <div class="right-note"></div>
                             </div>
 
-                            
+
 
                             <!-- Additional Remarks -->
                             <div class="grid-row">
@@ -3237,7 +3238,7 @@
                                         <label><input type="checkbox" name="assemblySequenceAvailability"
                                                 value="Not Available" class="moldflow-avail-checkbox"
                                                 data-moldflow-state="notavailable"
-                                                onchange="toggleMoldflowState(this)" /> Not Available</label>        
+                                                onchange="toggleMoldflowState(this)" /> Not Available</label>
                                     </div>
                                     <input type="text" name="rcaInternalAssemblySequence"
                                         placeholder="Remarks / DIS Number" class="field-input moldflow-input"
@@ -3246,7 +3247,7 @@
                                 <div class="right-note"></div>
                             </div>
 
-                             <!-- Moldflow (with Available / Not Available checkboxes) -->
+                            <!-- Moldflow (with Available / Not Available checkboxes) -->
                             <div class="grid-row" data-weight="20" data-glow-on-available="true">
                                 <label class="bg-brandDark p-2 text-sm rounded">.STL file of Moldflow/Moldcool/3D Scan
                                     Data for critical studies</label>
@@ -3308,7 +3309,7 @@
                                 <div class="right-note"></div>
                             </div>
 
-                           
+
 
                             <!-- Additional Remarks -->
                             <div class="grid-row">
@@ -3349,7 +3350,7 @@
             <!-- ── Page Footer: Input Requirements progress + Export / Send actions ── -->
             <footer class="page-footer">
 
-                <div class="footer-note" style="font-size:.80rem; color: #fbbf24ff; max-width:600px; line-height:1.5;">
+                <div class="footer-note" style="font-size:1rem; color: #fbbf24ff; max-width:600px; line-height:1.5;">
                     Maturity of Input requirements to perform the Tolerance simulations :
                     <br />* <span style="color:#ffffff;">Insufficient</span> - Missing necessary input
                     <br />* <span style="color:#ffffff;">Partial</span> - Missing some input which can affect the
@@ -4816,7 +4817,7 @@
                     risk: 'Low', riskBg: '#14532d', riskColor: '#86efac',
                     targetState: 'stable', actionState: 'stable',
                     targetValue: 'No additional target studies required',
-                    actionValue: 'No recommended actions required'
+                    actionValue: '----'
                 }
             };
 
