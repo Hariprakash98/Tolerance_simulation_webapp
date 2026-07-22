@@ -1343,7 +1343,7 @@
 
                         <!-- ===== Internal - Connector: study note (single remarks box for both lines) ===== -->
 
-                        <div id="connectorNoteBlock" class="lf-grid" style="display:none;">
+                        <!-- <div id="connectorNoteBlock" class="lf-grid" style="display:none;">
                             <label class="bg-brandDark p-2 text-sm rounded">
                                 Connector Study - Position of terminals in X, Y & Z relative to housing connector
                                 receiving geometries
@@ -1355,7 +1355,7 @@
                                     placeholder="Remarks"></textarea>
                             </div>
                             <div class="right-note"></div>
-                        </div>
+                        </div> -->
 
                         <!-- ============================================================
                          SEPARATE BLOCK #1 — "Optical simulation"
@@ -1366,7 +1366,7 @@
 
                         <div id="opticalSimulationContent" style="display:none;">
                             <!-- ===== Internal - Optical: study note ===== -->
-                            <div id="opticalNoteBlock" class="lf-grid optical-scope-note" data-weight="7.5">
+                            <div id="opticalNoteBlock" class="lf-grid optical-scope-note" data-weight="10">
                                 <label class="bg-brandDark p-2 text-sm rounded">Scope of Analysis - Optical</label>
                                 <div class="grid-control">
                                     <div class="single-tol-wrap">
@@ -1555,7 +1555,7 @@
                             </div>
 
                             <!-- Moldflow (with Available / Not Available checkboxes) -->
-                            <div class="lf-grid" data-weight="2.5" data-glow-on-available="true">
+                            <div class="lf-grid" data-weight="10" data-glow-on-available="true">
                                 <label class="bg-brandDark p-2 text-sm rounded">.STL file of Moldflow/Moldcool/3D Scan
                                     Data for critical studies</label>
                                 <div class="grid-control">
@@ -1598,7 +1598,7 @@
                             </div>
 
                             <!-- LED Type -->
-                            <div class="lf-grid" data-weight="2.5" data-glow-on-available="true">
+                            <div class="lf-grid" data-weight="10" data-glow-on-available="true">
                                 <label class="bg-brandDark p-2 text-sm rounded">LED Type (Drawing)</label>
                                 <div class="grid-control">
                                     <div class="moldflow-avail-row">
@@ -1617,7 +1617,7 @@
                             </div>
 
                             <!-- 2D Drawings -->
-                            <div class="lf-grid" data-weight="2.5" data-glow-on-available="true">
+                            <div class="lf-grid" data-weight="10" data-glow-on-available="true">
                                 <label class="bg-brandDark p-2 text-sm rounded">
                                     2D drawings
                                     <span class="text-xs text-gray-400 font-normal">(Single Component/PCB - If
@@ -1640,7 +1640,7 @@
                             </div>
 
                             <!-- Cpk for Single Part -->
-                            <div class="lf-grid" data-weight="2.5">
+                            <div class="lf-grid" data-weight="10">
                                 <label class="bg-brandDark p-2 text-sm rounded">Cpk for single parts <span
                                         class="text-xs text-gray-400 font-normal">(For PCB
                                         1.33Cpk)</span></label>
@@ -1679,7 +1679,7 @@
                                  matching previous behaviour where this note lived inside the
                                  shared content block regardless of which toggle was active) ===== -->
                             <div id="opticalNoteBlock-connectorstudy" class="lf-grid optical-scope-note"
-                                data-weight="15">
+                                data-weight="10">
                                 <label class="bg-brandDark p-2 text-sm rounded">Scope of Analysis - Connector
                                     Study</label>
                                 <div class="grid-control">
@@ -1869,7 +1869,7 @@
                             </div>
 
                             <!-- 2D Drawings -->
-                            <div class="lf-grid" data-weight="5" data-glow-on-available="true">
+                            <div class="lf-grid" data-weight="10" data-glow-on-available="true">
                                 <label class="bg-brandDark p-2 text-sm rounded">
                                     2D drawings
                                     <span class="text-xs text-gray-400 font-normal">(Single Component - If
@@ -1892,7 +1892,7 @@
                             </div>
 
                             <!-- Cpk for Single Part -->
-                            <div class="lf-grid" data-weight="2.5">
+                            <div class="lf-grid" data-weight="10">
                                 <label class="bg-brandDark p-2 text-sm rounded">Cpk for single parts </label>
                                 <div class="grid-control">
                                     <select name="cpkTarget" id="cpkSinglePart-connectorstudy"
@@ -1906,7 +1906,7 @@
                             </div>
 
                             <!-- Moldflow (with Available / Not Available checkboxes) -->
-                            <div class="lf-grid" data-weight="2.5" data-glow-on-available="true">
+                            <div class="lf-grid" data-weight="10" data-glow-on-available="true">
                                 <label class="bg-brandDark p-2 text-sm rounded">.STL file of Moldflow/Moldcool/3D Scan
                                     Data for critical studies</label>
                                 <div class="grid-control">
@@ -1948,7 +1948,7 @@
                         <div id="subAssemblyContent" style="display:none;">
 
                             <!-- FDD Review -->
-                            <div class="lf-grid" data-weight="7.5">
+                            <div class="lf-grid" data-weight="10">
                                 <label class="bg-brandDark p-2 text-sm rounded">Concept design review for Functional
                                     design and dimensioning
                                     <br> (Dimensional risks - Higher Tolerance chain / Single parts
@@ -1974,7 +1974,7 @@
 
 
                             <!-- Updated/Latest Location & Fixation Concept PPT -->
-                            <div class="lf-grid" data-weight="2.5" data-glow-on-available="true">
+                            <div class="lf-grid" data-weight="10" data-glow-on-available="true">
                                 <label class="bg-brandDark p-2 text-sm rounded">Updated/Latest Location &amp; Fixation
                                     Concept PPT</label>
                                 <div class="grid-control">
@@ -1999,7 +1999,7 @@
                             </div>
 
                             <!-- Assembly Sequence -->
-                            <div class="lf-grid" data-weight="2.5" data-glow-on-available="true">
+                            <div class="lf-grid" data-weight="10" data-glow-on-available="true">
                                 <label class="bg-brandDark p-2 text-sm rounded">Assembly sequence</label>
                                 <div class="grid-control">
                                     <div class="moldflow-avail-row">
@@ -2023,7 +2023,7 @@
                             </div>
 
                             <!-- CAD Data -->
-                            <div class="lf-grid" data-weight="2.5" data-glow-on-available="true">
+                            <div class="lf-grid" data-weight="10" data-glow-on-available="true">
                                 <label class="bg-brandDark p-2 text-sm rounded">CAD data ( DIS No - RG / allCATPart
                                     )</label>
                                 <div class="grid-control">
@@ -2071,7 +2071,7 @@
                             </div>
 
                             <!-- EBOM Data -->
-                            <div class="lf-grid" data-weight="2.5" data-glow-on-available="true">
+                            <div class="lf-grid" data-weight="10" data-glow-on-available="true">
                                 <label class="bg-brandDark p-2 text-sm rounded">EBOM data (DIS No)</label>
                                 <div class="grid-control">
                                     <div class="moldflow-avail-row">
@@ -2195,7 +2195,7 @@
                                     </div>
                                 </div>
 
-                                <div class="grid-row" data-weight="7.5">
+                                <div class="grid-row" data-weight="10">
                                     <label id="datumFeasibilityLabel" class="bg-brandDark p-2 text-sm rounded">Customer
                                         lamp fixation - Datum's
                                         Stability</label>
@@ -2402,7 +2402,7 @@
                                         <button type="button" class="tol-lamp-btn" data-lamp="rearlamp"
                                             onclick="toggleLampTolerance('rearlamp')">Rear Lamp</button>
                                     </div>
-                                    <div id="rearLampConsiderations" style="display:none;" data-weight="5">
+                                    <div id="rearLampConsiderations" style="display:none;" data-weight="10">
                                         <div class="tol-subsections-grid">
 
                                             <!-- Sub-section 1: Welding process tolerances -->
@@ -2573,7 +2573,7 @@
 
                                 <!-- Cpk for Single Part -->
                                 <div>
-                                    <div class="grid-row" data-weight="5">
+                                    <div class="grid-row" data-weight="10">
                                         <label class="bg-brandDark p-2 text-sm rounded">Cpk for Single Parts</label>
                                         <div class="grid-control">
                                             <div class="flex items-center gap-2">
@@ -2607,7 +2607,7 @@
                                 </div>
 
                                 <!-- Cpk for Assembly -->
-                                <div class="grid-row" data-weight="15">
+                                <div class="grid-row" data-weight="10">
                                     <label class="bg-brandDark p-2 text-sm rounded">Cpk of Lamp tolerance (GAP &
                                         FLUSH)</label>
                                     <div class="grid-control">
@@ -2623,7 +2623,7 @@
 
 
                                 <!-- Part Name / Material / TG -->
-                                <div class="grid-row" data-weight="5">
+                                <div class="grid-row" data-weight="10">
                                     <label class="bg-brandDark p-2 text-sm rounded">Part Name/Material/ Tolerance group
                                         for
                                         involved
@@ -2639,7 +2639,7 @@
                                 </div>
 
                                 <!-- Reference System -->
-                                <div class="grid-row" data-weight="15">
+                                <div class="grid-row" data-weight="10">
                                     <label class="bg-brandDark p-2 text-sm rounded">Reference system (Datum/RPS)</label>
                                     <div class="grid-control">
                                         <div
@@ -2664,7 +2664,7 @@
                                 </div>
 
                                 <!-- Joining Process -->
-                                <div class="grid-row" data-weight="5">
+                                <div class="grid-row" data-weight="10">
                                     <label class="bg-brandDark p-2 text-sm rounded">Joining process</label>
                                     <div class="grid-control">
                                         <div
@@ -2690,7 +2690,7 @@
                                 </div>
 
                                 <!-- Single Part Tolerance -->
-                                <div class="grid-row" data-weight="5">
+                                <div class="grid-row" data-weight="10">
                                     <label class="bg-brandDark p-2 text-sm rounded">Single part tolerance</label>
                                     <div class="grid-control">
                                         <div class="single-tol-wrap">
@@ -2720,7 +2720,7 @@
 
 
                                 <!-- Lamp Measurement Method -->
-                                <div class="grid-row" id="lampMeasurementMethodRow" data-weight="5">
+                                <div class="grid-row" id="lampMeasurementMethodRow" data-weight="10">
                                     <label class="bg-brandDark p-2 text-sm rounded">Lamp Measurement Method</label>
                                     <div class="grid-control">
                                         <div
@@ -2743,7 +2743,7 @@
                                 </div>
 
                                 <!-- Other Fixations -->
-                                <div class="grid-row" id="otherFixationsRow" data-weight="5">
+                                <div class="grid-row" id="otherFixationsRow" data-weight="10">
                                     <label class="bg-brandDark p-2 text-sm rounded">Additional Fixing Geometries</label>
                                     <div class="grid-control">
                                         <div class="flex gap-1 p-1 rounded items-center overflow-x-auto">
@@ -2805,7 +2805,7 @@
                                 </div>
 
                                 <!-- Document -->
-                                <div class="grid-row" data-weight="6">
+                                <div class="grid-row" data-weight="10">
                                     <div class="bg-brandDark p-2 text-sm rounded oga-section-label">
                                         Customer Document(s)
                                         <label class="item-check-row">
@@ -3046,7 +3046,7 @@
                             </div>
 
                             <!-- Moldflow (with Available / Not Available checkboxes) -->
-                            <div class="grid-row" data-weight="20" data-glow-on-available="true">
+                            <div class="grid-row" data-weight="10" data-glow-on-available="true">
                                 <label class="bg-brandDark p-2 text-sm rounded">.STL file of Moldflow/Moldcool/3D Scan
                                     Data for critical studies</label>
                                 <div class="grid-control">
@@ -3171,7 +3171,7 @@
 
 
                             <!-- Problem Statement -->
-                            <div class="grid-row" data-weight="30">
+                            <div class="grid-row" data-weight="10">
                                 <label class="bg-brandDark p-2 text-sm rounded">Problem Statement</label>
                                 <div class="grid-control">
                                     <input type="text" name="rcaInternalProblemStatement"
@@ -3181,7 +3181,7 @@
                             </div>
 
                             <!-- Supplier Measurement report -->
-                            <div class="grid-row" data-weight="20" data-glow-on-available="true">
+                            <div class="grid-row" data-weight="10" data-glow-on-available="true">
                                 <label class="bg-brandDark p-2 text-sm rounded">Supplier Measurement report</label>
                                 <div class="grid-control">
                                     <div class="single-tol-wrap">
@@ -3227,7 +3227,7 @@
                             </div>
 
                             <!-- Assembly Sequence -->
-                            <div class="grid-row" data-weight="5" data-glow-on-available="true">
+                            <div class="grid-row" data-weight="10" data-glow-on-available="true">
                                 <label class="bg-brandDark p-2 text-sm rounded">Assembly sequence</label>
                                 <div class="grid-control">
                                     <div class="moldflow-avail-row">
@@ -3248,7 +3248,7 @@
                             </div>
 
                             <!-- Moldflow (with Available / Not Available checkboxes) -->
-                            <div class="grid-row" data-weight="20" data-glow-on-available="true">
+                            <div class="grid-row" data-weight="10" data-glow-on-available="true">
                                 <label class="bg-brandDark p-2 text-sm rounded">.STL file of Moldflow/Moldcool/3D Scan
                                     Data for critical studies</label>
                                 <div class="grid-control">
@@ -3296,7 +3296,7 @@
                             </div>
 
                             <!-- Cpk for Single Part -->
-                            <div class="grid-row" data-weight="5">
+                            <div class="grid-row" data-weight="10">
                                 <label class="bg-brandDark p-2 text-sm rounded">Cpk for single parts</label>
                                 <div class="grid-control">
                                     <select name="rcaInternalCpkTarget" id="cpkSinglePart-rcainternal"
@@ -5126,7 +5126,7 @@
                 // <div class="lf-grid"> / <div class="grid-row">. A row with
                 // no data-weight defaults to 1 (equal split), so nothing
                 // changes until you deliberately add weights to specific rows.
-                const PROJECT_INFO_WEIGHT = 10; // 5–10 recommended; % of bar reserved for Project Information
+                const PROJECT_INFO_WEIGHT = 5; // 5–10 recommended; % of bar reserved for Project Information
 
                 // 1) Project Information fields
                 let projTotal = 0, projComplete = 0;
