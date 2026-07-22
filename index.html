@@ -2883,41 +2883,7 @@
                  (showRcaOpticalBlock / hideRcaOpticalBlock). Uses grid-row layout
                  to match the rest of the Root Cause Analysis section.
                  ============================================================ -->
-                        <div id="rcaOpticalContent" style="display:none;">
-
-                            <!-- Single Part Tolerance -->
-                            <div class="grid-row">
-                                <label class="bg-brandDark p-2 text-sm rounded">Single part tolerance</label>
-                                <div class="grid-control">
-                                    <div class="single-tol-wrap">
-                                        <div class="tol-checks">
-                                            <div
-                                                class="square-checkbox-group flex gap-1 p-1 rounded items-center overflow-x-auto">
-                                                <label
-                                                    class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
-                                                        type="checkbox" name="rcaOpticalSinglePartTolerance"
-                                                        value="General Tolerance" /> General Tolerance</label>
-                                                <label
-                                                    class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
-                                                        type="checkbox" name="rcaOpticalSinglePartTolerance"
-                                                        value="Moldflow" />
-                                                    Moldflow</label>
-                                                <label
-                                                    class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
-                                                        type="checkbox" name="rcaOpticalSinglePartTolerance"
-                                                        value="Moldcool" />
-                                                    Moldcool</label>
-                                            </div>
-                                        </div>
-                                        <div class="tol-link">
-                                            <input type="text" name="rcaOpticalSinglePartToleranceLink"
-                                                placeholder="Initial phase - General Tolerance , Detailing phase - Moldflow/Moldcool"
-                                                class="field-input" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="right-note"></div>
-                            </div>
+                        <div id="rcaOpticalContent" style="display:none;">                            
 
                             <!-- Light Functions -->
                             <div class="grid-row">
@@ -3027,6 +2993,40 @@
                                 <div class="right-note"></div>
                             </div>
 
+                            <!-- Single Part Tolerance -->
+                            <div class="grid-row">
+                                <label class="bg-brandDark p-2 text-sm rounded">Single part tolerance</label>
+                                <div class="grid-control">
+                                    <div class="single-tol-wrap">
+                                        <div class="tol-checks">
+                                            <div
+                                                class="square-checkbox-group flex gap-1 p-1 rounded items-center overflow-x-auto">
+                                                <label
+                                                    class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
+                                                        type="checkbox" name="rcaOpticalSinglePartTolerance"
+                                                        value="General Tolerance" /> General Tolerance</label>
+                                                <label
+                                                    class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
+                                                        type="checkbox" name="rcaOpticalSinglePartTolerance"
+                                                        value="Moldflow" />
+                                                    Moldflow</label>
+                                                <label
+                                                    class="flex items-center gap-1 bg-[#68788d] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
+                                                        type="checkbox" name="rcaOpticalSinglePartTolerance"
+                                                        value="Moldcool" />
+                                                    Moldcool</label>
+                                            </div>
+                                        </div>
+                                        <div class="tol-link">
+                                            <input type="text" name="rcaOpticalSinglePartToleranceLink"
+                                                placeholder="Initial phase - General Tolerance , Detailing phase - Moldflow/Moldcool"
+                                                class="field-input" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="right-note"></div>
+                            </div>
+
                             <!-- Part Name / Material / TG -->
                             <div class="grid-row">
                                 <label class="bg-brandDark p-2 text-sm rounded">Part Name/Material/ Tolerance group for
@@ -3041,6 +3041,30 @@
                                 </label>
                                 <div class="grid-control">
                                     <div class="tg-parts-wrap" data-tg-parts="true" id="tgParts-rcaoptical"></div>
+                                </div>
+                                <div class="right-note"></div>
+                            </div>
+
+                             <!-- Moldflow (with Available / Not Available checkboxes) -->
+                            <div class="grid-row" data-weight="20" data-glow-on-available="true">
+                                <label class="bg-brandDark p-2 text-sm rounded">.STL file of Moldflow/Moldcool/3D Scan
+                                    Data for critical studies</label>
+                                <div class="grid-control">
+                                    <div class="moldflow-avail-row">
+                                        <label><input type="checkbox" name="rcaInternalMoldflowAvailability"
+                                                value="Available" class="moldflow-avail-checkbox"
+                                                data-moldflow-target="moldflowFile-rcainternal"
+                                                data-moldflow-state="available" onchange="toggleMoldflowState(this)" />
+                                            Available</label>
+                                        <label><input type="checkbox" name="rcaInternalMoldflowAvailability"
+                                                value="Not Available" class="moldflow-avail-checkbox"
+                                                data-moldflow-target="moldflowFile-rcainternal"
+                                                data-moldflow-state="notavailable"
+                                                onchange="toggleMoldflowState(this)" />
+                                            Not Available</label>
+                                    </div>
+                                    <input type="text" name="rcaInternalMoldflowFile" id="moldflowFile-rcainternal"
+                                        placeholder="Remarks / DIS Number" class="field-input moldflow-input" />
                                 </div>
                                 <div class="right-note"></div>
                             </div>
@@ -3124,29 +3148,7 @@
                                 <div class="right-note"></div>
                             </div>
 
-                            <!-- Moldflow (with Available / Not Available checkboxes) -->
-                            <div class="grid-row" data-glow-on-available="true">
-                                <label class="bg-brandDark p-2 text-sm rounded">.STL file of Moldflow/Moldcool/3D Scan
-                                    Data for critical studies</label>
-                                <div class="grid-control">
-                                    <div class="moldflow-avail-row">
-                                        <label><input type="checkbox" name="rcaOpticalMoldflowAvailability"
-                                                value="Available" class="moldflow-avail-checkbox"
-                                                data-moldflow-target="moldflowFile-rcaoptical"
-                                                data-moldflow-state="available" onchange="toggleMoldflowState(this)" />
-                                            Available</label>
-                                        <label><input type="checkbox" name="rcaOpticalMoldflowAvailability"
-                                                value="Not Available" class="moldflow-avail-checkbox"
-                                                data-moldflow-target="moldflowFile-rcaoptical"
-                                                data-moldflow-state="notavailable"
-                                                onchange="toggleMoldflowState(this)" />
-                                            Not Available</label>
-                                    </div>
-                                    <input type="text" name="rcaOpticalMoldflowFile" id="moldflowFile-rcaoptical"
-                                        placeholder="Remarks / DIS Number" class="field-input moldflow-input" />
-                                </div>
-                                <div class="right-note"></div>
-                            </div>
+                            
 
                             <!-- Additional Remarks -->
                             <div class="grid-row">
@@ -3235,15 +3237,35 @@
                                         <label><input type="checkbox" name="assemblySequenceAvailability"
                                                 value="Not Available" class="moldflow-avail-checkbox"
                                                 data-moldflow-state="notavailable"
-                                                onchange="toggleMoldflowState(this)" /> Not Available</label>
-                                        <label><input type="checkbox" name="assemblySequenceAvailability"
-                                                value="Not Applicable" class="moldflow-avail-checkbox"
-                                                data-moldflow-state="notapplicable"
-                                                onchange="toggleMoldflowState(this)" /> Not Applicable</label>
+                                                onchange="toggleMoldflowState(this)" /> Not Available</label>        
                                     </div>
                                     <input type="text" name="rcaInternalAssemblySequence"
                                         placeholder="Remarks / DIS Number" class="field-input moldflow-input"
                                         oninput="refreshAllFieldStatuses()" />
+                                </div>
+                                <div class="right-note"></div>
+                            </div>
+
+                             <!-- Moldflow (with Available / Not Available checkboxes) -->
+                            <div class="grid-row" data-weight="20" data-glow-on-available="true">
+                                <label class="bg-brandDark p-2 text-sm rounded">.STL file of Moldflow/Moldcool/3D Scan
+                                    Data for critical studies</label>
+                                <div class="grid-control">
+                                    <div class="moldflow-avail-row">
+                                        <label><input type="checkbox" name="rcaInternalMoldflowAvailability"
+                                                value="Available" class="moldflow-avail-checkbox"
+                                                data-moldflow-target="moldflowFile-rcainternal"
+                                                data-moldflow-state="available" onchange="toggleMoldflowState(this)" />
+                                            Available</label>
+                                        <label><input type="checkbox" name="rcaInternalMoldflowAvailability"
+                                                value="Not Available" class="moldflow-avail-checkbox"
+                                                data-moldflow-target="moldflowFile-rcainternal"
+                                                data-moldflow-state="notavailable"
+                                                onchange="toggleMoldflowState(this)" />
+                                            Not Available</label>
+                                    </div>
+                                    <input type="text" name="rcaInternalMoldflowFile" id="moldflowFile-rcainternal"
+                                        placeholder="Remarks / DIS Number" class="field-input moldflow-input" />
                                 </div>
                                 <div class="right-note"></div>
                             </div>
@@ -3286,29 +3308,7 @@
                                 <div class="right-note"></div>
                             </div>
 
-                            <!-- Moldflow (with Available / Not Available checkboxes) -->
-                            <div class="grid-row" data-weight="20" data-glow-on-available="true">
-                                <label class="bg-brandDark p-2 text-sm rounded">.STL file of Moldflow/Moldcool/3D Scan
-                                    Data for critical studies</label>
-                                <div class="grid-control">
-                                    <div class="moldflow-avail-row">
-                                        <label><input type="checkbox" name="rcaInternalMoldflowAvailability"
-                                                value="Available" class="moldflow-avail-checkbox"
-                                                data-moldflow-target="moldflowFile-rcainternal"
-                                                data-moldflow-state="available" onchange="toggleMoldflowState(this)" />
-                                            Available</label>
-                                        <label><input type="checkbox" name="rcaInternalMoldflowAvailability"
-                                                value="Not Available" class="moldflow-avail-checkbox"
-                                                data-moldflow-target="moldflowFile-rcainternal"
-                                                data-moldflow-state="notavailable"
-                                                onchange="toggleMoldflowState(this)" />
-                                            Not Available</label>
-                                    </div>
-                                    <input type="text" name="rcaInternalMoldflowFile" id="moldflowFile-rcainternal"
-                                        placeholder="Remarks / DIS Number" class="field-input moldflow-input" />
-                                </div>
-                                <div class="right-note"></div>
-                            </div>
+                           
 
                             <!-- Additional Remarks -->
                             <div class="grid-row">
