@@ -1610,8 +1610,8 @@
                                                 class="moldflow-avail-checkbox" data-moldflow-state="notavailable"
                                                 onchange="toggleMoldflowState(this)" /> Not Available</label>
                                     </div>
-                                    <input type="text" name="ledType" placeholder="Remarks / DIS Number"
-                                        class="field-input moldflow-input" oninput="refreshAllFieldStatuses()" />
+                                    <textarea name="ledType" placeholder="Remarks / DIS Number" rows="4"
+                                        class="field-input moldflow-input" oninput="refreshAllFieldStatuses()"></textarea>
                                 </div>
                                 <div class="right-note"></div>
                             </div>
@@ -3081,8 +3081,8 @@
                                                 class="moldflow-avail-checkbox" data-moldflow-state="notavailable"
                                                 onchange="toggleMoldflowState(this)" /> Not Available</label>
                                     </div>
-                                    <input type="text" name="rcaOpticalLedType" placeholder="Remarks / DIS Number"
-                                        class="field-input moldflow-input" oninput="refreshAllFieldStatuses()" />
+                                    <textarea name="rcaOpticalLedType" placeholder="Remarks / DIS Number" rows="4"
+                                        class="field-input moldflow-input" oninput="refreshAllFieldStatuses()"></textarea>
                                 </div>
                                 <div class="right-note"></div>
                             </div>
@@ -5214,6 +5214,9 @@
             // unchecks the other) and colour the linked Moldflow input field
             // green or red. Purely additive — the Moldflow text input's name/value
             // and existing behaviour are unchanged.
+            const LED_TOLERANCE_FIELDS = ['ledType', 'rcaOpticalLedType'];
+            const LED_TOLERANCE_DEFAULT_TEXT = 'LED Tolerance Considered\nLED Position Tolerance = \u00B10.25mm\nLED Height Tolerance = +0.1mm\nLED Soldering Tolerance = \u00B10.05mm';
+
             function toggleMoldflowState(checkbox) {
                 const wrap = checkbox.closest('.grid-control');
                 if (!wrap) return;
@@ -5229,6 +5232,18 @@
                     input.disabled = !!(notApplicableBox && notApplicableBox.checked);
                     if (availableBox && availableBox.checked) input.classList.add('moldflow-available');
                     else if (notAvailableBox && notAvailableBox.checked) input.classList.add('moldflow-notavailable');
+
+                    if (LED_TOLERANCE_FIELDS.includes(input.name)) {
+                        if (notAvailableBox && notAvailableBox.checked) {
+                            if (!input.value.trim() || input.dataset.ledAutoFilled === 'true') {
+                                input.value = LED_TOLERANCE_DEFAULT_TEXT;
+                                input.dataset.ledAutoFilled = 'true';
+                            }
+                        } else if (input.dataset.ledAutoFilled === 'true') {
+                            input.value = '';
+                            input.dataset.ledAutoFilled = 'false';
+                        }
+                    }
                 }
                 updateMoldflowLegendGlow();
                 if (typeof refreshAllFieldStatuses === 'function') refreshAllFieldStatuses();
