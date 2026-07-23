@@ -63,7 +63,7 @@
 
         .main-grid {
             display: grid;
-            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
             /* ← key change */
             gap: 12px;
             margin-bottom: 8px;
@@ -5054,6 +5054,14 @@
                 }
 
                 if (row.hasAttribute('data-glow-on-available')) {
+                    const notAvailableCheckedLed = row.querySelector('[data-moldflow-state="notavailable"]:checked');
+                    if (notAvailableCheckedLed) {
+                        const linkedInput = row.querySelector('.moldflow-input');
+                        if (linkedInput && ['ledType', 'rcaOpticalLedType'].includes(linkedInput.name)) {
+                            statusEl.setAttribute('data-status', 'complete');
+                            return;
+                        }
+                    }
                     const availableChecked = row.querySelector('[data-moldflow-state="available"]:checked');
                     const notApplicableChecked = row.querySelector('[data-moldflow-state="notapplicable"]:checked');
                     if (notApplicableChecked) { statusEl.setAttribute('data-status', 'complete'); return; }
@@ -5247,8 +5255,10 @@
                     const notApplicableBox = wrap.querySelector('[data-moldflow-state="notapplicable"]');
                     input.disabled = !!(notApplicableBox && notApplicableBox.checked);
                     if (availableBox && availableBox.checked) input.classList.add('moldflow-available');
-                    else if (notAvailableBox && notAvailableBox.checked) input.classList.add('moldflow-notavailable');
-
+                    else if (notAvailableBox && notAvailableBox.checked) {
+                        if (LED_TOLERANCE_FIELDS.includes(input.name)) input.classList.add('moldflow-available');
+                        else input.classList.add('moldflow-notavailable');
+                    }
                     if (LED_TOLERANCE_FIELDS.includes(input.name)) {
                         if (notAvailableBox && notAvailableBox.checked) {
                             if (!input.value.trim() || input.dataset.ledAutoFilled === 'true') {
