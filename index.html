@@ -1402,7 +1402,8 @@
                                     <span class="text-xs text-gray-400 font-normal"><br />LB - Low Beam, HB - High Beam,
                                         DRL
                                         -
-                                        Daytime Running Light, TI - Turn Indicator, PO - Position lamp<br /></span>
+                                        Daytime Running Light, TI - Turn Indicator, PO - Position lamp , SML - Side
+                                        marker lamp , CL - Cornering Light<br /></span>
                                 </label>
                                 <div class="grid-control">
                                     <div class="flex gap-1 p-1 rounded items-center overflow-x-auto">
@@ -1430,6 +1431,16 @@
                                         <label
                                             class="flex items-center gap-1 bg-[#68788D] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
                                                 type="checkbox" name="lightFunction" value="Tail" /> Tail</label>
+                                        <label
+                                            class="flex items-center gap-1 bg-[#68788D] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
+                                                type="checkbox" name="lightFunction" value="Fog" /> Fog</label>
+                                        <label
+                                            class="flex items-center gap-1 bg-[#68788D] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
+                                                type="checkbox" name="lightFunction" value="SML" /> SML</label>
+                                        <label
+                                            class="flex items-center gap-1 bg-[#68788D] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
+                                                type="checkbox" name="lightFunction" value="Cornering Light" />
+                                            CL</label>
 
                                         <input type="text" id="otherFunctions" name="otherFunctions"
                                             class="project-input" placeholder="Other Light Functions"
@@ -2624,10 +2635,7 @@
 
                                 <!-- Part Name / Material / TG -->
                                 <div class="grid-row" data-weight="10">
-                                    <label class="bg-brandDark p-2 text-sm rounded">Part Name/Material/ Tolerance group
-                                        for
-                                        involved
-                                        components (TG)
+                                    <label class="bg-brandDark p-2 text-sm rounded">Singe part - Tolerance group (TG)
                                         <br />
                                         <span class="text-xs text-gray-400 font-normal">
                                             Plastics - General tolerances ISO:20457:2020
@@ -2886,49 +2894,56 @@
                         <div id="rcaOpticalContent" style="display:none;">
 
                             <!-- Light Functions -->
-                            <div class="grid-row">
+                            <div class="lf-grid" id="lightFunctionsRow" data-weight="10">
                                 <label class="bg-brandDark p-2 text-sm rounded">Light Functions
                                     <span class="text-xs text-gray-400 font-normal"><br />LB - Low Beam, HB - High Beam,
-                                        DRL -
-                                        Daytime Running Light, TI - Turn Indicator, PO - Position lamp<br /></span>
+                                        DRL
+                                        -
+                                        Daytime Running Light, TI - Turn Indicator, PO - Position lamp , SML - Side
+                                        marker lamp , CL - Cornering Light<br /></span>
                                 </label>
                                 <div class="grid-control">
                                     <div class="flex gap-1 p-1 rounded items-center overflow-x-auto">
                                         <label
                                             class="flex items-center gap-1 bg-[#68788D] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
-                                                type="checkbox" name="rcaOpticalLightFunction" value="LB" /> LB</label>
+                                                type="checkbox" name="lightFunction" value="LB" /> LB</label>
                                         <label
                                             class="flex items-center gap-1 bg-[#68788D] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
-                                                type="checkbox" name="rcaOpticalLightFunction" value="HB" /> HB</label>
+                                                type="checkbox" name="lightFunction" value="HB" /> HB</label>
                                         <label
                                             class="flex items-center gap-1 bg-[#68788D] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
-                                                type="checkbox" name="rcaOpticalLightFunction" value="DRL" />
-                                            DRL</label>
+                                                type="checkbox" name="lightFunction" value="DRL" /> DRL</label>
                                         <label
                                             class="flex items-center gap-1 bg-[#68788D] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
-                                                type="checkbox" name="rcaOpticalLightFunction" value="TI" /> TI</label>
+                                                type="checkbox" name="lightFunction" value="TI" /> TI</label>
                                         <label
                                             class="flex items-center gap-1 bg-[#68788D] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
-                                                type="checkbox" name="rcaOpticalLightFunction" value="Position" />
-                                            PO</label>
+                                                type="checkbox" name="lightFunction" value="Position" /> PO</label>
                                         <label
                                             class="flex items-center gap-1 bg-[#68788D] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
-                                                type="checkbox" name="rcaOpticalLightFunction" value="Stop" />
-                                            Stop</label>
+                                                type="checkbox" name="lightFunction" value="Stop" /> Stop</label>
                                         <label
                                             class="flex items-center gap-1 bg-[#68788D] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
-                                                type="checkbox" name="rcaOpticalLightFunction" value="Reverse" />
-                                            Reverse</label>
+                                                type="checkbox" name="lightFunction" value="Reverse" /> Reverse</label>
                                         <label
                                             class="flex items-center gap-1 bg-[#68788D] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
-                                                type="checkbox" name="rcaOpticalLightFunction" value="Tail" />
-                                            Tail</label>
-                                        <input type="text" id="rcaOpticalOtherFunctions" name="rcaOpticalOtherFunctions"
+                                                type="checkbox" name="lightFunction" value="Tail" /> Tail</label>
+                                        <label
+                                            class="flex items-center gap-1 bg-[#68788D] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
+                                                type="checkbox" name="lightFunction" value="Fog" /> Fog</label>
+                                        <label
+                                            class="flex items-center gap-1 bg-[#68788D] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
+                                                type="checkbox" name="lightFunction" value="SML" /> SML</label>
+                                        <label
+                                            class="flex items-center gap-1 bg-[#68788D] text-xs px-2 py-1 rounded cursor-pointer select-none"><input
+                                                type="checkbox" name="lightFunction" value="Cornering Light" />
+                                            CL</label>
+
+                                        <input type="text" id="otherFunctions" name="otherFunctions"
                                             class="project-input" placeholder="Other Light Functions"
                                             style="display: block;">
                                     </div>
                                 </div>
-                                <div class="right-note"></div>
                             </div>
 
                             <!-- FDD Review -->
